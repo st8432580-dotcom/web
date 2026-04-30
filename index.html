@@ -4,44 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BEAUTY HUB | Studio</title>
-    <!-- Перевірте, щоб назва файлу нижче збігалася з файлом на GitHub -->
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fff url('https://www.transparenttextures.com/patterns/marble-white.png');
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+        /* Орхідеї */
+        .orchid {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: url('https://img.freepik.com/free-photo/pink-orchid-flower-isolated_1101-2041.jpg') no-repeat contain;
+            background-size: contain;
+            opacity: 0.2;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .o-1 { top: -40px; right: -40px; transform: rotate(160deg); }
+        .o-2 { bottom: -40px; left: -40px; }
+
+        .hero { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; position: relative; z-index: 1; }
+        .brand { font-family: 'Playfair Display', serif; font-size: clamp(40px, 10vw, 80px); letter-spacing: 10px; color: #9c6d6d; line-height: 0.9; }
+        .tagline { font-size: 10px; letter-spacing: 4px; margin: 15px 0; text-transform: uppercase; opacity: 0.7; }
+        
+        .main-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #b88b8b, #9c6d6d);
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(156, 109, 109, 0.3);
+        }
+
+        .price-list { max-width: 700px; margin: 0 auto 100px; padding: 0 20px; position: relative; z-index: 1; }
+        .price-title { font-family: 'Playfair Display', serif; text-align: center; font-size: 32px; margin-bottom: 50px; color: #333; }
+        .price-group { margin-bottom: 40px; }
+        .price-group h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #9c6d6d; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 14px; }
+        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 10px; }
+    </style>
 </head>
 <body>
-
-    <div class="orchid orchid-1"></div>
-    <div class="orchid orchid-2"></div>
+    <div class="orchid o-1"></div>
+    <div class="orchid o-2"></div>
 
     <section class="hero">
-        <div class="content-box">
-            <div class="logo-area">
-                <h1 class="brand">BEAUTY</h1>
-                <h1 class="brand">HUB</h1>
-                <p class="tagline">SALON | BEAUTY | WELLNESS</p>
-                <div class="line"></div>
-            </div>
+        <div>
+            <h1 class="brand">BEAUTY<br>HUB</h1>
+            <p class="tagline">SALON | BEAUTY | WELLNESS</p>
             <a href="https://t.me/Beautyy_Hub" class="main-button">ЗАПИСАТИСЬ</a>
         </div>
     </section>
 
     <section class="price-list">
-        <h2 class="price-title">Послуги та ціни</h2>
-
+        <h2 class="price-title">Прайс послуг</h2>
         <div class="price-group">
-            <h3>Нігтьовий сервіс</h3>
-            <div class="row"><span>Манікюр (комплекс)</span><span class="fill"></span><span>700/800 грн</span></div>
-            <div class="row"><span>Нарощення нігтів (1, 2, 3)</span><span class="fill"></span><span>1000/1200 грн</span></div>
-            <div class="row"><span>Укріплення (гель/пудра)</span><span class="fill"></span><span>100 грн</span></div>
-            <div class="row"><span>Педикюр (комплекс)</span><span class="fill"></span><span>750-950 грн</span></div>
+            <h3>Нігті</h3>
+            <div class="row"><span>Манікюр комплекс</span><span class="dots"></span><span>700/800 грн</span></div>
+            <div class="row"><span>Нарощення</span><span class="dots"></span><span>від 1000 грн</span></div>
         </div>
-
         <div class="price-group">
-            <h3>Брови та Вії</h3>
-            <div class="row"><span>Корекція та фарбування брів</span><span class="fill"></span><span>450 грн</span></div>
-            <div class="row"><span>Ламінування вій та фарбування</span><span class="fill"></span><span>800 грн</span></div>
+            <h3>Погляд</h3>
+            <div class="row"><span>Корекція та фарбування брів</span><span class="dots"></span><span>450 грн</span></div>
+            <div class="row"><span>Ламінування вій</span><span class="dots"></span><span>800 грн</span></div>
         </div>
     </section>
-
 </body>
 </html>
