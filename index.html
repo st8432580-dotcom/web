@@ -16,20 +16,29 @@
             line-height: 1.6;
         }
 
-        /* Декоративні орхідеї (SVG щоб точно завантажились) */
+        /* Реальні ніжні орхідеї */
         .decor {
             position: fixed;
-            width: 350px;
-            height: 350px;
+            width: 500px;
+            height: 500px;
             z-index: 0;
-            opacity: 0.15;
+            opacity: 0.5;
             pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%239c6d6d' d='M50 50c10-20 30-20 30 0s-20 30-30 10c-10 20-30 20-30 0s20-30 30-10z'/%3E%3Ccircle fill='%23eecbcb' cx='50' cy='50' r='10'/%3E%3C/svg%3E");
             background-size: contain;
             background-repeat: no-repeat;
+            filter: blur(2px); /* Легке розмиття для естетики */
         }
-        .d-1 { top: -50px; right: -50px; transform: rotate(15deg); }
-        .d-2 { bottom: -50px; left: -50px; transform: rotate(-165deg); }
+        .d-1 { 
+            top: -100px; 
+            right: -100px; 
+            background-image: url('https://images.unsplash.com/photo-1594731802111-070045ac61a0?q=80&w=1000&auto=format&fit=crop'); 
+            transform: rotate(140deg);
+        }
+        .d-2 { 
+            bottom: -100px; 
+            left: -100px; 
+            background-image: url('https://images.unsplash.com/photo-1566412174360-ec1808e23f03?q=80&w=1000&auto=format&fit=crop');
+        }
 
         .hero {
             height: 100vh;
@@ -44,45 +53,44 @@
 
         .brand {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(50px, 12vw, 90px);
+            font-size: clamp(50px, 12vw, 95px);
             color: #9c6d6d;
             line-height: 0.85;
-            letter-spacing: 12px;
-            margin-bottom: 15px;
+            letter-spacing: 15px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
 
         .subtitle {
-            font-size: 10px;
-            letter-spacing: 6px;
+            font-size: 11px;
+            letter-spacing: 7px;
             text-transform: uppercase;
             color: #888;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
-        /* ІДЕАЛЬНО ЗАОКРУГЛЕНА КНОПКА */
+        /* Ідеальна овальна кнопка */
         .btn-main {
             display: inline-block;
-            padding: 18px 60px;
+            padding: 18px 65px;
             background-color: #9c6d6d;
             color: #fff;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 3px;
-            border-radius: 100px; /* Максимальне заокруглення */
-            box-shadow: 0 10px 30px rgba(156, 109, 109, 0.3);
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(156, 109, 109, 0.4);
             transition: all 0.3s ease;
             text-transform: uppercase;
         }
 
         .btn-main:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(156, 109, 109, 0.5);
-            background-color: #8a5d5d;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(156, 109, 109, 0.6);
         }
 
-        /* ПОВНИЙ ПРАЙС */
+        /* Розділ прайсу */
         .price-section {
             max-width: 800px;
             margin: 0 auto 100px;
@@ -93,44 +101,44 @@
 
         .price-title {
             font-family: 'Playfair Display', serif;
-            font-size: 36px;
+            font-size: 42px;
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 80px;
             color: #333;
-            font-style: italic;
         }
 
-        .category { margin-bottom: 55px; }
+        .category { margin-bottom: 60px; }
         
         .category h3 {
             font-size: 12px;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #9c6d6d;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 12px;
-            margin-bottom: 25px;
+            border-bottom: 1px solid #f2f2f2;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
         }
 
         .item {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 20px;
-            font-size: 15px;
+            margin-bottom: 22px;
+            font-size: 16px;
+            font-weight: 300;
         }
 
         .dots {
             flex-grow: 1;
-            border-bottom: 1px dotted #ddd;
-            margin: 0 12px;
+            border-bottom: 1px dotted #ccc;
+            margin: 0 15px;
         }
 
-        .price { font-weight: 600; color: #444; }
+        .price { font-weight: 500; color: #444; }
 
         @media (max-width: 600px) {
-            .brand { font-size: 50px; letter-spacing: 8px; }
-            .decor { width: 200px; height: 200px; }
+            .brand { font-size: 55px; letter-spacing: 10px; }
+            .decor { width: 300px; height: 300px; }
         }
     </style>
 </head>
@@ -146,22 +154,20 @@
     </header>
 
     <section class="price-section">
-        <h2 class="price-title">Прайс послуг</h2>
+        <h2 class="price-title">Прайс-лист</h2>
 
         <div class="category">
             <h3>Нігтьовий сервіс</h3>
             <div class="item"><span>Манікюр (комплекс)</span><span class="dots"></span><span class="price">700/800 грн</span></div>
             <div class="item"><span>Педикюр (комплекс)</span><span class="dots"></span><span class="price">750-950 грн</span></div>
-            <div class="item"><span>Нарощення (1, 2, 3)</span><span class="dots"></span><span class="price">1000/1200 грн</span></div>
+            <div class="item"><span>Нарощення нігтів</span><span class="dots"></span><span class="price">від 1000 грн</span></div>
             <div class="item"><span>Укріплення гель/пудра</span><span class="dots"></span><span class="price">100 грн</span></div>
-            <div class="item"><span>Френч</span><span class="dots"></span><span class="price">100 грн</span></div>
         </div>
 
         <div class="category">
             <h3>Брови та Вії</h3>
             <div class="item"><span>Корекція та фарбування брів</span><span class="dots"></span><span class="price">450 грн</span></div>
             <div class="item"><span>Ламінування вій + фарбування</span><span class="dots"></span><span class="price">800 грн</span></div>
-            <div class="item"><span>Ламінування брів (комплекс)</span><span class="dots"></span><span class="price">800 грн</span></div>
         </div>
 
         <div class="category">
