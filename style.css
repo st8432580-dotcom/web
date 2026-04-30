@@ -7,121 +7,124 @@
 body {
     font-family: 'Montserrat', sans-serif;
     color: #4a4a4a;
-    background-color: #fcfcfc;
+    background-color: #fff;
+    background-image: url('https://www.transparenttextures.com/patterns/marble-white.png');
+    overflow-x: hidden;
 }
 
-/* Фон з легким ефектом мармуру */
+/* Декор орхідеї */
+.orchid-decor {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background-image: url('https://img.freepik.com/free-photo/pink-orchid-flower-isolated_1101-2041.jpg'); /* Схожа на твою аватарку */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.top-right { top: -50px; right: -50px; transform: rotate(180deg); }
+.bottom-left { bottom: -50px; left: -50px; }
+
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
-                url('https://www.transparenttextures.com/patterns/marble-white.png');
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-
-.logo-box {
-    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 80px;
-    line-height: 0.9;
-    letter-spacing: 5px;
-    color: #9c6d6d; /* Колір пильної троянди з фото */
+    font-size: clamp(50px, 10vw, 90px);
+    line-height: 0.85;
+    letter-spacing: 8px;
+    color: #9c6d6d;
     font-weight: 400;
 }
 
 .subtitle {
-    font-size: 14px;
-    letter-spacing: 4px;
-    margin-top: 15px;
-    color: #333;
-    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-top: 20px;
+    color: #555;
 }
 
 .divider {
-    width: 60px;
+    width: 80px;
     height: 1px;
     background: #9c6d6d;
-    margin: 20px auto;
+    margin: 30px auto;
 }
 
-/* Кнопки */
 .btn-gold {
     display: inline-block;
-    padding: 15px 40px;
+    padding: 18px 45px;
     background-color: #9c6d6d;
     color: white;
     text-decoration: none;
     letter-spacing: 2px;
-    font-size: 12px;
-    transition: 0.3s;
-    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(156, 109, 109, 0.2);
 }
 
-.btn-gold:hover {
-    background-color: #7a5454;
-}
-
-.btn-text {
-    display: inline-block;
-    margin-right: 20px;
-    color: #9c6d6d;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 2px;
-    border-bottom: 1px solid #9c6d6d;
-}
-
-/* Секція прайсу */
 .price-section {
-    padding: 100px 20px;
-    background: white;
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 1;
 }
 
 .price-list {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
-.price-list h2 {
+.section-title {
     font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #9c6d6d;
     text-align: center;
-    margin-bottom: 50px;
-    font-size: 32px;
+    margin-bottom: 60px;
+}
+
+.price-category {
+    margin-bottom: 40px;
+}
+
+.price-category h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
 }
 
 .price-item {
     display: flex;
+    justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 15px;
 }
 
 .dots {
     flex-grow: 1;
-    border-bottom: 1px dotted #ccc;
-    margin: 0 10px;
-}
-
-.cost {
-    font-weight: 400;
+    border-bottom: 1px dotted #d1d1d1;
+    margin: 0 15px;
 }
 
 footer {
-    padding: 40px;
+    padding: 60px;
     text-align: center;
     font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0.6;
-}
-
-/* Адаптація для телефону */
-@media (max-width: 600px) {
-    .main-title { font-size: 50px; }
-    .btn-gold { width: 100%; margin-top: 20px; }
-    .btn-text { display: block; margin-right: 0; margin-bottom: 20px; border-bottom: none; }
+    letter-spacing: 3px;
+    opacity: 0.5;
 }
