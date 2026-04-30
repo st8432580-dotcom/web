@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #fdfbfb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Головний екран */
+.hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 40px 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid #d4af37;
+}
+
+.logo-container h1 {
+    font-size: 3rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+.logo-container p {
+    font-size: 1.2rem;
+    color: #d4af37;
+    margin-bottom: 30px;
+}
+
+/* Кнопки */
+.btn {
+    display: block;
+    padding: 15px;
+    margin: 10px 0;
+    text-decoration: none;
+    border: 1px solid #333;
+    color: #333;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn.gold {
+    background: #d4af37;
+    color: white;
+    border: none;
+}
+
+/* Прайс-секція */
+.price-section {
+    padding: 50px 20px;
+    background: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #d4af37;
+    display: inline-block;
+    width: 100%;
+}
+
+.category {
+    margin-bottom: 40px;
+}
+
+h3 {
+    background: #f9f9f9;
+    padding: 10px;
+    border-left: 4px solid #d4af37;
+    margin-bottom: 20px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 0.95rem;
+}
+
+/* Адаптація під телефон */
+@media (max-width: 600px) {
+    .logo-container h1 { font-size: 2rem; }
+    .item { font-size: 0.85rem; }
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 50px;
+    color: #888;
+}
