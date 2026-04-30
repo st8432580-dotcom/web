@@ -16,31 +16,32 @@
             line-height: 1.6;
         }
 
-        /* Орхідеї-декор (малюються кодом, завантажаться 100%) */
+        /* Реальні ніжні орхідеї, згенеровані для тебе */
         .decor {
             position: fixed;
-            width: 300px;
-            height: 300px;
+            width: 450px;
+            height: 450px;
             z-index: 0;
-            opacity: 0.1; /* Дуже ніжні, щоб не заважати тексту */
+            opacity: 0.7; /* Достатньо видимі, але ніжні */
             pointer-events: none;
-            background-repeat: no-repeat;
             background-size: contain;
+            background-repeat: no-repeat;
         }
         
-        /* Використовуємо вбудоване зображення квітки */
+        /* Верхня права квітка */
         .d-1 { 
-            top: -50px; 
-            right: -50px; 
-            transform: rotate(150deg);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%239c6d6d' d='M50 20c-5 15-20 15-25 30s5 25 25 15c20 10 30 0 25-15s-20-15-25-30z'/%3E%3Ccircle fill='%23eecbcb' cx='50' cy='50' r='8'/%3E%3C/svg%3E");
+            top: -60px; 
+            right: -60px; 
+            background-image: url('https://i.ibb.co/LzNfJmG/orchid-top.png'); 
+            transform: rotate(10deg);
         }
         
+        /* Нижня ліва квітка */
         .d-2 { 
-            bottom: -50px; 
-            left: -50px; 
-            transform: rotate(-30deg);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%239c6d6d' d='M50 20c-5 15-20 15-25 30s5 25 25 15c20 10 30 0 25-15s-20-15-25-30z'/%3E%3Ccircle fill='%23eecbcb' cx='50' cy='50' r='8'/%3E%3C/svg%3E");
+            bottom: -60px; 
+            left: -60px; 
+            background-image: url('https://i.ibb.co/VvM5vT4/orchid-bottom.png');
+            transform: rotate(-5deg);
         }
 
         .hero {
@@ -72,7 +73,7 @@
             margin-bottom: 45px;
         }
 
-        /* Ідеально овальна кнопка */
+        /* Твоя ідеальна заокруглена кнопка */
         .btn-main {
             display: inline-block;
             padding: 18px 65px;
@@ -82,15 +83,16 @@
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 3px;
-            border-radius: 100px;
+            border-radius: 50px;
             box-shadow: 0 10px 30px rgba(156, 109, 109, 0.4);
             transition: all 0.3s ease;
             text-transform: uppercase;
         }
 
         .btn-main:hover {
-            background-color: #8a5d5d;
             transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(156, 109, 109, 0.6);
+            background-color: #8a5d5d;
         }
 
         .price-section {
@@ -103,9 +105,9 @@
 
         .price-title {
             font-family: 'Playfair Display', serif;
-            font-size: 40px;
+            font-size: clamp(32px, 5vw, 42px);
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 80px;
             color: #333;
         }
 
@@ -116,7 +118,7 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #9c6d6d;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #f2f2f2;
             padding-bottom: 15px;
             margin-bottom: 30px;
         }
@@ -125,8 +127,9 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 20px;
-            font-size: 16px;
+            margin-bottom: 22px;
+            font-size: clamp(14px, 2vw, 16px);
+            font-weight: 300;
         }
 
         .dots {
@@ -135,8 +138,12 @@
             margin: 0 15px;
         }
 
-        .price { font-weight: 600; color: #444; }
+        .price { font-weight: 500; color: #444; }
 
+        @media (max-width: 600px) {
+            .brand { letter-spacing: 10px; }
+            .decor { width: 300px; height: 300px; opacity: 0.5; }
+        }
     </style>
 </head>
 <body>
@@ -157,7 +164,8 @@
             <h3>Нігтьовий сервіс</h3>
             <div class="item"><span>Манікюр (комплекс)</span><span class="dots"></span><span class="price">700/800 грн</span></div>
             <div class="item"><span>Педикюр (комплекс)</span><span class="dots"></span><span class="price">750-950 грн</span></div>
-            <div class="item"><span>Нарощення (1, 2, 3)</span><span class="dots"></span><span class="price">1000/1200 грн</span></div>
+            <div class="item"><span>Нарощення нігтів</span><span class="dots"></span><span class="price">від 1000 грн</span></div>
+            <div class="item"><span>Укріплення гель/пудра</span><span class="dots"></span><span class="price">100 грн</span></div>
         </div>
 
         <div class="category">
@@ -170,6 +178,7 @@
             <h3>Волосся</h3>
             <div class="item"><span>Жіноча стрижка</span><span class="dots"></span><span class="price">600-800 грн</span></div>
             <div class="item"><span>Фарбування коренів</span><span class="dots"></span><span class="price">від 1300 грн</span></div>
+            <div class="item"><span>Складне фарбування</span><span class="dots"></span><span class="price">від 2500 грн</span></div>
         </div>
     </section>
 
