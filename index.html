@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEAUTY HUB | Marble & Bloom</title>
+    <title>BEAUTY HUB | Full Service</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -11,49 +11,45 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #fff;
-            /* Реалістичний мармур через накладання градієнтів */
+            /* Текстура мармуру */
             background-image: 
-                linear-gradient(145deg, rgba(230,230,230,0.2) 0%, transparent 40%),
-                radial-gradient(at 10% 20%, rgba(150,150,150,0.05) 0px, transparent 50%),
-                radial-gradient(at 90% 80%, rgba(150,150,150,0.05) 0px, transparent 50%),
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+                linear-gradient(120deg, rgba(200,200,200,0.05) 25%, transparent 25.1%),
+                linear-gradient(240deg, rgba(200,200,200,0.05) 25%, transparent 25.1%),
+                radial-gradient(at 50% 50%, #ffffff 0%, #f9f9f9 100%);
+            background-attachment: fixed;
             color: #4a4a4a;
             overflow-x: hidden;
         }
 
-        /* Фікс для квітів: ніяких обрізаних країв */
-        .flower-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: visible;
-        }
-
+        /* Квіти: Повернув оригінальний дизайн і прибрав обрізання */
         .flower {
-            position: absolute;
+            position: fixed;
+            z-index: 0;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.4;
-            animation: floatAnim 15s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.35;
+            /* overflow: visible гарантує, що пелюстки не зникнуть */
+            overflow: visible; 
+            animation: floatLarge 20s ease-in-out infinite;
         }
 
-        @keyframes floatAnim {
-            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(15px, -15px) scale(1.05) rotate(5deg); }
+        @keyframes floatLarge {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            50% { transform: translate(40px, -30px) rotate(10deg) scale(1.1); }
         }
 
-        /* SVG квіти з м'якими формами */
-        .f-pink { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23e2b2b2' d='M50 20c15-15 45-5 45 25s-25 35-45 15c-20 20-45 10-45-15s30-40 45-25z'/%3E%3C/svg%3E"); }
-        .f-purple { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23c1b2e2' d='M50 20c15-15 45-5 45 25s-25 35-45 15c-20 20-45 10-45-15s30-40 45-25z'/%3E%3C/svg%3E"); }
-        .f-blue { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23b2d1e2' d='M50 20c15-15 45-5 45 25s-25 35-45 15c-20 20-45 10-45-15s30-40 45-25z'/%3E%3C/svg%3E"); }
+        /* Ті самі квіти, що тобі подобались */
+        .f-pink { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23e2b2b2' d='M50 50c25-40 60-20 60 15s-35 35-60 10c-25 25-60 15-60-20s35-45 60-5z'/%3E%3Ccircle fill='white' opacity='.3' cx='50' cy='50' r='6'/%3E%3C/svg%3E"); }
+        .f-purple { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23c1b2e2' d='M50 50c25-40 60-20 60 15s-35 35-60 10c-25 25-60 15-60-20s35-45 60-5z'/%3E%3Ccircle fill='white' opacity='.3' cx='50' cy='50' r='6'/%3E%3C/svg%3E"); }
+        .f-blue { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23b2d1e2' d='M50 50c25-40 60-20 60 15s-35 35-60 10c-25 25-60 15-60-20s35-45 60-5z'/%3E%3Ccircle fill='white' opacity='.3' cx='50' cy='50' r='6'/%3E%3C/svg%3E"); }
 
-        /* Позиції квітів зміщені від країв, щоб не різало */
-        .p1 { top: 5%; left: 5%; width: 250px; height: 250px; }
-        .p2 { top: 10%; right: 5%; width: 200px; height: 200px; animation-delay: -2s; }
-        .p3 { bottom: 10%; left: 5%; width: 220px; height: 220px; animation-delay: -4s; }
-        .p4 { bottom: 5%; right: 5%; width: 280px; height: 280px; animation-delay: -6s; }
+        /* Великі розміри без ризику обрізання */
+        .p1 { top: -5%; left: -5%; width: 500px; height: 500px; }
+        .p2 { top: 15%; right: -10%; width: 400px; height: 400px; animation-delay: -5s; }
+        .p3 { bottom: -10%; left: -5%; width: 450px; height: 450px; animation-delay: -10s; }
+        .p4 { bottom: 15%; right: -5%; width: 350px; height: 350px; animation-delay: -15s; }
 
         .hero {
             height: 100vh;
@@ -61,65 +57,91 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 10;
             position: relative;
+            z-index: 10;
         }
 
         .brand {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(40px, 10vw, 85px);
+            font-size: clamp(45px, 12vw, 95px);
             color: #9c6d6d;
-            letter-spacing: 10px;
+            letter-spacing: 12px;
             text-transform: uppercase;
-            text-align: center;
+            margin-bottom: 10px;
         }
 
         .subtitle {
-            font-size: 11px; letter-spacing: 4px; color: #888;
-            margin-bottom: 40px; text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 45px;
         }
 
-        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        .btn-group { display: flex; flex-direction: column; gap: 20px; }
 
         .btn {
-            padding: 18px 50px; border-radius: 50px; text-decoration: none;
-            font-size: 12px; font-weight: 600; text-transform: uppercase;
-            transition: 0.3s; text-align: center;
+            display: inline-block;
+            padding: 18px 55px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
         }
 
-        .btn-main { background: #9c6d6d; color: white; }
-        .btn-outline { border: 1px solid #9c6d6d; color: #9c6d6d; background: rgba(255,255,255,0.6); }
+        .btn-main { background-color: #9c6d6d; color: white; box-shadow: 0 10px 25px rgba(156, 109, 109, 0.3); }
+        .btn-outline { background-color: rgba(255, 255, 255, 0.7); color: #9c6d6d; border: 1px solid #9c6d6d; backdrop-filter: blur(5px); }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(156, 109, 109, 0.4); }
 
-        /* ПОВНИЙ ПРАЙС */
-        .price-container {
-            max-width: 800px; margin: 0 auto 100px; padding: 60px 30px;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-            position: relative; z-index: 10;
-            border: 1px solid rgba(255,255,255,0.5);
+        /* ВЕСЬ ПРАЙС */
+        .price-section {
+            max-width: 900px;
+            margin: 0 auto 150px;
+            padding: 100px 50px;
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
         }
 
-        .price-title { font-family: 'Playfair Display', serif; font-size: 40px; text-align: center; margin-bottom: 50px; }
+        .price-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 45px;
+            text-align: center;
+            margin-bottom: 80px;
+            color: #333;
+        }
 
-        .cat { margin-bottom: 40px; }
-        .cat h3 { font-size: 12px; color: #9c6d6d; letter-spacing: 3px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
+        .category { margin-bottom: 60px; }
+        .category h3 {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #9c6d6d;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+        }
 
-        .item { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px; }
-        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 10px; position: relative; top: -4px; }
-        .val { font-weight: 600; }
+        .item { display: flex; justify-content: space-between; margin-bottom: 22px; font-size: 18px; }
+        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 15px; position: relative; top: -5px; }
+        .price { font-weight: 600; color: #222; }
 
         @media (min-width: 600px) { .btn-group { flex-direction: row; } }
     </style>
 </head>
 <body>
 
-    <div class="flower-container">
-        <div class="flower f-pink p1"></div>
-        <div class="flower f-purple p2"></div>
-        <div class="flower f-blue p3"></div>
-        <div class="flower f-pink p4"></div>
-    </div>
+    <div class="flower f-pink p1"></div>
+    <div class="flower f-purple p2"></div>
+    <div class="flower f-blue p3"></div>
+    <div class="flower f-pink p4"></div>
 
     <header class="hero">
         <h1 class="brand">BEAUTY HUB</h1>
@@ -130,25 +152,28 @@
         </div>
     </header>
 
-    <section id="price" class="price-container">
+    <section id="price" class="price-section">
         <h2 class="price-title">Прайс послуг</h2>
 
-        <div class="cat">
+        <div class="category">
             <h3>Нігтьовий сервіс</h3>
-            <div class="item"><span>Манікюр (комплекс)</span><span class="dots"></span><span class="val">700 грн</span></div>
-            <div class="item"><span>Педикюр (комплекс)</span><span class="dots"></span><span class="val">850 грн</span></div>
+            <div class="item"><span>Манікюр (комплекс)</span><span class="dots"></span><span class="price">700 грн</span></div>
+            <div class="item"><span>Педикюр (комплекс)</span><span class="dots"></span><span class="price">850 грн</span></div>
+            <div class="item"><span>Зняття + покриття</span><span class="dots"></span><span class="price">600 грн</span></div>
         </div>
 
-        <div class="cat">
+        <div class="category">
             <h3>Брови та Вії</h3>
-            <div class="item"><span>Корекція брів</span><span class="dots"></span><span class="val">450 грн</span></div>
-            <div class="item"><span>Ламінування вій</span><span class="dots"></span><span class="val">800 грн</span></div>
+            <div class="item"><span>Корекція брів</span><span class="dots"></span><span class="price">450 грн</span></div>
+            <div class="item"><span>Фарбування брів</span><span class="dots"></span><span class="price">400 грн</span></div>
+            <div class="item"><span>Ламінування вій</span><span class="dots"></span><span class="price">800 грн</span></div>
         </div>
-
-        <div class="cat">
+        
+        <div class="category">
             <h3>Волосся</h3>
-            <div class="item"><span>Стрижка жіноча</span><span class="dots"></span><span class="val">від 600 грн</span></div>
-            <div class="item"><span>Фарбування</span><span class="dots"></span><span class="val">від 1500 грн</span></div>
+            <div class="item"><span>Стрижка жіноча</span><span class="dots"></span><span class="price">від 600 грн</span></div>
+            <div class="item"><span>Фарбування волосся</span><span class="dots"></span><span class="price">від 1500 грн</span></div>
+            <div class="item"><span>Укладка</span><span class="dots"></span><span class="price">500 грн</span></div>
         </div>
     </section>
 
