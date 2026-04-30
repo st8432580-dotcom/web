@@ -15,28 +15,35 @@
             overflow-x: hidden;
         }
 
-        /* Налаштування живих квітів */
+        /* Квіти (SVG код вшитий прямо в CSS для 100% надійності) */
         .flower {
-            position: absolute;
+            position: fixed;
             z-index: 0;
             background-size: contain;
             background-repeat: no-repeat;
             pointer-events: none;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.05));
-            animation: sway 8s ease-in-out infinite;
+            opacity: 0.25;
+            animation: sway 10s ease-in-out infinite;
         }
 
         @keyframes sway {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(10px, -15px) rotate(3deg); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            50% { transform: translate(15px, -20px) rotate(10deg) scale(1.05); }
         }
 
-        /* Позиції та кольори квітів (справжні фото-посилання) */
-        .f1 { top: -50px; right: -60px; width: 450px; height: 450px; background-image: url('https://i.ibb.co/LzNfJmG/orchid-top.png'); } /* Ніжно-рожева */
-        .f2 { bottom: 100px; left: -100px; width: 400px; height: 400px; background-image: url('https://i.postimg.cc/85zPzM8J/orchid-purple.png'); transform: rotate(-30deg); animation-delay: -2s; } /* Фіолетова */
-        .f3 { top: 20%; left: -80px; width: 300px; height: 300px; background-image: url('https://i.postimg.cc/mD8N0P5r/orchid-white.png'); opacity: 0.8; animation-delay: -4s; } /* Біла */
-        .f4 { top: 60%; right: -100px; width: 350px; height: 350px; background-image: url('https://i.postimg.cc/9f0T2Xp2/orchid-peach.png'); animation-delay: -1s; } /* Персикова */
-        .f5 { bottom: -100px; right: 20%; width: 300px; height: 300px; background-image: url('https://i.postimg.cc/LzNfJmG/orchid-top.png'); transform: rotate(180deg); opacity: 0.6; }
+        /* Кольори та позиції */
+        .f-pink { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d8a7a7' d='M50 50c20-30 50-20 50 10s-30 30-50 10c-20 20-50 10-50-20s30-40 50-10z'/%3E%3Ccircle fill='%23fff' opacity='.5' cx='50' cy='50' r='5'/%3E%3C/svg%3E"); }
+        .f-purple { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23a7a7d8' d='M50 50c20-30 50-20 50 10s-30 30-50 10c-20 20-50 10-50-20s30-40 50-10z'/%3E%3Ccircle fill='%23fff' opacity='.5' cx='50' cy='50' r='5'/%3E%3C/svg%3E"); }
+        .f-gold { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d8cba7' d='M50 50c20-30 50-20 50 10s-30 30-50 10c-20 20-50 10-50-20s30-40 50-10z'/%3E%3Ccircle fill='%23fff' opacity='.5' cx='50' cy='50' r='5'/%3E%3C/svg%3E"); }
+        .f-blue { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23a7d8d4' d='M50 50c20-30 50-20 50 10s-30 30-50 10c-20 20-50 10-50-20s30-40 50-10z'/%3E%3Ccircle fill='%23fff' opacity='.5' cx='50' cy='50' r='5'/%3E%3C/svg%3E"); }
+
+        /* Розміщення */
+        .p1 { top: -50px; left: -50px; width: 400px; height: 400px; animation-delay: 0s; }
+        .p2 { top: -80px; right: -80px; width: 350px; height: 350px; animation-delay: -2s; }
+        .p3 { bottom: 10%; left: -100px; width: 300px; height: 300px; animation-delay: -4s; }
+        .p4 { bottom: -50px; right: -50px; width: 450px; height: 450px; animation-delay: -1s; }
+        .p5 { top: 40%; right: -120px; width: 250px; height: 250px; animation-delay: -6s; opacity: 0.15; }
+        .p6 { top: 20%; left: 5%; width: 150px; height: 150px; animation-delay: -3s; opacity: 0.1; }
 
         .hero {
             height: 100vh;
@@ -47,115 +54,101 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%);
         }
 
         .brand {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(45px, 12vw, 90px);
+            font-size: clamp(40px, 12vw, 85px);
             color: #9c6d6d;
             letter-spacing: 12px;
             text-transform: uppercase;
             margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .subtitle {
-            font-size: 11px;
-            letter-spacing: 6px;
+            font-size: 10px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: #888;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
 
         .btn {
             display: inline-block;
-            padding: 18px 55px;
+            padding: 16px 45px;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 2px;
             border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
             text-transform: uppercase;
         }
 
         .btn-main {
             background-color: #9c6d6d;
             color: white;
-            box-shadow: 0 10px 25px rgba(156, 109, 109, 0.3);
+            box-shadow: 0 8px 25px rgba(156, 109, 109, 0.3);
         }
 
         .btn-outline {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             color: #9c6d6d;
             border: 1px solid #9c6d6d;
         }
 
-        .btn:hover { 
-            transform: translateY(-5px) scale(1.05); 
-            box-shadow: 0 15px 30px rgba(156, 109, 109, 0.4); 
-        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(156, 109, 109, 0.2); }
 
         /* Прайс */
         .price-section {
-            max-width: 850px;
-            margin: 0 auto 150px;
-            padding: 100px 30px;
+            max-width: 800px;
+            margin: 0 auto 100px;
+            padding: 100px 25px;
             position: relative;
             z-index: 1;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
             border-radius: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.03);
         }
 
         .price-title {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
+            font-size: 38px;
             text-align: center;
-            margin-bottom: 70px;
-            color: #333;
+            margin-bottom: 60px;
         }
 
-        .category { margin-bottom: 60px; }
+        .category { margin-bottom: 50px; }
         .category h3 {
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #9c6d6d;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-            margin-bottom: 35px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
         }
 
-        .item { display: flex; justify-content: space-between; margin-bottom: 22px; font-size: 16px; font-weight: 300; }
-        .dots { flex-grow: 1; border-bottom: 1px dotted #ddd; margin: 0 12px; }
-        .price { font-weight: 600; color: #444; }
+        .item { display: flex; justify-content: space-between; margin-bottom: 18px; font-size: 15px; }
+        .dots { flex-grow: 1; border-bottom: 1px dotted #ddd; margin: 0 10px; }
+        .price { font-weight: 600; }
 
         @media (min-width: 600px) {
             .btn-group { flex-direction: row; }
-        }
-
-        @media (max-width: 768px) {
-            .flower { width: 250px; height: 250px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Квіти розкидані по сторінці -->
-    <div class="flower f1"></div>
-    <div class="flower f2"></div>
-    <div class="flower f3"></div>
-    <div class="flower f4"></div>
-    <div class="flower f5"></div>
+    <!-- Квіти (Багато і різнокольорові) -->
+    <div class="flower f-pink p1"></div>
+    <div class="flower f-purple p2"></div>
+    <div class="flower f-gold p3"></div>
+    <div class="flower f-blue p4"></div>
+    <div class="flower f-pink p5"></div>
+    <div class="flower f-purple p6"></div>
 
     <header class="hero">
         <h1 class="brand">BEAUTY HUB</h1>
@@ -171,22 +164,20 @@
 
         <div class="category">
             <h3>Нігтьовий сервіс</h3>
-            <div class="item"><span>Манікюр (комплекс)</span><span class="dots"></span><span class="price">700/800 грн</span></div>
-            <div class="item"><span>Педикюр (комплекс)</span><span class="dots"></span><span class="price">750-950 грн</span></div>
-            <div class="item"><span>Нарощення нігтів</span><span class="dots"></span><span class="price">від 1000 грн</span></div>
+            <div class="item"><span>Манікюр (комплекс)</span><span class="dots"></span><span class="price">700 грн</span></div>
+            <div class="item"><span>Педикюр (комплекс)</span><span class="dots"></span><span class="price">850 грн</span></div>
         </div>
 
         <div class="category">
             <h3>Брови та Вії</h3>
-            <div class="item"><span>Корекція та фарбування брів</span><span class="dots"></span><span class="price">450 грн</span></div>
+            <div class="item"><span>Корекція брів</span><span class="dots"></span><span class="price">450 грн</span></div>
             <div class="item"><span>Ламінування вій</span><span class="dots"></span><span class="price">800 грн</span></div>
         </div>
         
         <div class="category">
             <h3>Волосся</h3>
-            <div class="item"><span>Жіноча стрижка</span><span class="dots"></span><span class="price">600-800 грн</span></div>
-            <div class="item"><span>Фарбування коренів</span><span class="dots"></span><span class="price">від 1300 грн</span></div>
-            <div class="item"><span>Складне фарбування</span><span class="dots"></span><span class="price">від 2500 грн</span></div>
+            <div class="item"><span>Стрижка</span><span class="dots"></span><span class="price">600 грн</span></div>
+            <div class="item"><span>Фарбування</span><span class="dots"></span><span class="price">від 1500 грн</span></div>
         </div>
     </section>
 
