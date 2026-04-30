@@ -1,111 +1,110 @@
+:root {
+    --main-pink: #ff00cc;
+    --main-purple: #3333ff;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #fdfbfb;
-    color: #333;
-    line-height: 1.6;
+    background: #0f0c29;
+    color: white;
+    overflow-x: hidden;
 }
 
-/* Головний екран */
+/* Фон як на аватарці: рожево-фіолетові розводи */
+.background-animation {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+}
+
+.background-animation::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,0,204,0.3) 0%, transparent 50%),
+                radial-gradient(circle, rgba(51,51,255,0.3) 0%, transparent 50%);
+    filter: blur(80px);
+    animation: move 10s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(10%, 10%); }
+}
+
 .hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 30px;
     text-align: center;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
 }
 
-.overlay {
-    background: rgba(255, 255, 255, 0.7);
-    padding: 40px 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    border: 1px solid #d4af37;
-}
-
-.logo-container h1 {
-    font-size: 3rem;
-    letter-spacing: 5px;
+.logo {
+    font-size: 3.5rem;
+    font-weight: 800;
     text-transform: uppercase;
-    color: #1a1a1a;
+    background: linear-gradient(to right, var(--main-pink), var(--main-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.logo-container p {
-    font-size: 1.2rem;
-    color: #d4af37;
-    margin-bottom: 30px;
-}
+.logo span { color: white; -webkit-text-fill-color: white; }
 
-/* Кнопки */
-.btn {
-    display: block;
-    padding: 15px;
-    margin: 10px 0;
-    text-decoration: none;
-    border: 1px solid #333;
-    color: #333;
-    transition: 0.3s;
-    font-weight: 600;
-}
-
-.btn.gold {
-    background: #d4af37;
+.btn-main {
+    background: linear-gradient(45deg, var(--main-pink), var(--main-purple));
     color: white;
-    border: none;
-}
-
-/* Прайс-секція */
-.price-section {
-    padding: 50px 20px;
-    background: #fff;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    border-bottom: 2px solid #d4af37;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
     display: inline-block;
-    width: 100%;
+    margin: 10px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(255, 0, 204, 0.3);
 }
 
-.category {
-    margin-bottom: 40px;
+/* Прайс-лист */
+.price-container {
+    padding: 50px 20px;
 }
 
-h3 {
-    background: #f9f9f9;
-    padding: 10px;
-    border-left: 4px solid #d4af37;
+.price-card {
+    background: var(--glass);
     margin-bottom: 20px;
+    padding: 25px;
+    border-radius: 20px;
+    border-left: 5px solid var(--main-pink);
 }
 
-.item {
+.price-item {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px dashed #ddd;
-    font-size: 0.95rem;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Адаптація під телефон */
+/* Мобільна адаптація */
 @media (max-width: 600px) {
-    .logo-container h1 { font-size: 2rem; }
-    .item { font-size: 0.85rem; }
-}
-
-.footer {
-    text-align: center;
-    font-size: 0.8rem;
-    margin-top: 50px;
-    color: #888;
+    .logo { font-size: 2.5rem; }
+    .glass-card { padding: 25px; }
 }
