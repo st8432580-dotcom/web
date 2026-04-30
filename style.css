@@ -1,130 +1,138 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: #4a4a4a;
     background-color: #fff;
     background-image: url('https://www.transparenttextures.com/patterns/marble-white.png');
+    color: #4a4a4a;
     overflow-x: hidden;
 }
 
-/* Декор орхідеї */
-.orchid-decor {
+/* Орхідеї як на фото */
+.orchid {
     position: fixed;
-    width: 300px;
-    height: 300px;
-    background-image: url('https://img.freepik.com/free-photo/pink-orchid-flower-isolated_1101-2041.jpg'); /* Схожа на твою аватарку */
+    width: 350px;
+    height: 350px;
+    background-image: url('https://img.freepik.com/free-photo/pink-orchid-flower-isolated_1101-2041.jpg');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.3;
+    opacity: 0.25;
     z-index: 0;
     pointer-events: none;
 }
-
-.top-right { top: -50px; right: -50px; transform: rotate(180deg); }
-.bottom-left { bottom: -50px; left: -50px; }
+.orchid-1 { top: -50px; right: -50px; transform: rotate(150deg); }
+.orchid-2 { bottom: -50px; left: -50px; opacity: 0.15; }
 
 .hero {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     position: relative;
     z-index: 1;
 }
 
-.main-title {
+.brand {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(50px, 10vw, 90px);
-    line-height: 0.85;
-    letter-spacing: 8px;
-    color: #9c6d6d;
+    font-size: 80px;
+    letter-spacing: 12px;
+    color: #9c6d6d; /* Колір з вашого фото */
+    line-height: 0.9;
     font-weight: 400;
 }
 
-.subtitle {
-    font-size: 12px;
+.tagline {
+    font-size: 11px;
     letter-spacing: 5px;
     margin-top: 20px;
-    color: #555;
+    color: #777;
+    text-transform: uppercase;
 }
 
-.divider {
-    width: 80px;
+.line {
+    width: 50px;
     height: 1px;
     background: #9c6d6d;
-    margin: 30px auto;
+    margin: 25px auto;
 }
 
-.btn-gold {
+/* Оформлення кнопки */
+.main-button {
     display: inline-block;
-    padding: 18px 45px;
-    background-color: #9c6d6d;
+    margin-top: 20px;
+    padding: 18px 50px;
+    background: linear-gradient(135deg, #b88b8b 0%, #9c6d6d 100%);
     color: white;
     text-decoration: none;
-    letter-spacing: 2px;
     font-size: 11px;
-    font-weight: 600;
-    border-radius: 50px;
-    box-shadow: 0 10px 20px rgba(156, 109, 109, 0.2);
+    letter-spacing: 3px;
+    font-weight: 500;
+    border-radius: 1px; /* Прямокутна, як у преміум брендів */
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(156, 109, 109, 0.3);
 }
 
-.price-section {
-    padding: 80px 20px;
-    background: rgba(255, 255, 255, 0.9);
+.main-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(156, 109, 109, 0.4);
+    letter-spacing: 4px;
+}
+
+/* Прайс секція */
+.price-list {
+    max-width: 800px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
     position: relative;
     z-index: 1;
 }
 
-.price-list {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.section-title {
+.price-title {
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    color: #9c6d6d;
     text-align: center;
-    margin-bottom: 60px;
-}
-
-.price-category {
-    margin-bottom: 40px;
-}
-
-.price-category h3 {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
+    font-size: 40px;
+    margin-bottom: 70px;
     color: #333;
-    border-bottom: 1px solid #eee;
+}
+
+.price-group { margin-bottom: 50px; }
+
+.price-group h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #9c6d6d;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #f0f0f0;
     padding-bottom: 10px;
 }
 
-.price-item {
+.row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     font-size: 15px;
+    font-weight: 300;
 }
 
-.dots {
+.fill {
     flex-grow: 1;
-    border-bottom: 1px dotted #d1d1d1;
+    border-bottom: 1px dotted #e0e0e0;
     margin: 0 15px;
 }
 
 footer {
-    padding: 60px;
+    padding: 50px;
     text-align: center;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 3px;
-    opacity: 0.5;
+    opacity: 0.4;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .brand { font-size: 55px; }
+    .orchid { width: 200px; height: 200px; }
 }
