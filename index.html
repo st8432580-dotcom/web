@@ -14,38 +14,56 @@
             display: flex; 
             justify-content: center; 
             min-height: 100vh;
-            position: relative;
         }
 
-        /* Фонова графіка точно як на image_65fc86.jpg */
         .bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 0% 10%, rgba(244, 208, 208, 0.4) 0%, transparent 30%),
-                        radial-gradient(circle at 100% 90%, rgba(244, 208, 208, 0.4) 0%, transparent 30%);
+            background: radial-gradient(circle at 10% 20%, rgba(244, 208, 208, 0.4) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(244, 208, 208, 0.4) 0%, transparent 40%);
             z-index: -1;
         }
 
-        .container { text-align: center; width: 100%; max-width: 600px; padding: 60px 20px; }
+        .container { text-align: center; width: 100%; max-width: 600px; padding: 40px 20px; }
 
         .brand { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(42px, 12vw, 64px); 
-            letter-spacing: 12px; 
+            font-size: 64px; 
+            letter-spacing: 10px; 
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .services-nav {
+        .nav-links {
             font-size: 10px;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             color: #b5b5b5;
             text-transform: uppercase;
             margin-bottom: 40px;
         }
 
-        /* Кнопка точно як на image_659020.png */
-        .btn-call-action {
+        .buttons-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn-side {
+            padding: 15px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            flex: 1;
+        }
+        .btn-black { background-color: #a37a7a; color: white; border: none; }
+        .btn-outline { background-color: white; color: #a37a7a; border: 1px solid #dcdcdc; }
+
+        /* Та сама кнопка з image_659020.png */
+        .btn-call-full {
             display: block;
             width: 100%;
             background-color: #a37a7a;
@@ -53,40 +71,20 @@
             text-decoration: none;
             padding: 20px;
             border-radius: 50px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 50px;
-            box-shadow: 0 4px 15px rgba(163, 122, 122, 0.2);
+            margin-bottom: 40px;
         }
 
-        /* Стиль прайсу як на image_65ee38.png */
-        .category-header {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 20px;
-            margin: 40px 0 20px;
-            color: #7a5a5a;
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
+        .price-section { text-align: left; margin-top: 30px; }
+        .cat-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; margin: 30px 0 15px; text-align: center; color: #7a5a5a; }
+        .price-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; font-size: 14px; }
         .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 10px; }
-        .price-val { font-weight: 600; min-width: 80px; text-align: right; }
+        .val { font-weight: 600; }
 
-        .footer {
-            margin-top: 60px;
-            font-size: 14px;
-            color: #5a3e3e;
-            line-height: 1.8;
-        }
-        .footer a { color: inherit; text-decoration: none; display: block; }
+        .footer { margin-top: 50px; font-size: 13px; line-height: 2; }
+        .footer a { text-decoration: none; color: inherit; display: block; }
     </style>
 </head>
 <body>
@@ -94,28 +92,31 @@
     <div class="bg-overlay"></div>
 
     <div class="container">
-        <!-- Шапка з image_65fc86.jpg -->
         <h1 class="brand">BEAUTY HUB</h1>
-        <div class="services-nav">Макіяж | Брови | Вії | Волосся</div>
+        <div class="nav-links">Макіяж | Брови | Вії | Волосся</div>
 
-        <!-- Кнопка з image_659020.png -->
-        <a href="tel:+380932941733" class="btn-call-action">ЗАТЕЛЕФОНУВАТИ: +380 93 294 17 33</a>
+        <div class="buttons-row">
+            <a href="#" class="btn-side btn-black">ЗАПИСАТИСЬ</a>
+            <a href="#price" class="btn-side btn-outline">ПРАЙС ПОСЛУГ</a>
+        </div>
 
-        <!-- Виправлений блок прайсу з image_65ee38.png -->
-        <h2 class="category-header">Освітлення волосся (пудра) без тонування</h2>
-        <div class="price-row"><span>1 довжина</span><span class="dots"></span><span class="price-val">800 грн</span></div>
-        <div class="price-row"><span>2–3 довжина</span><span class="dots"></span><span class="price-val">1000 грн</span></div>
-        <div class="price-row"><span>4–5 довжина</span><span class="dots"></span><span class="price-val">1200 грн</span></div>
-        <div class="price-row"><span>Контуринг (часткове освітлення)</span><span class="dots"></span><span class="price-val">1500 грн</span></div>
+        <a href="tel:+380932941733" class="btn-call-full">ЗАТЕЛЕФОНУВАТИ: +380 93 294 17 33</a>
 
-        <h2 class="category-header">Мелірування / Брондування з тонуванням</h2>
-        <div class="price-row"><span>1 довжина / прикореневе</span><span class="dots"></span><span class="price-val">2500 грн</span></div>
-        <div class="price-row"><span>2 довжина</span><span class="dots"></span><span class="price-val">2750 грн</span></div>
-        <div class="price-row"><span>3 довжина</span><span class="dots"></span><span class="price-val">3000 грн</span></div>
-        <div class="price-row"><span>4 довжина</span><span class="dots"></span><span class="price-val">3500 грн</span></div>
-        <div class="price-row"><span>5 довжина</span><span class="dots"></span><span class="price-val">4000 грн</span></div>
+        <div id="price" class="price-section">
+            <h2 class="cat-title">Освітлення волосся (пудра) без тонування</h2>
+            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">800 грн</span></div>
+            <div class="price-line"><span>2-3 довжина</span><span class="dots"></span><span class="val">1000 грн</span></div>
+            <div class="price-line"><span>4-5 довжина</span><span class="dots"></span><span class="val">1200 грн</span></div>
+            <div class="price-line"><span>Контуринг (часткове освітлення)</span><span class="dots"></span><span class="val">1500 грн</span></div>
 
-        <!-- Контакти з image_65fc86.jpg -->
+            <h2 class="cat-title">Мелірування / Брондування з тонуванням</h2>
+            <div class="price-line"><span>1 довжина / прикореневе</span><span class="dots"></span><span class="val">2500 грн</span></div>
+            <div class="price-line"><span>2 довжина</span><span class="dots"></span><span class="val">2750 грн</span></div>
+            <div class="price-line"><span>3 довжина</span><span class="dots"></span><span class="val">3000 грн</span></div>
+            <div class="price-line"><span>4 довжина</span><span class="dots"></span><span class="val">3500 грн</span></div>
+            <div class="price-line"><span>5 довжина</span><span class="dots"></span><span class="val">4000 грн</span></div>
+        </div>
+
         <div class="footer">
             <a href="tel:+380932941733">📞 +380 93 294 17 33</a>
             <a href="https://www.instagram.com/beauty._._hub">📸 @beauty._._hub</a>
