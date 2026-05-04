@@ -17,18 +17,18 @@
             overflow-x: hidden;
         }
 
-        /* Квіти, що літають */
+        /* Анімація квітів */
         .flower {
             position: fixed;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.5;
-            animation: float 15s infinite linear;
+            opacity: 0.4;
+            animation: float 10s infinite linear;
         }
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
@@ -36,27 +36,27 @@
 
         .brand { 
             font-family: 'Playfair Display', serif; 
-            font-size: 64px; 
-            letter-spacing: 10px; 
+            font-size: 60px; 
+            letter-spacing: 8px; 
             text-transform: uppercase;
             margin-bottom: 5px;
         }
 
         .nav-links {
             font-size: 10px;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             color: #b5b5b5;
             text-transform: uppercase;
             margin-bottom: 30px;
         }
 
-        .header-contacts { font-size: 13px; line-height: 1.8; margin-bottom: 30px; }
+        .header-contacts { font-size: 14px; line-height: 1.8; margin-bottom: 30px; }
         .header-contacts a { text-decoration: none; color: inherit; display: block; }
 
-        .action-buttons { display: flex; gap: 15px; margin-bottom: 20px; }
-        .btn-action { flex: 1; padding: 15px; border-radius: 40px; text-decoration: none; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+        .action-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .btn-action { flex: 1; padding: 16px; border-radius: 50px; text-decoration: none; font-size: 11px; font-weight: 600; text-transform: uppercase; }
         .btn-tg { background-color: #a37a7a; color: white; }
-        .btn-price-nav { background-color: white; color: #a37a7a; border: 1px solid #dcdcdc; }
+        .btn-price-nav { background-color: white; color: #a37a7a; border: 1px solid #e0e0e0; }
 
         .btn-call-full {
             display: block; width: 100%; background-color: #a37a7a; color: white;
@@ -65,22 +65,26 @@
         }
 
         .price-section { text-align: left; margin-bottom: 50px; }
-        .cat-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; margin: 40px 0 20px; text-align: center; color: #7a5a5a; border-bottom: 1px solid #f0e0e0; padding-bottom: 10px; }
-        .price-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; font-size: 14px; }
+        .cat-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; margin: 45px 0 20px; text-align: center; color: #7a5a5a; border-bottom: 1px solid #f0e0e0; padding-bottom: 10px; }
+        .price-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 14px; }
         .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 10px; }
-        .val { font-weight: 600; min-width: 85px; text-align: right; }
-        .sub-cat { margin: 20px 0 10px; text-align: center; font-style: italic; font-size: 13px; color: #a37a7a; }
+        .val { font-weight: 600; min-width: 95px; text-align: right; }
+        .sub-cat { margin: 25px 0 12px; text-align: center; font-style: italic; font-size: 13px; color: #a37a7a; font-weight: 600; }
 
-        .footer { margin-top: 50px; font-size: 12px; opacity: 0.6; padding-bottom: 40px; border-top: 1px solid #f0e0e0; padding-top: 20px; }
+        .footer { margin-top: 50px; font-size: 11px; opacity: 0.5; padding-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-    <!-- Анімація квітів -->
-    <div class="flower" style="left: 10%; animation-delay: 0s; font-size: 30px;">🌸</div>
-    <div class="flower" style="left: 80%; animation-delay: 5s; font-size: 25px;">🌸</div>
-    <div class="flower" style="left: 40%; animation-delay: 2s; font-size: 20px;">🌸</div>
-    <div class="flower" style="left: 70%; animation-delay: 8s; font-size: 35px;">🌸</div>
+    <!-- Більше літаючих квітів -->
+    <div class="flower" style="left: 5%; animation-delay: 0s; font-size: 25px;">🌸</div>
+    <div class="flower" style="left: 15%; animation-delay: 3s; font-size: 18px;">🌸</div>
+    <div class="flower" style="left: 30%; animation-delay: 6s; font-size: 30px;">🌸</div>
+    <div class="flower" style="left: 45%; animation-delay: 1s; font-size: 22px;">🌸</div>
+    <div class="flower" style="left: 60%; animation-delay: 4s; font-size: 28px;">🌸</div>
+    <div class="flower" style="left: 75%; animation-delay: 7s; font-size: 20px;">🌸</div>
+    <div class="flower" style="left: 90%; animation-delay: 2s; font-size: 35px;">🌸</div>
+    <div class="flower" style="left: 25%; animation-delay: 9s; font-size: 24px;">🌸</div>
 
     <div class="container">
         <h1 class="brand">BEAUTY HUB</h1>
@@ -93,52 +97,75 @@
         </div>
 
         <div class="action-buttons">
-            <a href="https://t.me/your_telegram" class="btn-action btn-tg">ЗАПИСАТИСЬ (TG)</a>
+            <a href="https://t.me/beauty._._hub" class="btn-action btn-tg">ЗАПИСАТИСЬ (TG)</a>
             <a href="#price-list" class="btn-action btn-price-nav">ПРАЙС ПОСЛУГ</a>
         </div>
 
-        <a href="tel:+380932941733" class="btn-call-full">ЗАТЕЛЕФОНУВАТИ: +380 93 294 17 33</a>
+        <a href="tel:+380932941733" class="btn-call-full">ЗАТЕЛЕФОНУВАТИ</a>
 
         <div id="price-list" class="price-section">
-            <h2 class="cat-title">Брови та Вії</h2>
-            <div class="price-line"><span>Корекція та фарбування брів</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Корекція, фарбування та ламінування</span><span class="dots"></span><span class="val">700 грн</span></div>
-            <div class="price-line"><span>Ламінування вій та фарбування</span><span class="dots"></span><span class="val">700 грн</span></div>
-
+            
             <h2 class="cat-title">Манікюр та Педикюр</h2>
             <div class="price-line"><span>Манікюр</span><span class="dots"></span><span class="val">400 грн</span></div>
             <div class="price-line"><span>Комплекс манікюру</span><span class="dots"></span><span class="val">750/850/950 грн</span></div>
-            <div class="price-line"><span>Укріплення гелем/акрилом</span><span class="dots"></span><span class="val">+100 грн</span></div>
-            <div class="price-line"><span>Нарощення (1/2/3)</span><span class="dots"></span><span class="val">1000/1100/1200 грн (+100)</span></div>
+            <div class="price-line"><span>Укріплення гелем/пудрою</span><span class="dots"></span><span class="val">+100 грн</span></div>
+            <div class="price-line"><span>Френч</span><span class="dots"></span><span class="val">+100 грн</span></div>
+            <div class="price-line"><span>Нарощення нігтів (1/2/3)</span><span class="dots"></span><span class="val">1000/1100/1200 грн</span></div>
             <div class="price-line"><span>Корекція нарощених (1/2/3)</span><span class="dots"></span><span class="val">900/1000/1100 грн (+100)</span></div>
             
-            <p style="margin: 20px 0 10px; font-weight: 600; text-align: center;">Педикюр</p>
+            <div class="sub-cat">Педикюр</div>
             <div class="price-line"><span>Комплекс 1 (пальці + стопа)</span><span class="dots"></span><span class="val">750 грн</span></div>
-            <div class="price-line"><span>Комплекс 2 (пальці + покриття)</span><span class="dots"></span><span class="val">850 грн</span></div>
-            <div class="price-line"><span>Комплекс 3 (пальці + стопа + покр)</span><span class="dots"></span><span class="val">1000 грн</span></div>
+            <div class="price-line"><span>Комплекс 2 (пальці + покр)</span><span class="dots"></span><span class="val">850 грн</span></div>
+            <div class="price-line"><span>Комплекс 3 (пальці+стопа+покр)</span><span class="dots"></span><span class="val">1000 грн</span></div>
 
-            <h2 class="cat-title">Фарбування та Стрижки</h2>
-            <div class="sub-cat">Фарбування / Тонування</div>
+            <div class="sub-cat">Чоловічі послуги</div>
+            <div class="price-line"><span>Чоловічий манікюр</span><span class="dots"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span>Чоловічий педикюр</span><span class="dots"></span><span class="val">750 грн</span></div>
+
+            <h2 class="cat-title">Брови та Вії</h2>
+            <div class="price-line"><span>Корекція та фарбування брів</span><span class="dots"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span>Кор, фарб та лам брів</span><span class="dots"></span><span class="val">700 грн</span></div>
+            <div class="price-line"><span>Ламінування вій + фарбування</span><span class="dots"></span><span class="val">700 грн</span></div>
+
+            <h2 class="cat-title">Перукарські послуги</h2>
+            <div class="sub-cat">Жіночі стрижки та укладка</div>
+            <div class="price-line"><span>Стрижка жіноча</span><span class="dots"></span><span class="val">500/600/700 грн</span></div>
+            <div class="price-line"><span>Стрижка кінчиків (рівний зріз)</span><span class="dots"></span><span class="val">200 грн</span></div>
+            <div class="price-line"><span>Стрижка кінчиків (густе вол)</span><span class="dots"></span><span class="val">500 грн</span></div>
+            <div class="price-line"><span>Стрижка чубчика</span><span class="dots"></span><span class="val">200 грн</span></div>
+            <div class="price-line"><span>Стрижка дитяча (дівч до 8р)</span><span class="dots"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span>Стрижка модельна (дівч 8-13р)</span><span class="dots"></span><span class="val">500 грн</span></div>
+            <div class="price-line"><span>Укладка браш / інструмент</span><span class="dots"></span><span class="val">550/650/750 грн</span></div>
+
+            <div class="sub-cat">Чоловічі стрижки</div>
+            <div class="price-line"><span>Стрижка машинка + ножиці</span><span class="dots"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span>Стрижка ножицями</span><span class="dots"></span><span class="val">450 грн</span></div>
+            <div class="price-line"><span>Стрижка під насадку</span><span class="dots"></span><span class="val">350 грн</span></div>
+            <div class="price-line"><span>Стрижка бороди (насадка)</span><span class="dots"></span><span class="val">200 грн</span></div>
+            <div class="price-line"><span>Стрижка дитяча (хл до 12р)</span><span class="dots"></span><span class="val">350 грн</span></div>
+
+            <h2 class="cat-title">Фарбування волосся</h2>
+            <div class="price-line"><span>Фарбою клієнта</span><span class="dots"></span><span class="val">500/1000 грн</span></div>
+            <div class="sub-cat">Корені / Повне фарбування</div>
             <div class="price-line"><span>Корені до 2 см</span><span class="dots"></span><span class="val">1300/1650 грн</span></div>
-            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">1450/1800 грн</span></div>
-            <div class="price-line"><span>2 довжина</span><span class="dots"></span><span class="val">1600/2000 грн</span></div>
-            <div class="price-line"><span>3 довжина</span><span class="dots"></span><span class="val">1850/2250 грн</span></div>
-            <div class="price-line"><span>4 довжина</span><span class="dots"></span><span class="val">2050/2550 грн</span></div>
-            <div class="price-line"><span>5+ довжина</span><span class="dots"></span><span class="val">2250/2800 грн</span></div>
+            <div class="price-line"><span>1 довжина / 2 довжини</span><span class="dots"></span><span class="val">1450 / 1600 грн</span></div>
+            <div class="price-line"><span>3 довжини / 4 довжини</span><span class="dots"></span><span class="val">1850 / 2050 грн</span></div>
+            <div class="price-line"><span>5+ довжин</span><span class="dots"></span><span class="val">2250 / 2800 грн</span></div>
 
-            <div class="sub-cat">Освітлення волосся (пудра)</div>
+            <div class="sub-cat">Освітлення (пудра) без тонування</div>
             <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">800 грн</span></div>
-            <div class="price-line"><span>2-3 довжина</span><span class="dots"></span><span class="val">1000 грн</span></div>
-            <div class="price-line"><span>4-5 довжина</span><span class="dots"></span><span class="val">1200 грн</span></div>
+            <div class="price-line"><span>2-3 довжини</span><span class="dots"></span><span class="val">1000 грн</span></div>
+            <div class="price-line"><span>4-5 довжин</span><span class="dots"></span><span class="val">1200 грн</span></div>
             <div class="price-line"><span>Контуринг</span><span class="dots"></span><span class="val">1500 грн</span></div>
 
-            <div class="sub-cat">Стрижки</div>
-            <div class="price-line"><span>Жіноча стрижка</span><span class="dots"></span><span class="val">500/600/700 грн</span></div>
-            <div class="price-line"><span>Стрижка під насадку</span><span class="dots"></span><span class="val">350 грн</span></div>
+            <div class="sub-cat">Мелірування / Брондування + тонування</div>
+            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">2500 грн</span></div>
+            <div class="price-line"><span>2 довжини / 3 довжини</span><span class="dots"></span><span class="val">2750 / 3000 грн</span></div>
+            <div class="price-line"><span>4 довжини / 5 довжин</span><span class="dots"></span><span class="val">3500 / 4000 грн</span></div>
         </div>
 
         <div class="footer">
-            <p>© 2026 Beauty Hub Studio. Всі права захищені.</p>
+            <p>© 2026 Beauty Hub Studio</p>
         </div>
     </div>
 
