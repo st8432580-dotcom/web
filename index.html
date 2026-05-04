@@ -3,119 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEAUTY HUB | Прайс</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>BEAUTY HUB PRICE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #fdfdfd; color: #4a4a4a; line-height: 1.5; }
-        .container { max-width: 650px; margin: 0 auto; background: white; padding: 40px 20px; }
-        
-        .header { text-align: center; margin-bottom: 40px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 42px; color: #5a3e3e; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 5px; }
-        .subtitle { font-size: 14px; letter-spacing: 3px; color: #9c6d6d; text-transform: uppercase; margin-bottom: 20px; }
-
-        .category { margin-bottom: 40px; }
-        .category-title { 
-            font-family: 'Playfair Display', serif; font-size: 20px; color: #5a3e3e; 
-            text-align: center; margin-bottom: 20px; text-transform: uppercase;
-        }
-
-        .item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 14px; }
-        .item-name { flex: 1; padding-right: 10px; }
-        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; height: 14px; margin: 0 5px; }
-        .price { font-weight: 600; color: #222; min-width: 90px; text-align: right; }
-        
-        .sub-item { font-size: 13px; color: #777; margin-top: -5px; margin-bottom: 10px; display: block; text-align: right; }
-
-        .footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; }
-        .footer a { color: #9c6d6d; text-decoration: none; display: block; margin: 8px 0; font-weight: 600; }
-        .footer p { font-size: 14px; margin: 5px 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fdfdfd; color: #4a4a4a; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #5a3e3e; letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase; }
+        .category { margin-bottom: 30px; }
+        .category-header { font-weight: 600; text-transform: uppercase; color: #9c6d6d; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 15px; text-align: center; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; align-items: flex-end; }
+        .name { flex: 1; padding-right: 10px; }
+        .dots { flex: 1; border-bottom: 1px dotted #ccc; margin: 0 5px; height: 14px; }
+        .price { font-weight: 600; min-width: 80px; text-align: right; }
+        .sub-text { font-size: 12px; color: #888; display: block; text-align: right; margin-top: -5px; margin-bottom: 10px; }
+        .contacts { text-align: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
+        .contacts p { margin: 5px 0; font-weight: 600; color: #5a3e3e; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
-        <div class="brand">BEAUTY HUB</div>
-        <div class="subtitle">ПРАЙС</div>
-    </div>
+    <h1>BEAUTY HUB</h1>
 
     <!-- ФОТО 1: БРОВИ ТА ВІЇ -->
     <div class="category">
-        <div class="item"><span class="item-name">Корекція та фарбування брів</span><span class="dots"></span><span class="price">400 грн</span></div>
-        <div class="item"><span class="item-name">Корекція, фарбування та ламінування брів</span><span class="dots"></span><span class="price">700 грн</span></div>
-        <div class="item"><span class="item-name">Ламінування вій та фарбування</span><span class="dots"></span><span class="price">700 грн</span></div>
+        <div class="row"><span class="name">Корекція та фарбування брів</span><span class="dots"></span><span class="price">400 грн</span></div>
+        <div class="row"><span class="name">Корекція, фарбування та ламінування брів</span><span class="dots"></span><span class="price">700 грн</span></div>
+        <div class="row"><span class="name">Ламінування вій та фарбування</span><span class="dots"></span><span class="price">700 грн</span></div>
     </div>
 
     <!-- ФОТО 2: МАНІКЮР ТА ПЕДИКЮР -->
     <div class="category">
-        <div class="category-title">Манікюр та Педикюр</div>
-        <div class="item"><span class="item-name">Манікюр</span><span class="dots"></span><span class="price">400 грн</span></div>
-        <div class="item"><span class="item-name">Комплекс манікюру</span><span class="dots"></span><span class="price">750/850/950 грн</span></div>
-        <div class="item"><span class="item-name">Укріплення гелем та акриловою пудрою</span><span class="dots"></span><span class="price">+100 грн</span></div>
-        <div class="item"><span class="item-name">Френч</span><span class="dots"></span><span class="price">+100 грн</span></div>
-        <div class="item"><span class="item-name">Нарощення (1/2/3)</span><span class="dots"></span><span class="price">1000/1100/1200 грн</span></div>
-        <div class="item"><span class="item-name">Корекція нарощених (1/2/3)</span><span class="dots"></span><span class="price">900/1000/1100 грн (+100)</span></div>
+        <div class="category-header">Манікюр та Педикюр</div>
+        <div class="row"><span class="name">Манікюр</span><span class="dots"></span><span class="price">400 грн</span></div>
+        <div class="row"><span class="name">Комплекс манікюру</span><span class="dots"></span><span class="price">750 / 850 / 950 грн</span></div>
+        <div class="row"><span class="name">Укріплення гелем та акриловою пудрою</span><span class="dots"></span><span class="price">+100 грн</span></div>
+        <div class="row"><span class="name">Френч</span><span class="dots"></span><span class="price">+100 грн</span></div>
+        <div class="row"><span class="name">Нарощення (1/2/3)</span><span class="dots"></span><span class="price">1000 / 1100 / 1200 грн</span></div>
+        <div class="row"><span class="name">Корекція нарощених (1/2/3)</span><span class="dots"></span><span class="price">900 / 1000 / 1100 грн (+100)</span></div>
         
-        <div class="category-title" style="margin-top:20px;">Педикюр</div>
-        <div class="item"><span class="item-name">Комплекс 1 (обробка пальчиків та стопи)</span><span class="dots"></span><span class="price">750 грн</span></div>
-        <div class="item"><span class="item-name">Комплекс 2 (обробка пальчиків + покриття)</span><span class="dots"></span><span class="price">850 грн</span></div>
-        <div class="item"><span class="item-name">Комплекс 3 (обробка пальчиків та стопи + покр)</span><span class="dots"></span><span class="price">1000 грн</span></div>
-        <div class="item" style="margin-top:10px;"><span class="item-name">Чоловічий манікюр</span><span class="dots"></span><span class="price">400 грн</span></div>
-        <div class="item"><span class="item-name">Чоловічий педикюр</span><span class="dots"></span><span class="price">750 грн</span></div>
+        <div class="category-header" style="margin-top:20px;">Педикюр</div>
+        <div class="row"><span class="name">Комплекс 1 (обробка пальчиків та стопи)</span><span class="dots"></span><span class="price">750 грн</span></div>
+        <div class="row"><span class="name">Комплекс 2 (обробка пальчиків + покриття)</span><span class="dots"></span><span class="price">850 грн</span></div>
+        <div class="row"><span class="name">Комплекс 3 (обробка пальчиків та стопи + покр)</span><span class="dots"></span><span class="price">1000 грн</span></div>
+        <div class="row"><span class="name">Чоловічий манікюр</span><span class="dots"></span><span class="price">400 грн</span></div>
+        <div class="row"><span class="name">Чоловічий педикюр</span><span class="dots"></span><span class="price">750 грн</span></div>
     </div>
 
     <!-- ФОТО 3: ФАРБУВАННЯ / ТОНУВАННЯ -->
     <div class="category">
-        <div class="category-title">Фарбування / Тонування</div>
-        <div class="item"><span class="item-name">Фарбування коренів до 2 см</span><span class="dots"></span><span class="price">1300 / 1650 грн</span></div>
-        <div class="item"><span class="item-name">1 довжина</span><span class="dots"></span><span class="price">1450 / 1800 грн</span></div>
-        <div class="item"><span class="item-name">2 довжина</span><span class="dots"></span><span class="price">1600 / 2000 грн</span></div>
-        <div class="item"><span class="item-name">3 довжина</span><span class="dots"></span><span class="price">1850 / 2250 грн</span></div>
-        <div class="item"><span class="item-name">4 довжина</span><span class="dots"></span><span class="price">2050 / 2550 грн</span></div>
-        <div class="item"><span class="item-name">5 + довжина</span><span class="dots"></span><span class="price">2250 / 2800 грн</span></div>
-        <div class="item"><span class="item-name">Фарбування волосся фарбою клієнта</span><span class="dots"></span><span class="price">500 / 1000 грн</span></div>
+        <div class="category-header">Фарбування / Тонування</div>
+        <div class="row"><span class="name">Фарбування коренів до 2 см</span><span class="dots"></span><span class="price">1300 / 1650 грн</span></div>
+        <div class="row"><span class="name">1 довжина</span><span class="dots"></span><span class="price">1450 / 1800 грн</span></div>
+        <div class="row"><span class="name">2 довжина</span><span class="dots"></span><span class="price">1600 / 2000 грн</span></div>
+        <div class="row"><span class="name">3 довжина</span><span class="dots"></span><span class="price">1850 / 2250 грн</span></div>
+        <div class="row"><span class="name">4 довжина</span><span class="dots"></span><span class="price">2050 / 2550 грн</span></div>
+        <div class="row"><span class="name">5 + довжина</span><span class="dots"></span><span class="price">2250 / 2800 грн</span></div>
+        <div class="row"><span class="name">Фарбування волосся фарбою клієнта</span><span class="dots"></span><span class="price">500 / 1000 грн</span></div>
         
-        <div class="category-title" style="margin-top:20px; font-size:16px;">Освітлення волосся (пудра) без тонування</div>
-        <div class="item"><span class="item-name">1 довжина</span><span class="dots"></span><span class="price">800 грн</span></div>
-        <div class="item"><span class="item-name">2-3 довжина</span><span class="dots"></span><span class="price">1000 грн</span></div>
-        <div class="item"><span class="item-name">4-5 довжина</span><span class="dots"></span><span class="price">1200 грн</span></div>
-        <div class="item"><span class="item-name">Контуринг (часткове освітлення)</span><span class="dots"></span><span class="price">1500 грн</span></div>
+        <p style="text-align:center; font-size:12px; margin: 15px 0 10px;">Освітлення волосся (пудра) без тонування</p>
+        <div class="row"><span class="name">1 довжина</span><span class="dots"></span><span class="price">800 грн</span></div>
+        <div class="row"><span class="name">2-3 довжина</span><span class="dots"></span><span class="price">1000 грн</span></div>
+        <div class="row"><span class="name">4-5 довжина</span><span class="dots"></span><span class="price">1200 грн</span></div>
+        <div class="row"><span class="name">Контуринг (часткове освітлення)</span><span class="dots"></span><span class="price">1500 грн</span></div>
 
-        <div class="category-title" style="margin-top:20px; font-size:16px;">Мелірування / Брондування з тонуванням</div>
-        <div class="item"><span class="item-name">1 довжина / прикореневе</span><span class="dots"></span><span class="price">2500 грн</span></div>
-        <div class="item"><span class="item-name">2 довжина</span><span class="dots"></span><span class="price">2750 грн</span></div>
-        <div class="item"><span class="item-name">3 довжина</span><span class="dots"></span><span class="price">3000 грн</span></div>
-        <div class="item"><span class="item-name">4 довжина</span><span class="dots"></span><span class="price">3500 грн</span></div>
-        <div class="item"><span class="item-name">5 довжина</span><span class="dots"></span><span class="price">4000 грн</span></div>
+        <p style="text-align:center; font-size:12px; margin: 15px 0 10px;">Мелірування / Брондування з тонуванням</p>
+        <div class="row"><span class="name">1 довжина / прикореневе</span><span class="dots"></span><span class="price">2500 грн</span></div>
+        <div class="row"><span class="name">2 довжина</span><span class="dots"></span><span class="price">2750 грн</span></div>
+        <div class="row"><span class="name">3 довжина</span><span class="dots"></span><span class="price">3000 грн</span></div>
+        <div class="row"><span class="name">4 довжина</span><span class="dots"></span><span class="price">3500 грн</span></div>
+        <div class="row"><span class="name">5 довжина</span><span class="dots"></span><span class="price">4000 грн</span></div>
     </div>
 
     <!-- ФОТО 4: ПЕРУКАРСЬКІ ПОСЛУГИ -->
     <div class="category">
-        <div class="category-title">Перукарські послуги (жіночі)</div>
-        <div class="item"><span class="item-name">Стрижка жіноча</span><span class="dots"></span><span class="price">500/600/700 грн</span></div>
-        <span class="sub-item">1/2 д-на 500 грн | 3/4 д-на 600 грн | 5+ д-на 700 грн</span>
+        <div class="category-header">Перукарські послуги (жіночі)</div>
+        <div class="row"><span class="name">Стрижка жіноча</span><span class="dots"></span><span class="price">500/600/700 грн</span></div>
+        <span class="sub-text">1/2 д-на 500 грн | 3/4 д-на 600 грн | 5+ д-на 700 грн</span>
         
-        <div class="item"><span class="item-name">Стрижка дитяча дівчата (до 8 років)</span><span class="dots"></span><span class="price">400 грн</span></div>
-        <div class="item"><span class="item-name">Стрижка дівчата модельна (8-13 років)</span><span class="dots"></span><span class="price">500 грн</span></div>
-        <div class="item"><span class="item-name">Стрижка кінчиків (рівний зріз) до 5 см</span><span class="dots"></span><span class="price">200 грн</span></div>
-        <div class="item"><span class="item-name">Стрижка кінчиків (густе волосся)</span><span class="dots"></span><span class="price">500 грн</span></div>
-        <div class="item"><span class="item-name">Стрижка чубчика</span><span class="dots"></span><span class="price">200 грн</span></div>
-        <div class="item"><span class="item-name">Укладка браш/гарячий інструмент</span><span class="dots"></span><span class="price">550/650/750 грн</span></div>
-        <span class="sub-item">1/2 д-на 550 грн | 3/4 д-на 650 грн | 5+ д-на 750 грн</span>
+        <div class="row"><span class="name">Стрижка дитяча дівчата (до 8 років)</span><span class="dots"></span><span class="price">400 грн</span></div>
+        <div class="row"><span class="name">Стрижка дівчата модельна (8-13 років)</span><span class="dots"></span><span class="price">500 грн</span></div>
+        <div class="row"><span class="name">Стрижка кінчиків (рівний зріз) до 5 см</span><span class="dots"></span><span class="price">200 грн</span></div>
+        <div class="row"><span class="name">Стрижка кінчиків (густе волосся)</span><span class="dots"></span><span class="price">500 грн</span></div>
+        <div class="row"><span class="name">Стрижка чубчика</span><span class="dots"></span><span class="price">200 грн</span></div>
+        <div class="row"><span class="name">Укладка браш/гарячий інструмент</span><span class="dots"></span><span class="price">550/650/750 грн</span></div>
+        <span class="sub-text">1/2 д-на 550 грн | 3/4 д-на 650 грн | 5+ д-на 750 грн</span>
 
-        <div class="category-title" style="margin-top:20px;">Перукарські послуги (чоловічі)</div>
-        <div class="item"><span class="item-name">Стрижка машинка+ножиці</span><span class="dots"></span><span class="price">400 грн</span></div>
-        <div class="item"><span class="item-name">Стрижка ножиці</span><span class="dots"></span><span class="price">450 грн</span></div>
-        <div class="item"><span class="item-name">Стрижка під насадку</span><span class="dots"></span><span class="price">350 грн</span></div>
-        <span class="sub-item">1-3 д-на 350 грн</span>
-        <div class="item"><span class="item-name">Стрижка бороди (машинкою під насадку)</span><span class="dots"></span><span class="price">200 грн</span></div>
-        <div class="item"><span class="item-name">Стрижка дитяча (до 12 років)</span><span class="dots"></span><span class="price">350 грн</span></div>
+        <div class="category-header" style="margin-top:20px;">Перукарські послуги (чоловічі)</div>
+        <div class="row"><span class="name">Стрижка машинка+ножиці</span><span class="dots"></span><span class="price">400 грн</span></div>
+        <div class="row"><span class="name">Стрижка ножиці</span><span class="dots"></span><span class="price">450 грн</span></div>
+        <div class="row"><span class="name">Стрижка під насадку</span><span class="dots"></span><span class="price">350 грн</span></div>
+        <span class="sub-text">1-3 д-на 350 грн</span>
+        <div class="row"><span class="name">Стрижка бороди (машинкою під насадку)</span><span class="dots"></span><span class="price">200 грн</span></div>
+        <div class="row"><span class="name">Стрижка дитяча (до 12 років)</span><span class="dots"></span><span class="price">350 грн</span></div>
     </div>
 
-    <div class="footer">
-        <a href="tel:+380932941733">📞 +380 93 294 17 33</a>
-        <a href="https://www.instagram.com/beauty._._hub">📸 @Beauty_Hub</a>
+    <div class="contacts">
+        <p>📞 +380 93 294 17 33</p>
+        <p>📸 Instagram: @beauty._._hub</p>
         <p>📍 Братиславська 10</p>
     </div>
 </div>
