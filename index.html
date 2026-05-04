@@ -31,7 +31,7 @@
             font-size: 64px; 
             letter-spacing: 10px; 
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .nav-links {
@@ -39,30 +39,12 @@
             letter-spacing: 5px;
             color: #b5b5b5;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .buttons-row {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
+        .header-contacts { font-size: 13px; line-height: 1.8; margin-bottom: 30px; }
+        .header-contacts a { text-decoration: none; color: inherit; display: block; }
 
-        .btn-side {
-            padding: 15px 30px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            flex: 1;
-        }
-        .btn-black { background-color: #a37a7a; color: white; border: none; }
-        .btn-outline { background-color: white; color: #a37a7a; border: 1px solid #dcdcdc; }
-
-        /* Та сама кнопка з image_659020.png */
         .btn-call-full {
             display: block;
             width: 100%;
@@ -77,14 +59,14 @@
             margin-bottom: 40px;
         }
 
-        .price-section { text-align: left; margin-top: 30px; }
-        .cat-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; margin: 30px 0 15px; text-align: center; color: #7a5a5a; }
+        .price-section { text-align: left; margin-bottom: 50px; }
+        .cat-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; margin: 35px 0 15px; text-align: center; color: #7a5a5a; border-bottom: 1px solid #f0e0e0; padding-bottom: 10px; }
         .price-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; font-size: 14px; }
         .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 10px; }
-        .val { font-weight: 600; }
+        .val { font-weight: 600; min-width: 80px; text-align: right; }
+        .sub-desc { font-size: 11px; color: #999; margin: -8px 0 15px; text-align: left; }
 
-        .footer { margin-top: 50px; font-size: 13px; line-height: 2; }
-        .footer a { text-decoration: none; color: inherit; display: block; }
+        .footer { margin-top: 50px; font-size: 14px; border-top: 1px solid #f0e0e0; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -95,32 +77,58 @@
         <h1 class="brand">BEAUTY HUB</h1>
         <div class="nav-links">Макіяж | Брови | Вії | Волосся</div>
 
-        <div class="buttons-row">
-            <a href="#" class="btn-side btn-black">ЗАПИСАТИСЬ</a>
-            <a href="#price" class="btn-side btn-outline">ПРАЙС ПОСЛУГ</a>
+        <!-- Контакти перенесені вище -->
+        <div class="header-contacts">
+            <a href="tel:+380932941733">📞 +380 93 294 17 33</a>
+            <a href="https://www.instagram.com/beauty._._hub">📸 @beauty._._hub</a>
+            <p>📍 Братиславська 10</p>
         </div>
 
         <a href="tel:+380932941733" class="btn-call-full">ЗАТЕЛЕФОНУВАТИ: +380 93 294 17 33</a>
 
-        <div id="price" class="price-section">
-            <h2 class="cat-title">Освітлення волосся (пудра) без тонування</h2>
+        <div class="price-section">
+            <!-- БРОВІ ТА ВІЇ -->
+            <h2 class="cat-title">Брови та Вії</h2>
+            <div class="price-line"><span>Корекція та фарбування брів</span><span class="dots"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span>Корекція, фарбування та ламінування брів</span><span class="dots"></span><span class="val">700 грн</span></div>
+            <div class="price-line"><span>Ламінування вій та фарбування</span><span class="dots"></span><span class="val">700 грн</span></div>
+
+            <!-- МАНІКЮР ТА ПЕДИКЮР -->
+            <h2 class="cat-title">Манікюр та Педикюр</h2>
+            <div class="price-line"><span>Манікюр</span><span class="dots"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span>Комплекс манікюру</span><span class="dots"></span><span class="val">750/850/950 грн</span></div>
+            <div class="price-line"><span>Укріплення гелем та акриловою пудрою</span><span class="dots"></span><span class="val">+100 грн</span></div>
+            <div class="price-line"><span>Френч</span><span class="dots"></span><span class="val">+100 грн</span></div>
+            <div class="price-line"><span>Нарощення (1/2/3)</span><span class="dots"></span><span class="val">1000/1100/1200 грн</span></div>
+            <div class="price-line"><span>Корекція нарощених (1/2/3)</span><span class="dots"></span><span class="val">900/1000/1100 грн</span></div>
+            
+            <p style="margin: 20px 0 10px; font-weight: 600;">Педикюр:</p>
+            <div class="price-line"><span>Комплекс 1 (пальці + стопа)</span><span class="dots"></span><span class="val">750 грн</span></div>
+            <div class="price-line"><span>Комплекс 2 (пальці + покриття)</span><span class="dots"></span><span class="val">850 грн</span></div>
+            <div class="price-line"><span>Комплекс 3 (пальці + стопа + покр)</span><span class="dots"></span><span class="val">1000 грн</span></div>
+
+            <!-- ФАРБУВАННЯ -->
+            <h2 class="cat-title">Фарбування / Тонування</h2>
+            <div class="price-line"><span>Корені до 2 см</span><span class="dots"></span><span class="val">1300/1650 грн</span></div>
+            <div class="price-line"><span>1 / 2 довжина</span><span class="dots"></span><span class="val">1450/1800 грн</span></div>
+            <div class="price-line"><span>3 / 4 довжина</span><span class="dots"></span><span class="val">1850/2250 грн</span></div>
+            <div class="price-line"><span>5+ довжина</span><span class="dots"></span><span class="val">2250/2800 грн</span></div>
+
+            <!-- СПЕЦІАЛЬНЕ ОСВІТЛЕННЯ (З ФОТО) -->
+            <p style="margin: 20px 0 10px; text-align: center; font-style: italic; font-size: 13px;">Освітлення волосся (пудра) без тонування</p>
             <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">800 грн</span></div>
             <div class="price-line"><span>2-3 довжина</span><span class="dots"></span><span class="val">1000 грн</span></div>
             <div class="price-line"><span>4-5 довжина</span><span class="dots"></span><span class="val">1200 грн</span></div>
-            <div class="price-line"><span>Контуринг (часткове освітлення)</span><span class="dots"></span><span class="val">1500 грн</span></div>
+            <div class="price-line"><span>Контуринг</span><span class="dots"></span><span class="val">1500 грн</span></div>
 
-            <h2 class="cat-title">Мелірування / Брондування з тонуванням</h2>
-            <div class="price-line"><span>1 довжина / прикореневе</span><span class="dots"></span><span class="val">2500 грн</span></div>
-            <div class="price-line"><span>2 довжина</span><span class="dots"></span><span class="val">2750 грн</span></div>
-            <div class="price-line"><span>3 довжина</span><span class="dots"></span><span class="val">3000 грн</span></div>
-            <div class="price-line"><span>4 довжина</span><span class="dots"></span><span class="val">3500 грн</span></div>
-            <div class="price-line"><span>5 довжина</span><span class="dots"></span><span class="val">4000 грн</span></div>
+            <h2 class="cat-title">Стрижки</h2>
+            <div class="price-line"><span>Жіноча стрижка</span><span class="dots"></span><span class="val">500/600/700 грн</span></div>
+            <div class="sub-desc">Ціна залежить від довжини волосся</div>
+            <div class="price-line"><span>Стрижка під насадку / Бороди</span><span class="dots"></span><span class="val">350 / 200 грн</span></div>
         </div>
 
         <div class="footer">
-            <a href="tel:+380932941733">📞 +380 93 294 17 33</a>
-            <a href="https://www.instagram.com/beauty._._hub">📸 @beauty._._hub</a>
-            <p>📍 Братиславська 10</p>
+            <p>© 2026 Beauty Hub Studio</p>
         </div>
     </div>
 
