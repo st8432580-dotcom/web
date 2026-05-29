@@ -139,3 +139,44 @@ footer {
     .brand { font-size: 55px; }
     .orchid { width: 200px; height: 200px; }
 }
+.laser-price-section {
+    margin-top: 70px;
+    padding: 50px 30px;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(10px);
+    border-radius: 35px;
+    box-shadow: 0 15px 40px rgba(156,109,109,0.08);
+}
+
+.laser-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 38px;
+    letter-spacing: 4px;
+    color: #9c6d6d;
+    margin-bottom: 50px;
+}
+
+.laser-group {
+    margin-bottom: 45px;
+}
+
+.laser-group h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #9c6d6d;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #f1e7e7;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .laser-price-section {
+        padding: 35px 20px;
+    }
+
+    .laser-title {
+        font-size: 28px;
+    }
+}
