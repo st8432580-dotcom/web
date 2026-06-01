@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Послуги — BEAUTY HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #faf6f1;
+            --blush: #e8c4b0;
+            --rose: #c4856a;
+            --deep: #3d2318;
+            --muted: #8a6e5e;
+            --white: #ffffff;
+            --dark-bg: #1a0e0a;
+            --accent: #d4956a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--deep); overflow-x: hidden; }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 22px 50px; transition: all 0.4s ease;
+            background: rgba(250, 246, 241, 0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 30px rgba(61,35,24,0.08);
+        }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; letter-spacing: 6px; color: var(--deep); text-decoration: none; }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--rose); }
+        .nav-book { background: var(--rose); color: white !important; padding: 10px 24px; border-radius: 30px; }
+        .nav-book:hover { background: var(--deep) !important; color: white !important; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--deep); }
+
+        /* PAGE HERO */
+        .page-hero {
+            padding: 160px 50px 80px;
+            background: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(196,133,106,0.12) 0%, transparent 70%);
+        }
+        .page-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .breadcrumb {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .page-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(52px, 6vw, 90px);
+            font-weight: 300;
+            color: white;
+            line-height: 1.05;
+        }
+        .page-title em { font-style: italic; color: var(--blush); }
+        .page-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 20px;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        /* SERVICES DETAIL */
+        .services-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 50px;
+        }
+        .service-block {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: start;
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(61,35,24,0.08);
+        }
+        .service-block:last-child { border-bottom: none; }
+        .service-block.reverse { direction: rtl; }
+        .service-block.reverse > * { direction: ltr; }
+        .service-block-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 100px;
+            font-weight: 300;
+            color: rgba(61,35,24,0.06);
+            line-height: 1;
+            margin-bottom: -20px;
+        }
+        .service-block-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: 16px;
+        }
+        .service-block-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 300;
+            color: var(--deep);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .service-block-title em { font-style: italic; color: var(--rose); }
+        .service-block-desc {
+            font-size: 14px;
+            line-height: 1.9;
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+        .service-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        .service-tag {
+            padding: 8px 18px;
+            background: white;
+            border: 1px solid rgba(61,35,24,0.1);
+            border-radius: 30px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .service-cta {
+            display: inline-block;
+            background: var(--rose);
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .service-cta:hover { background: var(--deep); transform: translateY(-2px); }
+        .service-price-link {
+            display: inline-block;
+            color: var(--rose);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-left: 20px;
+            border-bottom: 1px solid currentColor;
+            transition: color 0.3s;
+        }
+        .service-price-link:hover { color: var(--deep); }
+
+        .service-visual {
+            background: linear-gradient(135deg, var(--blush), var(--rose));
+            border-radius: 20px;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+        .service-visual-icon {
+            font-size: 80px;
+            opacity: 0.4;
+            position: relative;
+            z-index: 2;
+        }
+        .service-visual-text {
+            position: absolute;
+            bottom: 28px;
+            left: 28px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: white;
+            font-style: italic;
+            opacity: 0.7;
+        }
+        .service-visual.dark { background: linear-gradient(135deg, #2a1208, #3d2318); }
+        .service-visual.sage { background: linear-gradient(135deg, #8a7a6e, #5a4a3e); }
+
+        /* BOTTOM CTA */
+        .bottom-cta {
+            background: var(--rose);
+            padding: 80px 50px;
+            text-align: center;
+        }
+        .bottom-cta-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 300;
+            color: white;
+            margin-bottom: 30px;
+        }
+        .bottom-cta-title em { font-style: italic; }
+        .btn-white { background: white; color: var(--rose); text-decoration: none; padding: 18px 44px; border-radius: 40px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; display: inline-block; margin: 0 8px; }
+        .btn-white:hover { background: var(--deep); color: white; }
+        .btn-outline-white { border: 1px solid rgba(255,255,255,0.4); color: white; text-decoration: none; padding: 18px 44px; border-radius: 40px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; display: inline-block; margin: 0 8px; }
+        .btn-outline-white:hover { background: white; color: var(--rose); }
+
+        footer { background: var(--dark-bg); padding: 30px 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 4px; color: rgba(255,255,255,0.5); }
+        .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 1px; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+
+        .mobile-nav { display: none; position: fixed; inset: 0; background: var(--dark-bg); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: white; text-decoration: none; letter-spacing: 4px; }
+        .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 28px; color: rgba(255,255,255,0.5); cursor: pointer; background: none; border: none; }
+
+        @media (max-width: 900px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .burger { display: flex; }
+            .page-hero { padding: 120px 24px 60px; }
+            .services-detail { padding: 50px 24px; }
+            .service-block { grid-template-columns: 1fr; gap: 32px; }
+            .service-block.reverse { direction: ltr; }
+            .service-block-num { font-size: 60px; }
+            footer { padding: 24px; }
+            .bottom-cta { padding: 60px 24px; }
+            .bottom-cta a { margin: 6px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+        <a href="index.html" onclick="closeMobileNav()">Головна</a>
+        <a href="services.html" onclick="closeMobileNav()">Послуги</a>
+        <a href="pricelist.html" onclick="closeMobileNav()">Прайс</a>
+        <a href="contacts.html" onclick="closeMobileNav()">Контакти</a>
+        <a href="https://t.me/Beautyy_Hub" target="_blank">Записатись</a>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-logo">BEAUTY HUB</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="services.html" class="active">Послуги</a></li>
+            <li><a href="pricelist.html">Прайс</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+            <li><a href="https://t.me/Beautyy_Hub" target="_blank" class="nav-book">Записатись</a></li>
+        </ul>
+        <div class="burger" onclick="openMobileNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="page-hero-inner">
+            <div class="breadcrumb"><a href="index.html">Головна</a> &nbsp;/&nbsp; Послуги</div>
+            <h1 class="page-title">Наші<br><em>послуги</em></h1>
+            <p class="page-subtitle">Від манікюру до лазерної епіляції — відкрий весь спектр краси в одному місці.</p>
+        </div>
+    </div>
+
+    <div class="services-detail">
+
+        <div class="service-block reveal">
+            <div>
+                <div class="service-block-num">01</div>
+                <div class="service-block-label">Нігтьовий сервіс</div>
+                <h2 class="service-block-title">Манікюр &<br><em>Педикюр</em></h2>
+                <p class="service-block-desc">Класичний і апаратний манікюр, покриття гель-лаком, нарощення нігтів. Комплексний педикюр з обробкою стопи та покриттям. Також доступні чоловічі послуги.</p>
+                <div class="service-items">
+                    <span class="service-tag">Манікюр від 400 грн</span>
+                    <span class="service-tag">Комплекс від 750 грн</span>
+                    <span class="service-tag">Нарощення від 1000 грн</span>
+                    <span class="service-tag">Педикюр від 750 грн</span>
+                    <span class="service-tag">Чоловічий манікюр</span>
+                </div>
+                <a href="https://t.me/Beautyy_Hub" target="_blank" class="service-cta">Записатись</a>
+                <a href="pricelist.html#manicure" class="service-price-link">Повний прайс →</a>
+            </div>
+            <div class="service-visual">
+                <span class="service-visual-icon">💅</span>
+                <span class="service-visual-text">Нігтьовий сервіс</span>
+            </div>
+        </div>
+
+        <div class="service-block reverse reveal">
+            <div>
+                <div class="service-block-num">02</div>
+                <div class="service-block-label">Краса обличчя</div>
+                <h2 class="service-block-title">Брови &<br><em>Вії</em></h2>
+                <p class="service-block-desc">Корекція та фарбування брів, ламінування для стійкого красивого вигляду. Ламінування вій з фарбуванням — природна краса без зусиль кожного дня.</p>
+                <div class="service-items">
+                    <span class="service-tag">Корекція брів від 400 грн</span>
+                    <span class="service-tag">Ламінування брів від 700 грн</span>
+                    <span class="service-tag">Ламінування вій від 700 грн</span>
+                </div>
+                <a href="https://t.me/Beautyy_Hub" target="_blank" class="service-cta">Записатись</a>
+                <a href="pricelist.html#brows" class="service-price-link">Повний прайс →</a>
+            </div>
+            <div class="service-visual dark">
+                <span class="service-visual-icon">✨</span>
+                <span class="service-visual-text">Брови та вії</span>
+            </div>
+        </div>
+
+        <div class="service-block reveal">
+            <div>
+                <div class="service-block-num">03</div>
+                <div class="service-block-label">Перукарські послуги</div>
+                <h2 class="service-block-title">Стрижки &<br><em>Укладки</em></h2>
+                <p class="service-block-desc">Жіночі та чоловічі стрижки всіх рівнів складності, дитячі стрижки. Укладка брашем та гарячими інструментами для ідеального образу на кожен день і особливі моменти.</p>
+                <div class="service-items">
+                    <span class="service-tag">Жіноча стрижка від 500 грн</span>
+                    <span class="service-tag">Чоловіча стрижка від 350 грн</span>
+                    <span class="service-tag">Дитяча стрижка від 350 грн</span>
+                    <span class="service-tag">Укладка від 550 грн</span>
+                </div>
+                <a href="https://t.me/Beautyy_Hub" target="_blank" class="service-cta">Записатись</a>
+                <a href="pricelist.html#hair" class="service-price-link">Повний прайс →</a>
+            </div>
+            <div class="service-visual sage">
+                <span class="service-visual-icon">💇</span>
+                <span class="service-visual-text">Перукарські послуги</span>
+            </div>
+        </div>
+
+        <div class="service-block reverse reveal">
+            <div>
+                <div class="service-block-num">04</div>
+                <div class="service-block-label">Колористика</div>
+                <h2 class="service-block-title">Фарбування &<br><em>Освітлення</em></h2>
+                <p class="service-block-desc">Фарбування в один тон, тонування коренів, освітлення пудрою, мелірування та брондування з тонуванням. Підберемо ідеальний колір під твій тип шкіри та стиль.</p>
+                <div class="service-items">
+                    <span class="service-tag">Фарбування від 1300 грн</span>
+                    <span class="service-tag">Освітлення від 800 грн</span>
+                    <span class="service-tag">Мелірування від 2500 грн</span>
+                    <span class="service-tag">Брондування</span>
+                </div>
+                <a href="https://t.me/Beautyy_Hub" target="_blank" class="service-cta">Записатись</a>
+                <a href="pricelist.html#color" class="service-price-link">Повний прайс →</a>
+            </div>
+            <div class="service-visual" style="background: linear-gradient(135deg, #c9956a, #8a4a2a);">
+                <span class="service-visual-icon">🎨</span>
+                <span class="service-visual-text">Фарбування</span>
+            </div>
+        </div>
+
+        <div class="service-block reveal">
+            <div>
+                <div class="service-block-num">05</div>
+                <div class="service-block-label">Апаратна косметологія</div>
+                <h2 class="service-block-title">Лазерна<br><em>епіляція</em></h2>
+                <p class="service-block-desc">Видалення небажаного волосся лазером — безпечно, ефективно та надовго. Понад 20 зон на будь-яку частину тіла. Сертифіковане обладнання та досвідчені фахівці.</p>
+                <div class="service-items">
+                    <span class="service-tag">Обличчя та шия</span>
+                    <span class="service-tag">Пахви від 345 грн</span>
+                    <span class="service-tag">Ноги від 670 грн</span>
+                    <span class="service-tag">Зона бікіні від 500 грн</span>
+                    <span class="service-tag">Спина та живіт</span>
+                </div>
+                <a href="https://t.me/Beautyy_Hub" target="_blank" class="service-cta">Записатись</a>
+                <a href="pricelist.html#laser" class="service-price-link">Повний прайс →</a>
+            </div>
+            <div class="service-visual" style="background: linear-gradient(135deg, #1a0e0a, #3d2318);">
+                <span class="service-visual-icon">⚡</span>
+                <span class="service-visual-text">Лазерна епіляція</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom-cta">
+        <h2 class="bottom-cta-title">Готова до <em>перетворення?</em></h2>
+        <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-white">Записатись в Telegram</a>
+        <a href="pricelist.html" class="btn-outline-white">Переглянути прайс</a>
+    </div>
+
+    <footer>
+        <div class="footer-logo">BEAUTY HUB</div>
+        <div class="footer-copy">© 2026 Beauty Hub Studio · Братиславська 10, Київ</div>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        reveals.forEach(el => observer.observe(el));
+        function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = ''; }
+    </script>
+</body>
+</html>
