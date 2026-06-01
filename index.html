@@ -1,271 +1,324 @@
-<!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beauty Hub — манікюр, педикюр, брови, вії, перукарські послуги та лазерна епіляція. Київ, Братиславська 10.">
     <title>BEAUTY HUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --rose: #a37a7a;
+            --rose-dark: #7a5a5a;
+            --rose-light: #f0e0e0;
+            --bg: #fffafb;
+            --text: #5a3e3e;
+            --muted: #999;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #fffafb; 
-            color: #5a3e3e;
-            display: flex; 
-            justify-content: center; 
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 72px;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
+            padding-bottom: calc(88px + var(--safe-bottom));
         }
-
-        /* Анімація квітів */
         .flower {
             position: fixed;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.4;
+            opacity: 0.35;
             animation: float 10s infinite linear;
         }
         @keyframes float {
             0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
+            10% { opacity: 0.35; }
+            90% { opacity: 0.35; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
-
-        .container { text-align: center; width: 100%; max-width: 600px; padding: 40px 20px; position: relative; z-index: 1; }
-
-        .brand { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 60px; 
-            letter-spacing: 8px; 
-            text-transform: uppercase;
-            margin-bottom: 5px;
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .flower { animation: none; display: none; }
         }
-
+                    text-align: center;
+        }
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 10vw, 60px);
+            letter-spacing: clamp(4px, 2vw, 8px);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
         .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 10px;
             font-size: 10px;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             color: #b5b5b5;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
-
-        .header-contacts { font-size: 14px; line-height: 1.8; margin-bottom: 30px; }
-        .header-contacts a { text-decoration: none; color: inherit; display: block; }
-
-        .action-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
-        .btn-action { flex: 1; padding: 16px; border-radius: 50px; text-decoration: none; font-size: 11px; font-weight: 600; text-transform: uppercase; }
-        .btn-tg { background-color: #a37a7a; color: white; }
-        .btn-price-nav { background-color: white; color: #a37a7a; border: 1px solid #e0e0e0; }
-
-        .btn-call-full {
-            display: block; width: 100%; background-color: #a37a7a; color: white;
-            text-decoration: none; padding: 20px; border-radius: 50px;
-            font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 40px;
+        .nav-links a {
+            color: inherit;
+            text-decoration: none;
+            padding: 6px 8px;
+            border-radius: 20px;
+            transition: color 0.2s, background 0.2s;
         }
-
-        .price-section { text-align: left; margin-bottom: 50px; }
-        .cat-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; margin: 45px 0 20px; text-align: center; color: #7a5a5a; border-bottom: 1px solid #f0e0e0; padding-bottom: 10px; text-transform: uppercase; }
-        .price-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 14px; }
-        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 10px; }
-        .val { font-weight: 600; min-width: 100px; text-align: right; white-space: nowrap; }
-        .sub-cat { margin: 25px 0 12px; text-align: center; font-style: italic; font-size: 13px; color: #a37a7a; font-weight: 600; }
-        .note { font-size: 11px; color: #999; text-align: center; margin-top: -10px; margin-bottom: 15px; }
-
-        .footer { margin-top: 50px; font-size: 11px; opacity: 0.5; padding-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--rose);
+            background: rgba(163, 122, 122, 0.08);
+            outline: none;
+        }
+            display: block;
+            padding: 4px 0;
+        }
+        .header-contacts a:active { opacity: 0.7; }
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        @media (min-width: 400px) {
+            .action-buttons { flex-direction: row; }
+        }
+        .btn-action {
+            flex: 1;
+            padding: 16px 12px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s, opacity 0.15s;
+        }
+        .btn-action:active { transform: scale(0.98); opacity: 0.9; }
+        .btn-tg { background-color: var(--rose); color: white; }
+        .btn-price-nav {
+            background-color: white;
+            color: var(--rose);
+            border: 1px solid #e0e0e0;
+        }
+                    position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(163, 122, 122, 0.2);
+        }
+        .promo-block img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+        .promo-badge {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 14px 16px;
+            background: linear-gradient(transparent, rgba(90, 62, 62, 0.85));
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .price-section { text-align: left; margin-bottom: 24px; }
+        .cat-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(18px, 4.5vw, 22px);
+            margin: 40px 0 18px;
+            text-align: center;
+            color: var(--rose-dark);
+            border-bottom: 1px solid var(--rose-light);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            scroll-margin-top: 80px;
+        }
+                    margin-top: 8px;
+        }
+        .laser-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(20px, 5vw, 26px);
+            text-align: center;
+            color: var(--rose-dark);
+            margin: 48px 0 24px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--rose-light);
+            padding-bottom: 12px;
+            scroll-margin-top: 80px;
+        }
+        .laser-group {
+            margin-bottom: 28px;
+        }
+        .laser-group h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--rose);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 640px) {
+            .mobile-bar { display: flex; }
+            body { padding-bottom: calc(76px + var(--safe-bottom)); }
+            .btn-call-full { display: none; }
+        }
+        @media (min-width: 641px) {
+            html { scroll-padding-top: 24px; }
+        }
     </style>
 </head>
 <body>
-
-    <!-- Багато літаючих квітів -->
-    <div class="flower" style="left: 5%; animation-delay: 0s; font-size: 25px;">🌸</div>
-    <div class="flower" style="left: 15%; animation-delay: 3s; font-size: 18px;">🌸</div>
-    <div class="flower" style="left: 30%; animation-delay: 6s; font-size: 30px;">🌸</div>
-    <div class="flower" style="left: 45%; animation-delay: 1s; font-size: 22px;">🌸</div>
-    <div class="flower" style="left: 60%; animation-delay: 4s; font-size: 28px;">🌸</div>
-    <div class="flower" style="left: 75%; animation-delay: 7s; font-size: 20px;">🌸</div>
-    <div class="flower" style="left: 90%; animation-delay: 2s; font-size: 35px;">🌸</div>
-    <div class="flower" style="left: 20%; animation-delay: 5s; font-size: 20px;">🌸</div>
-    <div class="flower" style="left: 40%; animation-delay: 8s; font-size: 25px;">🌸</div>
-    <div class="flower" style="left: 70%; animation-delay: 2s; font-size: 15px;">🌸</div>
-    <div class="flower" style="left: 80%; animation-delay: 9s; font-size: 22px;">🌸</div>
-    <div class="flower" style="left: 55%; animation-delay: 3s; font-size: 28px;">🌸</div>
-
-    <div class="container">
-        <h1 class="brand">BEAUTY HUB</h1>
-        <div class="nav-links">Макіяж | Брови | Вії | Волосся</div>
-
-        <div class="header-contacts">
-            <a href="tel:+380932941733">📞 +380 93 294 17 33</a>
-            <a href="https://www.instagram.com/beauty._._hub">📸 @beauty._._hub</a>
-             <a
-                    href="https://maps.app.goo.gl/B8vPU9yHQt9RT1UEA?g_st=ic"
-                    target="_blank"
-                    class="location-link"
-                >
-                    📍 Братиславська 10
-                </a>
-        </div>
-
+    <div class="flower" style="left: 5%; animation-delay: 0s; font-size: 25px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 15%; animation-delay: 3s; font-size: 18px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 30%; animation-delay: 6s; font-size: 30px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 45%; animation-delay: 1s; font-size: 22px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 60%; animation-delay: 4s; font-size: 28px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 75%; animation-delay: 7s; font-size: 20px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 90%; animation-delay: 2s; font-size: 35px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 20%; animation-delay: 5s; font-size: 20px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 40%; animation-delay: 8s; font-size: 25px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 70%; animation-delay: 2s; font-size: 15px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 80%; animation-delay: 9s; font-size: 22px;" aria-hidden="true">🌸</div>
+    <div class="flower" style="left: 55%; animation-delay: 3s; font-size: 28px;" aria-hidden="true">🌸</div>
+    <nav class="mobile-bar" aria-label="Швидкі дії">
+        <a href="https://t.me/Beautyy_Hub" class="bar-tg">Запис (TG)</a>
+        <a href="#price-list" class="bar-price">Прайс</a>
+        <a href="tel:+380932941733" class="bar-call">Дзвінок</a>
+    </nav>
+            </div>
         <div class="action-buttons">
-            <a href="https://t.me/Beautyy_Hub" class="btn-action btn-tg">ЗАПИСАТИСЬ (TG)</a>
-            <a href="#price-list" class="btn-action btn-price-nav">ПРАЙС ПОСЛУГ</a>
+            <a href="https://t.me/Beautyy_Hub" class="btn-action btn-tg">Записатись (Telegram)</a>
+            <a href="#price-list" class="btn-action btn-price-nav">Прайс послуг</a>
         </div>
-
-        <a href="tel:+380932941733" class="btn-call-full">ЗАТЕЛЕФОНУВАТИ</a>
-
+        <a href="tel:+380932941733" class="btn-call-full">Зателефонувати</a>
+        <section class="promo-block" aria-label="Акція">
+            <img src="laser-banner.png" alt="Лазерна епіляція — акція Beauty Hub">
+            <p class="promo-badge">🕘 Працюємо щодня з 9:00 до 21:00</p>
+        </section>
         <div id="price-list" class="price-section">
-            
-            <h2 class="cat-title">МАНІКЮР</h2>
-            <div class="price-line"><span>Манікюр</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Комплекс манікюру</span><span class="dots"></span><span class="val">750 / 850 / 950 грн</span></div>
-            <div class="price-line"><span>Укріплення гелем та акриловою пудрою</span><span class="dots"></span><span class="val">+100 грн</span></div>
-            <div class="price-line"><span>Френч</span><span class="dots"></span><span class="val">+100 грн</span></div>
-            <div class="price-line"><span>Нарощення нігтів (1/2/3)</span><span class="dots"></span><span class="val">1000 / 1100 / 1200 грн +100 грн</span></div>
-            <div class="price-line"><span>Корекція нарощених нігтів (1/2/3)</span><span class="dots"></span><span class="val">900 / 1000 / 1100 грн +100 грн</span></div>
-            
-            <h2 class="cat-title">ПЕДИКЮР</h2>
-            <div class="price-line"><span>Комплекс 1 (обробка пальчиків та стопи)</span><span class="dots"></span><span class="val">750 грн</span></div>
-            <div class="price-line"><span>Комплекс 2 (обробка пальчиків + покриття)</span><span class="dots"></span><span class="val">850 грн</span></div>
-            <div class="price-line"><span>Комплекс 3 (обробка пальчиків та стопи + покриття)</span><span class="dots"></span><span class="val">1000 грн</span></div>
-
-            <h2 class="cat-title">ЧОЛОВІЧІ ПОСЛУГИ</h2>
-            <div class="price-line"><span>Чоловічий манікюр</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Чоловічий педикюр</span><span class="dots"></span><span class="val">750 грн</span></div>
-
-            <h2 class="cat-title">БРОВИ ТА ВІЇ</h2>
-            <div class="price-line"><span>Корекція та фарбування брів</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Корекція, фарбування та ламінування брів</span><span class="dots"></span><span class="val">700 грн</span></div>
-            <div class="price-line"><span>Ламінування вій та фарбування</span><span class="dots"></span><span class="val">700 грн</span></div>
-
-            <h2 class="cat-title">ПЕРУКАРСЬКІ ПОСЛУГИ (ЖІНОЧІ)</h2>
-            <div class="sub-cat">Стрижки:</div>
-            <div class="price-line"><span>Стрижка жіноча</span><span class="dots"></span><span class="val">500 / 600 / 700 грн</span></div>
-            <div class="price-line"><span>Стрижка кінчиків (рівний зріз) до 5 см</span><span class="dots"></span><span class="val">200 грн</span></div>
-            <div class="price-line"><span>Стрижка кінчиків (густе волосся)</span><span class="dots"></span><span class="val">500 грн</span></div>
-            <div class="price-line"><span>Стрижка чубчика</span><span class="dots"></span><span class="val">200 грн</span></div>
-            <div class="price-line"><span>Стрижка дитяча (дівчата до 8 років)</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Стрижка дівчата модельна (8-13 років)</span><span class="dots"></span><span class="val">500 грн</span></div>
-            
-            <div class="sub-cat">Укладка:</div>
-            <div class="price-line"><span>Укладка браш / гарячий інструмент</span><span class="dots"></span><span class="val">550 / 650 / 750 грн</span></div>
-            <div class="note">(1/2 довжина — 550 грн | 3/4 — 650 грн | 5+ — 750 грн)</div>
-
-            <h2 class="cat-title">ПЕРУКАРСЬКІ ПОСЛУГИ (ЧОЛОВІЧІ)</h2>
-            <div class="price-line"><span>Стрижка машинка + ножиці</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Стрижка ножицями</span><span class="dots"></span><span class="val">450 грн</span></div>
-            <div class="price-line"><span>Стрижка під насадку</span><span class="dots"></span><span class="val">350 грн</span></div>
-            <div class="price-line"><span>Стрижка бороди (машинкою під насадку)</span><span class="dots"></span><span class="val">200 грн</span></div>
-            <div class="price-line"><span>Стрижка дитяча (хлопчики до 12 років)</span><span class="dots"></span><span class="val">350 грн</span></div>
-
-            <h2 class="cat-title">ФАРБУВАННЯ ТА ОСВІТЛЕННЯ ВОЛОССЯ</h2>
-            <div class="price-line"><span>Фарбування волосся фарбою клієнта</span><span class="dots"></span><span class="val">500 / 1000 грн</span></div>
-            
-            <div class="sub-cat">Фарбування (корені / повне):</div>
-            <div class="price-line"><span>Корені до 2 см</span><span class="dots"></span><span class="val">1300 / 1650 грн</span></div>
-            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">1450 / 1800 грн</span></div>
-            <div class="price-line"><span>2 довжини</span><span class="dots"></span><span class="val">1600 / 2000 грн</span></div>
-            <div class="price-line"><span>3 довжини</span><span class="dots"></span><span class="val">1850 / 2250 грн</span></div>
-            <div class="price-line"><span>4 довжини</span><span class="dots"></span><span class="val">2050 / 2550 грн</span></div>
-            <div class="price-line"><span>5+ довжин</span><span class="dots"></span><span class="val">2250 / 2800 грн</span></div>
-
-            <div class="sub-cat">Освітлення пудрою (без тонування):</div>
-            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">800 грн</span></div>
-            <div class="price-line"><span>2-3 довжини</span><span class="dots"></span><span class="val">1000 грн</span></div>
-            <div class="price-line"><span>4-5 довжин</span><span class="dots"></span><span class="val">1200 грн</span></div>
-            <div class="price-line"><span>Контуринг (часткове освітлення)</span><span class="dots"></span><span class="val">1500 грн</span></div>
-
-            <div class="sub-cat">Мелірування / Брондування з тонуванням:</div>
-            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">2500 грн</span></div>
-            <div class="price-line"><span>2 довжини</span><span class="dots"></span><span class="val">2750 грн</span></div>
-            <div class="price-line"><span>3 довжини</span><span class="dots"></span><span class="val">3000 грн</span></div>
-            <div class="price-line"><span>4 довжини</span><span class="dots"></span><span class="val">3500 грн</span></div>
-            <div class="price-line"><span>5 довжин</span><span class="dots"></span><span class="val">4000 грн</span></div>
+            <h2 id="manicure" class="cat-title">Манікюр</h2>
+            <div class="price-line"><span class="name">Манікюр</span><span class="dots" aria-hidden="true"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span class="name">Комплекс манікюру</span><span class="dots" aria-hidden="true"></span><span class="val">750 / 850 / 950 грн</span></div>
+            <div class="price-line"><span class="name">Укріплення гелем та акриловою пудрою</span><span class="dots" aria-hidden="true"></span><span class="val">+100 грн</span></div>
+            <div class="price-line"><span class="name">Френч</span><span class="dots" aria-hidden="true"></span><span class="val">+100 грн</span></div>
+            <div class="price-line"><span class="name">Нарощення нігтів (1/2/3)</span><span class="dots" aria-hidden="true"></span><span class="val">1000 / 1100 / 1200 грн +100</span></div>
+            <div class="price-line"><span class="name">Корекція нарощених нігтів (1/2/3)</span><span class="dots" aria-hidden="true"></span><span class="val">900 / 1000 / 1100 грн +100</span></div>
+            <h2 id="pedicure" class="cat-title">Педикюр</h2>
+            <div class="price-line"><span class="name">Комплекс 1 (обробка пальчиків та стопи)</span><span class="dots" aria-hidden="true"></span><span class="val">750 грн</span></div>
+            <div class="price-line"><span class="name">Комплекс 2 (обробка пальчиків + покриття)</span><span class="dots" aria-hidden="true"></span><span class="val">850 грн</span></div>
+            <div class="price-line"><span class="name">Комплекс 3 (обробка пальчиків та стопи + покриття)</span><span class="dots" aria-hidden="true"></span><span class="val">1000 грн</span></div>
+            <h2 class="cat-title">Чоловічі послуги</h2>
+            <div class="price-line"><span class="name">Чоловічий манікюр</span><span class="dots" aria-hidden="true"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span class="name">Чоловічий педикюр</span><span class="dots" aria-hidden="true"></span><span class="val">750 грн</span></div>
+            <div class="price-line"><span class="name">Укладка браш / гарячий інструмент</span><span class="dots" aria-hidden="true"></span><span class="val">550 / 650 / 750 грн</span></div>
+            <p class="note">1/2 довжина — 550 грн · 3/4 — 650 грн · 5+ — 750 грн</p>
+            <h2 class="cat-title">Перукарські послуги (чоловічі)</h2>
+            <div class="price-line"><span class="name">Стрижка машинка + ножиці</span><span class="dots" aria-hidden="true"></span><span class="val">400 грн</span></div>
+            <div class="price-line"><span class="name">Стрижка ножицями</span><span class="dots" aria-hidden="true"></span><span class="val">450 грн</span></div>
+            <div class="price-line"><span class="name">Стрижка під насадку</span><span class="dots" aria-hidden="true"></span><span class="val">350 грн</span></div>
+            <div class="price-line"><span class="name">Стрижка бороди (машинкою під насадку)</span><span class="dots" aria-hidden="true"></span><span class="val">200 грн</span></div>
+            <div class="price-line"><span class="name">Стрижка дитяча (хлопчики до 12 років)</span><span class="dots" aria-hidden="true"></span><span class="val">350 грн</span></div>
+            <h2 class="cat-title">Фарбування та освітлення волосся</h2>
+            <div class="price-line"><span class="name">Фарбування волосся фарбою клієнта</span><span class="dots" aria-hidden="true"></span><span class="val">500 / 1000 грн</span></div>
+            <div class="sub-cat">Фарбування (корені / повне)</div>
+            <div class="price-line"><span class="name">Корені до 2 см</span><span class="dots" aria-hidden="true"></span><span class="val">1300 / 1650 грн</span></div>
+            <div class="price-line"><span class="name">1 довжина</span><span class="dots" aria-hidden="true"></span><span class="val">1450 / 1800 грн</span></div>
+            <div class="price-line"><span class="name">2 довжини</span><span class="dots" aria-hidden="true"></span><span class="val">1600 / 2000 грн</span></div>
+            <div class="price-line"><span class="name">3 довжини</span><span class="dots" aria-hidden="true"></span><span class="val">1850 / 2250 грн</span></div>
+            <div class="price-line"><span class="name">4 довжини</span><span class="dots" aria-hidden="true"></span><span class="val">2050 / 2550 грн</span></div>
+            <div class="price-line"><span class="name">5+ довжин</span><span class="dots" aria-hidden="true"></span><span class="val">2250 / 2800 грн</span></div>
+            <div class="sub-cat">Освітлення пудрою (без тонування)</div>
+            <div class="price-line"><span class="name">1 довжина</span><span class="dots" aria-hidden="true"></span><span class="val">800 грн</span></div>
+            <div class="price-line"><span class="name">2–3 довжини</span><span class="dots" aria-hidden="true"></span><span class="val">1000 грн</span></div>
+            <div class="price-line"><span class="name">4–5 довжин</span><span class="dots" aria-hidden="true"></span><span class="val">1200 грн</span></div>
+            <div class="price-line"><span class="name">Контуринг (часткове освітлення)</span><span class="dots" aria-hidden="true"></span><span class="val">1500 грн</span></div>
+            <div class="sub-cat">Мелірування / брондування з тонуванням</div>
+            <div class="price-line"><span class="name">1 довжина</span><span class="dots" aria-hidden="true"></span><span class="val">2500 грн</span></div>
+            <div class="price-line"><span class="name">2 довжини</span><span class="dots" aria-hidden="true"></span><span class="val">2750 грн</span></div>
+            <div class="price-line"><span class="name">3 довжини</span><span class="dots" aria-hidden="true"></span><span class="val">3000 грн</span></div>
+            <div class="price-line"><span class="name">4 довжини</span><span class="dots" aria-hidden="true"></span><span class="val">3500 грн</span></div>
+            <div class="price-line"><span class="name">5 довжин</span><span class="dots" aria-hidden="true"></span><span class="val">4000 грн</span></div>
         </div>
-<!-- Фото лазерної епіляції -->
-<div style="margin-top: 60px; text-align: center;">
-    <img 
-        src="laser-banner.png"
-        alt="Лазерна епіляція"
-        style="
-            width: 100%;
-            max-width: 560px;
-            border-radius: 35px;
-            box-shadow: 0 15px 40px rgba(163,122,122,0.25);
-            transition: 0.3s;
-        "
-    >
-    <!-- ЛАЗЕРНА ЕПІЛЯЦІЯ -->
-<div class="laser-price-section">
-    <h2 class="laser-title">ЛАЗЕРНА ЕПІЛЯЦІЯ</h2>
-
-    <div class="laser-group">
-        <h3>Обличчя та шия</h3>
-
-        <div class="price-line"><span>Верхня губа</span><span class="dots"></span><span class="val">195 грн</span></div>
-        <div class="price-line"><span>Підборіддя</span><span class="dots"></span><span class="val">200 грн</span></div>
-        <div class="price-line"><span>Лінія чола</span><span class="dots"></span><span class="val">205 грн</span></div>
-        <div class="price-line"><span>Міжбрів'я</span><span class="dots"></span><span class="val">155 грн</span></div>
-        <div class="price-line"><span>Скронева зона</span><span class="dots"></span><span class="val">200 грн</span></div>
-        <div class="price-line"><span>Щоки</span><span class="dots"></span><span class="val">230 грн</span></div>
-        <div class="price-line"><span>Скроні + щоки</span><span class="dots"></span><span class="val">385 грн</span></div>
-        <div class="price-line"><span>Обличчя повністю</span><span class="dots"></span><span class="val">500 грн</span></div>
-        <div class="price-line"><span>Зона декольте</span><span class="dots"></span><span class="val">390 грн</span></div>
-        <div class="price-line"><span>Шия</span><span class="dots"></span><span class="val">350 грн</span></div>
-    </div>
-
-    <div class="laser-group">
-        <h3>Пахви та руки</h3>
-
-        <div class="price-line"><span>Пахви</span><span class="dots"></span><span class="val">345 грн</span></div>
-        <div class="price-line"><span>Кисті рук + пальці</span><span class="dots"></span><span class="val">175 грн</span></div>
-        <div class="price-line"><span>Руки повністю</span><span class="dots"></span><span class="val">550 грн</span></div>
-        <div class="price-line"><span>Плечі</span><span class="dots"></span><span class="val">480 грн</span></div>
-        <div class="price-line"><span>Передпліччя</span><span class="dots"></span><span class="val">570 грн</span></div>
-    </div>
-
-    <div class="laser-group">
-        <h3>Живіт та спина</h3>
-
-        <div class="price-line"><span>Ареоли молочних залоз</span><span class="dots"></span><span class="val">190 грн</span></div>
-        <div class="price-line"><span>Біла лінія живота</span><span class="dots"></span><span class="val">200 грн</span></div>
-        <div class="price-line"><span>Хрестець</span><span class="dots"></span><span class="val">290 грн</span></div>
-        <div class="price-line"><span>Верхня частина спини</span><span class="dots"></span><span class="val">810 грн</span></div>
-        <div class="price-line"><span>Верхня частина спини + плечі</span><span class="dots"></span><span class="val">1010 грн</span></div>
-        <div class="price-line"><span>Поперек</span><span class="dots"></span><span class="val">560 грн</span></div>
-        <div class="price-line"><span>Живіт</span><span class="dots"></span><span class="val">1050 грн</span></div>
-    </div>
-
-    <div class="laser-group">
-        <h3>Зона ніг</h3>
-
-        <div class="price-line"><span>Ноги повністю</span><span class="dots"></span><span class="val">880 грн</span></div>
-        <div class="price-line"><span>Гомілки</span><span class="dots"></span><span class="val">670 грн</span></div>
-        <div class="price-line"><span>Гомілки + коліна</span><span class="dots"></span><span class="val">790 грн</span></div>
-        <div class="price-line"><span>Коліна</span><span class="dots"></span><span class="val">280 грн</span></div>
-        <div class="price-line"><span>Стегна повністю</span><span class="dots"></span><span class="val">700 грн</span></div>
-        <div class="price-line"><span>Стегна частково</span><span class="dots"></span><span class="val">520 грн</span></div>
-    </div>
-
-    <div class="laser-group">
-        <h3>Зона бікіні</h3>
-
-        <div class="price-line"><span>Глибоке бікіні</span><span class="dots"></span><span class="val">700 грн</span></div>
-        <div class="price-line"><span>Бікіні неглибоке</span><span class="dots"></span><span class="val">590 грн</span></div>
-        <div class="price-line"><span>Лобкова зона</span><span class="dots"></span><span class="val">500 грн</span></div>
-        <div class="price-line"><span>Міжсіднична складка</span><span class="dots"></span><span class="val">500 грн</span></div>
-        <div class="price-line"><span>Сідниці</span><span class="dots"></span><span class="val">520 грн</span></div>
-    </div>
-</div>
-</div>
-
-<div class="footer">
-    <p>© 2026 Beauty Hub Studio</p>
-</div>
-        <div class="footer">
+     <section id="laser" class="laser-price-section" aria-labelledby="laser-heading">
+            <h2 id="laser-heading" class="laser-title">Лазерна епіляція</h2>
+            <div class="laser-group">
+                <h3>Обличчя та шия</h3>
+                <div class="price-line"><span class="name">Верхня губа</span><span class="dots" aria-hidden="true"></span><span class="val">195 грн</span></div>
+                <div class="price-line"><span class="name">Підборіддя</span><span class="dots" aria-hidden="true"></span><span class="val">200 грн</span></div>
+                <div class="price-line"><span class="name">Лінія чола</span><span class="dots" aria-hidden="true"></span><span class="val">205 грн</span></div>
+                <div class="price-line"><span class="name">Міжбрів'я</span><span class="dots" aria-hidden="true"></span><span class="val">155 грн</span></div>
+                <div class="price-line"><span class="name">Скронева зона</span><span class="dots" aria-hidden="true"></span><span class="val">200 грн</span></div>
+                <div class="price-line"><span class="name">Щоки</span><span class="dots" aria-hidden="true"></span><span class="val">230 грн</span></div>
+                <div class="price-line"><span class="name">Скроні + щоки</span><span class="dots" aria-hidden="true"></span><span class="val">385 грн</span></div>
+                <div class="price-line"><span class="name">Обличчя повністю</span><span class="dots" aria-hidden="true"></span><span class="val">500 грн</span></div>
+                <div class="price-line"><span class="name">Зона декольте</span><span class="dots" aria-hidden="true"></span><span class="val">390 грн</span></div>
+                <div class="price-line"><span class="name">Шия</span><span class="dots" aria-hidden="true"></span><span class="val">350 грн</span></div>
+            </div>
+            <div class="laser-group">
+                <h3>Пахви та руки</h3>
+                <div class="price-line"><span class="name">Пахви</span><span class="dots" aria-hidden="true"></span><span class="val">345 грн</span></div>
+                <div class="price-line"><span class="name">Кисті рук + пальці</span><span class="dots" aria-hidden="true"></span><span class="val">175 грн</span></div>
+                <div class="price-line"><span class="name">Руки повністю</span><span class="dots" aria-hidden="true"></span><span class="val">550 грн</span></div>
+                <div class="price-line"><span class="name">Плечі</span><span class="dots" aria-hidden="true"></span><span class="val">480 грн</span></div>
+                <div class="price-line"><span class="name">Передпліччя</span><span class="dots" aria-hidden="true"></span><span class="val">570 грн</span></div>
+            </div>
+            <div class="laser-group">
+                <h3>Живіт та спина</h3>
+                <div class="price-line"><span class="name">Ареоли молочних залоз</span><span class="dots" aria-hidden="true"></span><span class="val">190 грн</span></div>
+                <div class="price-line"><span class="name">Біла лінія живота</span><span class="dots" aria-hidden="true"></span><span class="val">200 грн</span></div>
+                <div class="price-line"><span class="name">Хрестець</span><span class="dots" aria-hidden="true"></span><span class="val">290 грн</span></div>
+                <div class="price-line"><span class="name">Верхня частина спини</span><span class="dots" aria-hidden="true"></span><span class="val">810 грн</span></div>
+                <div class="price-line"><span class="name">Верхня частина спини + плечі</span><span class="dots" aria-hidden="true"></span><span class="val">1010 грн</span></div>
+                <div class="price-line"><span class="name">Поперек</span><span class="dots" aria-hidden="true"></span><span class="val">560 грн</span></div>
+                <div class="price-line"><span class="name">Живіт</span><span class="dots" aria-hidden="true"></span><span class="val">1050 грн</span></div>
+            </div>
+          <div class="laser-group">
+                <h3>Зона ніг</h3>
+                <div class="price-line"><span class="name">Ноги повністю</span><span class="dots" aria-hidden="true"></span><span class="val">880 грн</span></div>
+                <div class="price-line"><span class="name">Гомілки</span><span class="dots" aria-hidden="true"></span><span class="val">670 грн</span></div>
+                <div class="price-line"><span class="name">Гомілки + коліна</span><span class="dots" aria-hidden="true"></span><span class="val">790 грн</span></div>
+                <div class="price-line"><span class="name">Коліна</span><span class="dots" aria-hidden="true"></span><span class="val">280 грн</span></div>
+                <div class="price-line"><span class="name">Стегна повністю</span><span class="dots" aria-hidden="true"></span><span class="val">700 грн</span></div>
+                <div class="price-line"><span class="name">Стегна частково</span><span class="dots" aria-hidden="true"></span><span class="val">520 грн</span></div>
+            </div>
+            <div class="laser-group">
+                <h3>Зона бікіні</h3>
+                <div class="price-line"><span class="name">Глибоке бікіні</span><span class="dots" aria-hidden="true"></span><span class="val">700 грн</span></div>
+                <div class="price-line"><span class="name">Бікіні неглибоке</span><span class="dots" aria-hidden="true"></span><span class="val">590 грн</span></div>
+                <div class="price-line"><span class="name">Лобкова зона</span><span class="dots" aria-hidden="true"></span><span class="val">500 грн</span></div>
+                <div class="price-line"><span class="name">Міжсіднична складка</span><span class="dots" aria-hidden="true"></span><span class="val">500 грн</span></div>
+                <div class="price-line"><span class="name">Сідниці</span><span class="dots" aria-hidden="true"></span><span class="val">520 грн</span></div>
+            </div>
+        </section>
+        <footer class="footer">
             <p>© 2026 Beauty Hub Studio</p>
-        </div>
+        </footer>
     </div>
-
 </body>
 </html>
+
