@@ -225,6 +225,10 @@
         .svc-block-visual { border-radius: 18px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .svc-block-visual .vis-icon { font-size: 72px; opacity: 0.35; }
         .svc-block-visual .vis-label { position: absolute; bottom: 22px; left: 22px; font-family: 'Cormorant Garamond', serif; font-size: 17px; color: white; font-style: italic; opacity: 0.65; }
+        .svc-block-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .svc-block-visual .vis-icon { position: absolute; z-index: 1; }
+        .svc-block-visual .vis-label { z-index: 2; text-shadow: 0 2px 12px rgba(0,0,0,0.35); }
+
         .link-price { display: inline-block; color: var(--rose); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 1px; margin-left: 18px; border-bottom: 1px solid currentColor; transition: color 0.3s; }
         .link-price:hover { color: var(--deep); }
 
@@ -386,22 +390,22 @@
                 <a href="#" onclick="navigate('services')" class="btn-dark reveal d2">Всі послуги →</a>
             </div>
             <div class="services-grid">
-                <a href="#" onclick="navigate('services')" class="svc-card reveal">
+                <a href="#" onclick="openPrice('manicure')" class="svc-card reveal">
                     <div class="svc-inner"><div class="svc-top"><span class="svc-icon">💅</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Манікюр</div><div class="svc-hint">від 400 грн</div></div></div>
                 </a>
-                <a href="#" onclick="navigate('services')" class="svc-card reveal d1">
+                <a href="#" onclick="openPrice('pedicure')" class="svc-card reveal d1">
                     <div class="svc-inner"><div class="svc-top"><span class="svc-icon">🦶</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Педикюр</div><div class="svc-hint">від 750 грн</div></div></div>
                 </a>
-                <a href="#" onclick="navigate('services')" class="svc-card reveal d2">
+                <a href="#" onclick="openPrice('brows')" class="svc-card reveal d2">
                     <div class="svc-inner"><div class="svc-top"><span class="svc-icon">✨</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Брови та вії</div><div class="svc-hint">від 400 грн</div></div></div>
                 </a>
-                <a href="#" onclick="navigate('services')" class="svc-card reveal">
+                <a href="#" onclick="openPrice('hair')" class="svc-card reveal">
                     <div class="svc-inner"><div class="svc-top"><span class="svc-icon">💇</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Стрижки</div><div class="svc-hint">від 350 грн</div></div></div>
                 </a>
-                <a href="#" onclick="navigate('services')" class="svc-card reveal d1">
+                <a href="#" onclick="openPrice('color')" class="svc-card reveal d1">
                     <div class="svc-inner"><div class="svc-top"><span class="svc-icon">🎨</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Фарбування</div><div class="svc-hint">від 800 грн</div></div></div>
                 </a>
-                <a href="#" onclick="navigate('services')" class="svc-card reveal d2">
+                <a href="#" onclick="openPrice('laser')" class="svc-card reveal d2">
                     <div class="svc-inner"><div class="svc-top"><span class="svc-icon">⚡</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Лазерна епіляція</div><div class="svc-hint">від 155 грн</div></div></div>
                 </a>
             </div>
@@ -476,9 +480,7 @@
                     <div class="section-label reveal" style="color:var(--accent)"><span style="background:var(--accent)"></span>Графік</div>
                     <div class="cs-right-title reveal d1">Працюємо<br><em>щодня</em> для тебе</div>
                     <div class="reveal d2">
-                        <div class="wh-row"><span>Пн — Пт</span><span>09:00 — 20:00</span></div>
-                        <div class="wh-row"><span>Субота</span><span>09:00 — 19:00</span></div>
-                        <div class="wh-row"><span>Неділя</span><span>10:00 — 18:00</span></div>
+                        <div class="wh-row"><span>Пн — Нд</span><span>09:00 — 21:00</span></div>
                     </div>
                 </div>
                 <a href="https://t.me/Beautyy_Hub" target="_blank" class="book-btn-big reveal">Записатись прямо зараз →</a>
@@ -513,10 +515,10 @@
                         <span class="svc-tag">Педикюр від 750 грн</span>
                     </div>
                     <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
-                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                    <a href="#" onclick="openPrice('manicure')" class="link-price">Повний прайс →</a>
                 </div>
                 <div class="svc-block-visual" style="background:linear-gradient(135deg,#e8c4b0,#c4856a)">
-                    <span class="vis-icon">💅</span><span class="vis-label">Нігтьовий сервіс</span>
+                    <img src="manicure.jpg" alt="Манікюр та педикюр" onerror="this.style.display='none'"><span class="vis-icon">💅</span><span class="vis-label">Нігтьовий сервіс</span>
                 </div>
             </div>
 
@@ -532,10 +534,10 @@
                         <span class="svc-tag">Ламінування вій від 700 грн</span>
                     </div>
                     <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
-                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                    <a href="#" onclick="openPrice('brows')" class="link-price">Повний прайс →</a>
                 </div>
                 <div class="svc-block-visual" style="background:linear-gradient(135deg,#2a1208,#3d2318)">
-                    <span class="vis-icon">✨</span><span class="vis-label">Брови та вії</span>
+                    <img src="brows.jpg" alt="Брови та вії" onerror="this.style.display='none'"><span class="vis-icon">✨</span><span class="vis-label">Брови та вії</span>
                 </div>
             </div>
 
@@ -552,10 +554,10 @@
                         <span class="svc-tag">Укладка від 550 грн</span>
                     </div>
                     <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
-                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                    <a href="#" onclick="openPrice('hair')" class="link-price">Повний прайс →</a>
                 </div>
                 <div class="svc-block-visual" style="background:linear-gradient(135deg,#8a7a6e,#5a4a3e)">
-                    <span class="vis-icon">💇</span><span class="vis-label">Перукарські послуги</span>
+                    <img src="hair.jpg" alt="Стрижки та укладки" onerror="this.style.display='none'"><span class="vis-icon">💇</span><span class="vis-label">Перукарські послуги</span>
                 </div>
             </div>
 
@@ -571,10 +573,10 @@
                         <span class="svc-tag">Мелірування від 2500 грн</span>
                     </div>
                     <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
-                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                    <a href="#" onclick="openPrice('color')" class="link-price">Повний прайс →</a>
                 </div>
                 <div class="svc-block-visual" style="background:linear-gradient(135deg,#c9956a,#8a4a2a)">
-                    <span class="vis-icon">🎨</span><span class="vis-label">Фарбування</span>
+                    <img src="color.jpg" alt="Фарбування волосся" onerror="this.style.display='none'"><span class="vis-icon">🎨</span><span class="vis-label">Фарбування</span>
                 </div>
             </div>
 
@@ -591,10 +593,10 @@
                         <span class="svc-tag">Бікіні від 500 грн</span>
                     </div>
                     <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
-                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                    <a href="#" onclick="openPrice('laser')" class="link-price">Повний прайс →</a>
                 </div>
                 <div class="svc-block-visual" style="background:linear-gradient(135deg,#1a0e0a,#3d2318)">
-                    <span class="vis-icon">⚡</span><span class="vis-label">Лазерна епіляція</span>
+                    <img src="laser.jpg" alt="Лазерна епіляція" onerror="this.style.display='none'"><span class="vis-icon">⚡</span><span class="vis-label">Лазерна епіляція</span>
                 </div>
             </div>
         </div>
@@ -620,12 +622,12 @@
 
         <div class="price-page">
             <div class="price-nav-tabs">
-                <button class="ptab active" onclick="switchTab('manicure',this)">Манікюр</button>
-                <button class="ptab" onclick="switchTab('pedicure',this)">Педикюр</button>
-                <button class="ptab" onclick="switchTab('brows',this)">Брови та вії</button>
-                <button class="ptab" onclick="switchTab('hair',this)">Волосся</button>
-                <button class="ptab" onclick="switchTab('color',this)">Фарбування</button>
-                <button class="ptab" onclick="switchTab('laser',this)">Лазер</button>
+                <button class="ptab active" data-tab="manicure" onclick="switchTab('manicure',this)">Манікюр</button>
+                <button class="ptab" data-tab="pedicure" onclick="switchTab('pedicure',this)">Педикюр</button>
+                <button class="ptab" data-tab="brows" onclick="switchTab('brows',this)">Брови та вії</button>
+                <button class="ptab" data-tab="hair" onclick="switchTab('hair',this)">Волосся</button>
+                <button class="ptab" data-tab="color" onclick="switchTab('color',this)">Фарбування</button>
+                <button class="ptab" data-tab="laser" onclick="switchTab('laser',this)">Лазер</button>
             </div>
 
             <!-- МАНІКЮР -->
@@ -814,9 +816,7 @@
                     <div class="section-label" style="color:var(--accent)"><span style="background:var(--accent)"></span>Графік роботи</div>
                     <h2 class="section-title" style="color:white; margin-bottom:28px">Працюємо<br><em style="color:var(--blush)">щодня</em></h2>
                     <div class="cp-hours">
-                        <div class="cp-hours-row"><span class="day">Понеділок — П'ятниця</span><span class="time">09:00 — 20:00</span></div>
-                        <div class="cp-hours-row"><span class="day">Субота</span><span class="time">09:00 — 19:00</span></div>
-                        <div class="cp-hours-row"><span class="day">Неділя</span><span class="time">10:00 — 18:00</span></div>
+                        <div class="cp-hours-row"><span class="day">Понеділок — Неділя</span><span class="time">09:00 — 21:00</span></div>
                     </div>
                 </div>
                 <div class="cp-cta-block">
@@ -869,6 +869,14 @@
         }
 
         // ── PRICE TABS ──
+        function openPrice(id) {
+            navigate('price');
+            setTimeout(() => {
+                const btn = document.querySelector('.ptab[data-tab="' + id + '"]');
+                if (btn) switchTab(id, btn);
+            }, 80);
+        }
+
         function switchTab(id, btn) {
             document.querySelectorAll('.price-cat').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
