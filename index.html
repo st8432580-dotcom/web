@@ -3,265 +3,888 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEAUTY HUB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>BEAUTY HUB — Студія краси</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --cream: #faf6f1;
+            --blush: #e8c4b0;
+            --rose: #c4856a;
+            --deep: #3d2318;
+            --muted: #8a6e5e;
+            --white: #ffffff;
+            --dark-bg: #1a0e0a;
+            --accent: #d4956a;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #fffafb; 
-            color: #5a3e3e;
-            display: flex; 
-            justify-content: center; 
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--deep); overflow-x: hidden; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 22px 50px; transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(250,246,241,0.96);
+            backdrop-filter: blur(12px);
+            padding: 14px 50px;
+            box-shadow: 0 2px 30px rgba(61,35,24,0.08);
+        }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; letter-spacing: 6px; color: var(--white); text-decoration: none; transition: color 0.4s; }
+        nav.scrolled .nav-logo { color: var(--deep); }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); transition: color 0.3s; }
+        nav.scrolled .nav-links a { color: var(--muted); }
+        .nav-links a:hover { color: var(--blush) !important; }
+        .nav-book { background: var(--rose); color: white !important; padding: 10px 24px; border-radius: 30px; }
+        nav.scrolled .nav-book { color: white !important; }
+        .nav-book:hover { background: var(--deep) !important; color: white !important; }
+
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .burger span { display: block; width: 24px; height: 2px; background: white; transition: background 0.3s; }
+        nav.scrolled .burger span { background: var(--deep); }
+
+        .mobile-nav { display: none; position: fixed; inset: 0; background: var(--dark-bg); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: white; text-decoration: none; letter-spacing: 4px; transition: color 0.3s; }
+        .mobile-nav a:hover { color: var(--blush); }
+        .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 28px; color: rgba(255,255,255,0.4); cursor: pointer; background: none; border: none; }
+
+        /* ── PAGES ── */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ═══════════════════════ HOME ═══════════════════════ */
+        .hero {
             min-height: 100vh;
-            overflow-x: hidden;
+            background: var(--dark-bg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
         }
-
-        /* Анімація квітів */
-        .flower {
-            position: fixed;
-            pointer-events: none;
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8c4b0 0%, #d4956a 50%, #c4856a 100%);
             z-index: 0;
-            opacity: 0.4;
-            animation: float 10s infinite linear;
         }
-        @keyframes float {
-            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        .hero-left {
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 140px 60px 80px;
+            position: relative; z-index: 2;
         }
-
-        .container { text-align: center; width: 100%; max-width: 600px; padding: 40px 20px; position: relative; z-index: 1; }
-
-        .brand { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 60px; 
-            letter-spacing: 8px; 
-            text-transform: uppercase;
-            margin-bottom: 5px;
+        .hero-right {
+            display: flex; align-items: center; justify-content: center;
+            position: relative; z-index: 2;
         }
-
-        .nav-links {
-            font-size: 10px;
-            letter-spacing: 4px;
-            color: #b5b5b5;
-            text-transform: uppercase;
-            margin-bottom: 30px;
+        .hero-right-glow {
+            position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
         }
-
-        .header-contacts { font-size: 14px; line-height: 1.8; margin-bottom: 30px; }
-        .header-contacts a { text-decoration: none; color: inherit; display: block; }
-
-        .action-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
-        .btn-action { flex: 1; padding: 16px; border-radius: 50px; text-decoration: none; font-size: 11px; font-weight: 600; text-transform: uppercase; }
-        .btn-tg { background-color: #a37a7a; color: white; }
-        .btn-price-nav { background-color: white; color: #a37a7a; border: 1px solid #e0e0e0; }
-
-        .btn-call-full {
-            display: block; width: 100%; background-color: #a37a7a; color: white;
-            text-decoration: none; padding: 20px; border-radius: 50px;
-            font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 40px;
+        .hero-big-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 320px; font-weight: 600; line-height: 1;
+            color: rgba(255,255,255,0.1);
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -52%);
+            user-select: none; pointer-events: none;
         }
+        .hero-badge {
+            width: 190px; height: 190px; border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.25);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+            position: relative; z-index: 3;
+        }
+        .hero-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 300; color: white; line-height: 1; }
+        .hero-badge-text { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.75); text-align: center; }
+        .hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; display: flex; align-items: center; gap: 14px; }
+        .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--accent); }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 5.5vw, 82px); font-weight: 300; line-height: 1.05; color: white; margin-bottom: 28px; }
+        .hero-title em { font-style: italic; color: var(--blush); }
+        .hero-desc { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.45); max-width: 360px; margin-bottom: 48px; }
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-scroll { position: absolute; bottom: 36px; left: 60px; display: flex; align-items: center; gap: 12px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+        .hero-scroll-line { width: 40px; height: 1px; background: rgba(255,255,255,0.15); position: relative; overflow: hidden; }
+        .hero-scroll-line::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--accent); animation: slideRight 2s infinite; }
+        @keyframes slideRight { 0%{left:-100%} 100%{left:100%} }
 
-        .price-section { text-align: left; margin-bottom: 50px; }
-        .cat-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; margin: 45px 0 20px; text-align: center; color: #7a5a5a; border-bottom: 1px solid #f0e0e0; padding-bottom: 10px; text-transform: uppercase; }
-        .price-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 14px; }
-        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 10px; }
-        .val { font-weight: 600; min-width: 100px; text-align: right; white-space: nowrap; }
-        .sub-cat { margin: 25px 0 12px; text-align: center; font-style: italic; font-size: 13px; color: #a37a7a; font-weight: 600; }
-        .note { font-size: 11px; color: #999; text-align: center; margin-top: -10px; margin-bottom: 15px; }
+        /* buttons */
+        .btn-primary { background: var(--rose); color: white; text-decoration: none; padding: 15px 34px; border-radius: 40px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; display: inline-block; }
+        .btn-primary:hover { background: var(--blush); color: var(--deep); transform: translateY(-2px); }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.65); text-decoration: none; padding: 15px 34px; border-radius: 40px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; display: inline-block; }
+        .btn-outline:hover { border-color: var(--blush); color: var(--blush); transform: translateY(-2px); }
+        .btn-dark { background: var(--deep); color: white; text-decoration: none; padding: 15px 34px; border-radius: 40px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; display: inline-block; border: none; cursor: pointer; }
+        .btn-dark:hover { background: var(--rose); transform: translateY(-2px); }
 
-        .footer { margin-top: 50px; font-size: 11px; opacity: 0.5; padding-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        /* marquee */
+        .marquee-strip { background: var(--deep); padding: 18px 0; overflow: hidden; white-space: nowrap; }
+        .marquee-inner { display: inline-flex; animation: marquee 22s linear infinite; }
+        .marquee-inner span { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.35); padding: 0 22px; }
+        .marquee-inner span.a { color: var(--accent); }
+        @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+        /* sections */
+        .section { padding: 90px 50px; }
+        .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rose); margin-bottom: 14px; display: flex; align-items: center; gap: 14px; }
+        .section-label::before { content: ''; display: block; width: 28px; height: 1px; background: currentColor; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 4vw, 56px); font-weight: 300; line-height: 1.15; color: var(--deep); }
+        .section-title em { font-style: italic; color: var(--rose); }
+
+        /* services grid */
+        .services-wrap { background: white; }
+        .services-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; flex-wrap: wrap; gap: 20px; }
+        .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+        .svc-card { text-decoration: none; display: block; }
+        .svc-inner { padding: 44px 34px; background: var(--cream); transition: background 0.4s; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; }
+        .svc-card:hover .svc-inner { background: var(--deep); }
+        .svc-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        .svc-icon { font-size: 26px; opacity: 0.55; transition: opacity 0.3s; }
+        .svc-card:hover .svc-icon { opacity: 1; }
+        .svc-arrow { width: 34px; height: 34px; border: 1px solid rgba(61,35,24,0.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 15px; transition: all 0.3s; }
+        .svc-card:hover .svc-arrow { border-color: var(--accent); color: var(--accent); transform: rotate(45deg); }
+        .svc-name { font-family: 'Cormorant Garamond', serif; font-size: 23px; font-weight: 400; color: var(--deep); transition: color 0.3s; margin-bottom: 6px; }
+        .svc-card:hover .svc-name { color: white; }
+        .svc-hint { font-size: 12px; color: var(--muted); transition: color 0.3s; }
+        .svc-card:hover .svc-hint { color: rgba(255,255,255,0.45); }
+
+        /* why section */
+        .why-wrap { background: var(--dark-bg); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .why-wrap .section-title { color: white; }
+        .why-wrap .section-title em { color: var(--blush); }
+        .why-wrap .section-label { color: var(--accent); }
+        .why-wrap .section-label::before { background: var(--accent); }
+        .why-desc { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.45); max-width: 400px; margin-top: 20px; }
+        .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 44px; }
+        .stat { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; }
+        .stat-n { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; color: var(--accent); line-height: 1; }
+        .stat-l { font-size: 11px; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-top: 5px; }
+        .features { display: flex; flex-direction: column; gap: 18px; }
+        .feat { display: flex; gap: 18px; align-items: flex-start; padding: 24px; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: border-color 0.3s; }
+        .feat:hover { border-color: rgba(196,133,106,0.3); }
+        .feat-n { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; color: rgba(255,255,255,0.12); line-height: 1; flex-shrink: 0; width: 44px; }
+        .feat-title { font-size: 14px; font-weight: 500; color: white; margin-bottom: 5px; }
+        .feat-desc { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.38); }
+
+        /* promo band */
+        .promo-band { background: var(--rose); padding: 56px 50px; display: flex; align-items: center; justify-content: space-between; gap: 36px; flex-wrap: wrap; }
+        .promo-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3vw, 42px); font-weight: 300; color: white; line-height: 1.2; }
+        .promo-text em { font-style: italic; }
+        .btn-white { background: white; color: var(--rose); text-decoration: none; padding: 17px 42px; border-radius: 40px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; flex-shrink: 0; display: inline-block; }
+        .btn-white:hover { background: var(--deep); color: white; }
+
+        /* contacts strip */
+        .contacts-strip { display: grid; grid-template-columns: 1fr 1fr; }
+        .cs-left { padding: 72px 60px; background: var(--cream); }
+        .cs-right { background: var(--deep); padding: 72px 60px; display: flex; flex-direction: column; justify-content: space-between; }
+        .contact-item { margin-bottom: 28px; }
+        .contact-lbl { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+        .contact-val { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--deep); text-decoration: none; transition: color 0.3s; display: block; }
+        .contact-val:hover { color: var(--rose); }
+        .social-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 36px; }
+        .social-btn { padding: 11px 22px; border: 1px solid rgba(61,35,24,0.18); border-radius: 30px; text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--deep); transition: all 0.3s; }
+        .social-btn:hover { background: var(--rose); color: white; border-color: var(--rose); }
+        .cs-right-title { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; color: white; line-height: 1.3; margin-bottom: 28px; }
+        .cs-right-title em { font-style: italic; color: var(--blush); }
+        .wh-row { display: flex; justify-content: space-between; font-size: 13px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.55); margin-bottom: 12px; }
+        .wh-row span:first-child { color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 1px; }
+        .book-btn-big { display: block; background: var(--accent); color: white; text-decoration: none; padding: 18px; border-radius: 12px; text-align: center; font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: all 0.3s; margin-top: 36px; }
+        .book-btn-big:hover { background: var(--blush); color: var(--deep); transform: translateY(-2px); }
+
+        /* ═══════════════════════ SERVICES PAGE ═══════════════════════ */
+        .page-hero { padding: 150px 50px 70px; background: var(--dark-bg); position: relative; overflow: hidden; }
+        .page-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 600px; height: 600px; background: radial-gradient(circle, rgba(196,133,106,0.12) 0%, transparent 70%); pointer-events: none; }
+        .breadcrumb { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.28); text-transform: uppercase; margin-bottom: 26px; cursor: pointer; }
+        .breadcrumb span { color: var(--accent); }
+        .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 6vw, 90px); font-weight: 300; color: white; line-height: 1.05; }
+        .page-title em { font-style: italic; color: var(--blush); }
+        .page-subtitle { font-size: 14px; color: rgba(255,255,255,0.38); margin-top: 18px; max-width: 480px; line-height: 1.8; }
+
+        .svc-blocks { max-width: 1100px; margin: 0 auto; padding: 70px 50px; }
+        .svc-block { display: grid; grid-template-columns: 1fr 1.4fr; gap: 70px; align-items: start; padding: 56px 0; border-bottom: 1px solid rgba(61,35,24,0.08); }
+        .svc-block:last-child { border-bottom: none; }
+        .svc-block.rev { direction: rtl; }
+        .svc-block.rev > * { direction: ltr; }
+        .svc-block-n { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; color: rgba(61,35,24,0.06); line-height: 1; margin-bottom: -16px; }
+        .svc-block-lbl { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rose); margin-bottom: 14px; }
+        .svc-block-title { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--deep); line-height: 1.2; margin-bottom: 18px; }
+        .svc-block-title em { font-style: italic; color: var(--rose); }
+        .svc-block-desc { font-size: 14px; line-height: 1.9; color: var(--muted); margin-bottom: 26px; }
+        .svc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
+        .svc-tag { padding: 7px 16px; background: white; border: 1px solid rgba(61,35,24,0.1); border-radius: 30px; font-size: 12px; color: var(--muted); }
+        .svc-block-visual { border-radius: 18px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .svc-block-visual .vis-icon { font-size: 72px; opacity: 0.35; }
+        .svc-block-visual .vis-label { position: absolute; bottom: 22px; left: 22px; font-family: 'Cormorant Garamond', serif; font-size: 17px; color: white; font-style: italic; opacity: 0.65; }
+        .link-price { display: inline-block; color: var(--rose); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 1px; margin-left: 18px; border-bottom: 1px solid currentColor; transition: color 0.3s; }
+        .link-price:hover { color: var(--deep); }
+
+        /* ═══════════════════════ PRICELIST PAGE ═══════════════════════ */
+        .price-page { max-width: 720px; margin: 0 auto; padding: 40px 30px 80px; }
+        .price-nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 50px; }
+        .ptab { padding: 10px 22px; border: 1px solid rgba(61,35,24,0.15); border-radius: 30px; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); background: white; cursor: pointer; transition: all 0.25s; }
+        .ptab:hover, .ptab.active { background: var(--rose); color: white; border-color: var(--rose); }
+        .price-cat { display: none; }
+        .price-cat.active { display: block; }
+        .cat-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; font-weight: 400; color: var(--deep); margin: 0 0 8px; }
+        .cat-divider { width: 40px; height: 2px; background: var(--rose); margin-bottom: 28px; }
+        .sub-title { font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin: 30px 0 14px; opacity: 0.8; }
+        .price-row { display: flex; align-items: baseline; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid rgba(61,35,24,0.07); font-size: 14px; gap: 12px; }
+        .price-row:last-child { border-bottom: none; }
+        .pr-name { color: var(--deep); flex: 1; }
+        .pr-val { font-weight: 600; color: var(--rose); white-space: nowrap; min-width: 110px; text-align: right; font-size: 13px; }
+        .laser-banner { width: 100%; border-radius: 20px; margin: 32px 0 38px; box-shadow: 0 12px 36px rgba(163,122,122,0.2); }
+        .price-note { font-size: 11px; color: #aaa; text-align: center; margin-top: -14px; margin-bottom: 18px; font-style: italic; }
+
+        /* ═══════════════════════ CONTACTS PAGE ═══════════════════════ */
+        .contacts-page { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 80px); }
+        .cp-left { padding: 80px 60px; background: var(--cream); }
+        .cp-right { background: var(--dark-bg); padding: 80px 60px; position: relative; overflow: hidden; }
+        .cp-right::before { content: ''; position: absolute; bottom: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(196,133,106,0.12) 0%, transparent 70%); pointer-events: none; }
+        .cp-right .section-title { color: white; }
+        .cp-right .section-title em { color: var(--blush); }
+        .cp-right .section-label { color: var(--accent); }
+        .cp-right .section-label::before { background: var(--accent); }
+        .map-placeholder { margin-top: 36px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; }
+        .map-placeholder a { color: var(--accent); font-size: 14px; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 19px; transition: color 0.3s; }
+        .map-placeholder a:hover { color: var(--blush); }
+        .map-icon { font-size: 36px; margin-bottom: 12px; }
+        .map-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 8px; line-height: 1.6; }
+        .big-phone { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: var(--deep); text-decoration: none; display: block; margin: 8px 0 28px; transition: color 0.3s; line-height: 1; }
+        .big-phone:hover { color: var(--rose); }
+        .ig-link { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--deep); text-decoration: none; display: block; margin: 6px 0 28px; transition: color 0.3s; }
+        .ig-link:hover { color: var(--rose); }
+        .cp-cta-block { margin-top: 48px; }
+        .cp-cta-block p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 340px; margin-bottom: 24px; }
+        .cp-tg-btn { display: flex; align-items: center; gap: 12px; background: var(--rose); color: white; text-decoration: none; padding: 18px 28px; border-radius: 14px; font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.3s; width: fit-content; }
+        .cp-tg-btn:hover { background: var(--blush); color: var(--deep); transform: translateY(-2px); }
+        .cp-tg-btn-icon { font-size: 22px; }
+        .cp-hours { margin-top: 36px; }
+        .cp-hours-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
+        .cp-hours-row .day { color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+        .cp-hours-row .time { color: rgba(255,255,255,0.65); }
+
+        /* FOOTER */
+        footer { background: var(--dark-bg); padding: 28px 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; letter-spacing: 4px; color: rgba(255,255,255,0.4); }
+        .footer-copy { font-size: 11px; color: rgba(255,255,255,0.22); letter-spacing: 1px; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.1s; }
+        .d2 { transition-delay: 0.2s; }
+        .d3 { transition-delay: 0.3s; }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            nav, nav.scrolled { padding: 16px 22px; }
+            .nav-links { display: none; }
+            .burger { display: flex; }
+            .hero { grid-template-columns: 1fr; }
+            .hero::after { display: none; }
+            .hero-left { padding: 120px 26px 60px; }
+            .hero-right { display: none; }
+            .hero-title { font-size: 48px; }
+            .hero-scroll { left: 26px; }
+            .section { padding: 60px 22px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .services-head { flex-direction: column; }
+            .why-wrap { grid-template-columns: 1fr; gap: 44px; padding: 60px 22px; }
+            .promo-band { padding: 48px 22px; flex-direction: column; text-align: center; }
+            .contacts-strip { grid-template-columns: 1fr; }
+            .cs-left, .cs-right { padding: 56px 22px; }
+            footer { padding: 22px; }
+            .page-hero { padding: 120px 22px 56px; }
+            .svc-blocks { padding: 48px 22px; }
+            .svc-block { grid-template-columns: 1fr; gap: 26px; }
+            .svc-block.rev { direction: ltr; }
+            .svc-block-n { font-size: 60px; }
+            .price-page { padding: 30px 18px 60px; }
+            .contacts-page { grid-template-columns: 1fr; }
+            .cp-left, .cp-right { padding: 60px 22px; }
+            .big-phone { font-size: 30px; }
+        }
     </style>
 </head>
 <body>
-    <!-- Багато літаючих квітів -->
-    <div class="flower" style="left: 5%; animation-delay: 0s; font-size: 25px;">🌸</div>
-    <div class="flower" style="left: 15%; animation-delay: 3s; font-size: 18px;">🌸</div>
-    <div class="flower" style="left: 30%; animation-delay: 6s; font-size: 30px;">🌸</div>
-    <div class="flower" style="left: 45%; animation-delay: 1s; font-size: 22px;">🌸</div>
-    <div class="flower" style="left: 60%; animation-delay: 4s; font-size: 28px;">🌸</div>
-    <div class="flower" style="left: 75%; animation-delay: 7s; font-size: 20px;">🌸</div>
-    <div class="flower" style="left: 90%; animation-delay: 2s; font-size: 35px;">🌸</div>
-    <div class="flower" style="left: 20%; animation-delay: 5s; font-size: 20px;">🌸</div>
-    <div class="flower" style="left: 40%; animation-delay: 8s; font-size: 25px;">🌸</div>
-    <div class="flower" style="left: 70%; animation-delay: 2s; font-size: 15px;">🌸</div>
-    <div class="flower" style="left: 80%; animation-delay: 9s; font-size: 22px;">🌸</div>
-    <div class="flower" style="left: 55%; animation-delay: 3s; font-size: 28px;">🌸</div>
 
-    <div class="container">
-        <h1 class="brand">BEAUTY HUB</h1>
-        <div class="nav-links">Макіяж | Брови | Вії | Волосся</div>
+    <!-- Mobile nav overlay -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+        <a href="#" onclick="navigate('home');closeMobileNav();">Головна</a>
+        <a href="#" onclick="navigate('services');closeMobileNav();">Послуги</a>
+        <a href="#" onclick="navigate('price');closeMobileNav();">Прайс</a>
+        <a href="#" onclick="navigate('contacts');closeMobileNav();">Контакти</a>
+        <a href="https://t.me/Beautyy_Hub" target="_blank">Записатись</a>
+    </div>
 
-        <div class="header-contacts">
-            <a href="tel:+380932941733">📞 +380 93 294 17 33</a>
-            <a href="https://www.instagram.com/beauty._._hub">📸 @beauty._._hub</a>
-             <a
-                    href="https://maps.app.goo.gl/B8vPU9yHQt9RT1UEA?g_st=ic"
-                    target="_blank"
-                    class="location-link"
-                >
-                    📍 Братиславська 10
+    <!-- NAV -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo" onclick="navigate('home')">BEAUTY HUB</a>
+        <ul class="nav-links">
+            <li><a href="#" onclick="navigate('home')" data-page="home">Головна</a></li>
+            <li><a href="#" onclick="navigate('services')" data-page="services">Послуги</a></li>
+            <li><a href="#" onclick="navigate('price')" data-page="price">Прайс</a></li>
+            <li><a href="#" onclick="navigate('contacts')" data-page="contacts">Контакти</a></li>
+            <li><a href="https://t.me/Beautyy_Hub" target="_blank" class="nav-book">Записатись</a></li>
+        </ul>
+        <div class="burger" onclick="openMobileNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+    <!-- ═══════════════════ HOME PAGE ═══════════════════ -->
+    <div id="page-home" class="page active">
+
+        <section class="hero">
+            <div class="hero-left">
+                <div class="hero-eyebrow">Студія краси · Київ</div>
+                <h1 class="hero-title">Мистецтво<br><em>краси</em><br>для тебе</h1>
+                <p class="hero-desc">Манікюр, педикюр, брови, вії, волосся та лазерна епіляція — все в одному просторі на Братиславській 10.</p>
+                <div class="hero-actions">
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
+                    <a href="#" onclick="navigate('price')" class="btn-outline">Прайс послуг</a>
+                </div>
+                <div class="hero-scroll">
+                    <div class="hero-scroll-line"></div>
+                    Гортай вниз
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-big-letter">B</div>
+                <div class="hero-right-glow"></div>
+                <div class="hero-badge">
+                    <span class="hero-badge-num">5+</span>
+                    <span class="hero-badge-text">Років<br>досвіду</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee -->
+        <div class="marquee-strip">
+            <div class="marquee-inner">
+                <span>Манікюр</span><span class="a">✦</span><span>Педикюр</span><span class="a">✦</span><span>Брови</span><span class="a">✦</span><span>Вії</span><span class="a">✦</span><span>Стрижки</span><span class="a">✦</span><span>Фарбування</span><span class="a">✦</span><span>Лазерна епіляція</span><span class="a">✦</span>
+                <span>Манікюр</span><span class="a">✦</span><span>Педикюр</span><span class="a">✦</span><span>Брови</span><span class="a">✦</span><span>Вії</span><span class="a">✦</span><span>Стрижки</span><span class="a">✦</span><span>Фарбування</span><span class="a">✦</span><span>Лазерна епіляція</span><span class="a">✦</span>
+            </div>
+        </div>
+
+        <!-- Services grid -->
+        <section class="section services-wrap">
+            <div class="services-head">
+                <div>
+                    <div class="section-label reveal">Наші послуги</div>
+                    <h2 class="section-title reveal d1">Все, що тобі<br><em>потрібно</em></h2>
+                </div>
+                <a href="#" onclick="navigate('services')" class="btn-dark reveal d2">Всі послуги →</a>
+            </div>
+            <div class="services-grid">
+                <a href="#" onclick="navigate('services')" class="svc-card reveal">
+                    <div class="svc-inner"><div class="svc-top"><span class="svc-icon">💅</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Манікюр</div><div class="svc-hint">від 400 грн</div></div></div>
                 </a>
+                <a href="#" onclick="navigate('services')" class="svc-card reveal d1">
+                    <div class="svc-inner"><div class="svc-top"><span class="svc-icon">🦶</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Педикюр</div><div class="svc-hint">від 750 грн</div></div></div>
+                </a>
+                <a href="#" onclick="navigate('services')" class="svc-card reveal d2">
+                    <div class="svc-inner"><div class="svc-top"><span class="svc-icon">✨</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Брови та вії</div><div class="svc-hint">від 400 грн</div></div></div>
+                </a>
+                <a href="#" onclick="navigate('services')" class="svc-card reveal">
+                    <div class="svc-inner"><div class="svc-top"><span class="svc-icon">💇</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Стрижки</div><div class="svc-hint">від 350 грн</div></div></div>
+                </a>
+                <a href="#" onclick="navigate('services')" class="svc-card reveal d1">
+                    <div class="svc-inner"><div class="svc-top"><span class="svc-icon">🎨</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Фарбування</div><div class="svc-hint">від 800 грн</div></div></div>
+                </a>
+                <a href="#" onclick="navigate('services')" class="svc-card reveal d2">
+                    <div class="svc-inner"><div class="svc-top"><span class="svc-icon">⚡</span><div class="svc-arrow">→</div></div><div><div class="svc-name">Лазерна епіляція</div><div class="svc-hint">від 155 грн</div></div></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Why us -->
+        <section class="section why-wrap">
+            <div>
+                <div class="section-label reveal">Чому ми</div>
+                <h2 class="section-title reveal d1">Beauty Hub —<br><em>простір</em><br>де ти розквітаєш</h2>
+                <p class="why-desc reveal d2">Досвідчені майстри, якісні матеріали та атмосфера, яка надихає. Ми продумали кожну деталь для твого комфорту.</p>
+                <div class="why-stats reveal d3">
+                    <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Задоволених клієнток</div></div>
+                    <div class="stat"><div class="stat-n">7</div><div class="stat-l">Напрямків послуг</div></div>
+                    <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Років на ринку</div></div>
+                    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Якісні матеріали</div></div>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feat reveal">
+                    <div class="feat-n">01</div>
+                    <div><div class="feat-title">Досвідчені майстри</div><div class="feat-desc">Наша команда постійно навчається та вдосконалює техніки, щоб ти отримувала найкращий результат.</div></div>
+                </div>
+                <div class="feat reveal d1">
+                    <div class="feat-n">02</div>
+                    <div><div class="feat-title">Преміум матеріали</div><div class="feat-desc">Тільки перевірені бренди та сертифіковані засоби, безпечні для твоєї шкіри та нігтів.</div></div>
+                </div>
+                <div class="feat reveal d2">
+                    <div class="feat-n">03</div>
+                    <div><div class="feat-title">Зручне розташування</div><div class="feat-desc">Братиславська 10 — легко дістатися з будь-якої частини Києва.</div></div>
+                </div>
+                <div class="feat reveal d3">
+                    <div class="feat-n">04</div>
+                    <div><div class="feat-title">Онлайн запис</div><div class="feat-desc">Запишись у зручний час через Telegram — швидко, просто, без черги.</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promo -->
+        <div class="promo-band">
+            <div class="promo-text">Готова до <em>нового</em><br>образу? Записуйся зараз!</div>
+            <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-white">Записатись в Telegram</a>
         </div>
 
-        <div class="action-buttons">
-            <a href="https://t.me/Beautyy_Hub" class="btn-action btn-tg">ЗАПИСАТИСЬ (TG)</a>
-            <a href="#price-list" class="btn-action btn-price-nav">ПРАЙС ПОСЛУГ</a>
+        <!-- Contacts strip -->
+        <div class="contacts-strip">
+            <div class="cs-left">
+                <div class="section-label reveal">Зв'язок</div>
+                <h2 class="section-title reveal d1">Ми тут<br><em>для тебе</em></h2>
+                <div style="margin-top:40px">
+                    <div class="contact-item reveal d2">
+                        <div class="contact-lbl">Телефон</div>
+                        <a href="tel:+380932941733" class="contact-val">+380 93 294 17 33</a>
+                    </div>
+                    <div class="contact-item reveal d2">
+                        <div class="contact-lbl">Instagram</div>
+                        <a href="https://www.instagram.com/beauty._._hub" target="_blank" class="contact-val">@beauty._._hub</a>
+                    </div>
+                    <div class="contact-item reveal d3">
+                        <div class="contact-lbl">Адреса</div>
+                        <a href="https://maps.app.goo.gl/B8vPU9yHQt9RT1UEA" target="_blank" class="contact-val">Братиславська 10, Київ</a>
+                    </div>
+                </div>
+                <div class="social-row reveal">
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="social-btn">Telegram</a>
+                    <a href="https://www.instagram.com/beauty._._hub" target="_blank" class="social-btn">Instagram</a>
+                    <a href="tel:+380932941733" class="social-btn">Дзвінок</a>
+                </div>
+            </div>
+            <div class="cs-right">
+                <div>
+                    <div class="section-label reveal" style="color:var(--accent)"><span style="background:var(--accent)"></span>Графік</div>
+                    <div class="cs-right-title reveal d1">Працюємо<br><em>щодня</em> для тебе</div>
+                    <div class="reveal d2">
+                        <div class="wh-row"><span>Пн — Пт</span><span>09:00 — 20:00</span></div>
+                        <div class="wh-row"><span>Субота</span><span>09:00 — 19:00</span></div>
+                        <div class="wh-row"><span>Неділя</span><span>10:00 — 18:00</span></div>
+                    </div>
+                </div>
+                <a href="https://t.me/Beautyy_Hub" target="_blank" class="book-btn-big reveal">Записатись прямо зараз →</a>
+            </div>
         </div>
 
-        <a href="tel:+380932941733" class="btn-call-full">ЗАТЕЛЕФОНУВАТИ</a>
+        <footer>
+            <div class="footer-logo">BEAUTY HUB</div>
+            <div class="footer-copy">© 2026 Beauty Hub Studio · Братиславська 10, Київ</div>
+        </footer>
+    </div>
 
-        <div id="price-list" class="price-section">
-            
-            <h2 class="cat-title">МАНІКЮР</h2>
-            <div class="price-line"><span>Манікюр</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Комплекс манікюру</span><span class="dots"></span><span class="val">750 / 850 / 950 грн</span></div>
-            <div class="price-line"><span>Укріплення гелем та акриловою пудрою</span><span class="dots"></span><span class="val">+100 грн</span></div>
-            <div class="price-line"><span>Френч</span><span class="dots"></span><span class="val">+100 грн</span></div>
-            <div class="price-line"><span>Нарощення нігтів (1/2/3)</span><span class="dots"></span><span class="val">1000 / 1100 / 1200 грн +100 грн</span></div>
-            <div class="price-line"><span>Корекція нарощених нігтів (1/2/3)</span><span class="dots"></span><span class="val">900 / 1000 / 1100 грн +100 грн</span></div>
-            
-            <h2 class="cat-title">ПЕДИКЮР</h2>
-            <div class="price-line"><span>Комплекс 1 (обробка пальчиків та стопи)</span><span class="dots"></span><span class="val">750 грн</span></div>
-            <div class="price-line"><span>Комплекс 2 (обробка пальчиків + покриття)</span><span class="dots"></span><span class="val">850 грн</span></div>
-            <div class="price-line"><span>Комплекс 3 (обробка пальчиків та стопи + покриття)</span><span class="dots"></span><span class="val">1000 грн</span></div>
-
-            <h2 class="cat-title">ЧОЛОВІЧІ ПОСЛУГИ</h2>
-            <div class="price-line"><span>Чоловічий манікюр</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Чоловічий педикюр</span><span class="dots"></span><span class="val">750 грн</span></div>
-            <h2 class="cat-title">БРОВИ ТА ВІЇ</h2>
-            <div class="price-line"><span>Корекція та фарбування брів</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Корекція, фарбування та ламінування брів</span><span class="dots"></span><span class="val">700 грн</span></div>
-            <div class="price-line"><span>Ламінування вій та фарбування</span><span class="dots"></span><span class="val">700 грн</span></div>
-
-            <h2 class="cat-title">ПЕРУКАРСЬКІ ПОСЛУГИ (ЖІНОЧІ)</h2>
-            <div class="sub-cat">Стрижки:</div>
-            <div class="price-line"><span>Стрижка жіноча</span><span class="dots"></span><span class="val">500 / 600 / 700 грн</span></div>
-            <div class="price-line"><span>Стрижка кінчиків (рівний зріз) до 5 см</span><span class="dots"></span><span class="val">200 грн</span></div>
-            <div class="price-line"><span>Стрижка кінчиків (густе волосся)</span><span class="dots"></span><span class="val">500 грн</span></div>
-            <div class="price-line"><span>Стрижка чубчика</span><span class="dots"></span><span class="val">200 грн</span></div>
-            <div class="price-line"><span>Стрижка дитяча (дівчата до 8 років)</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Стрижка дівчата модельна (8-13 років)</span><span class="dots"></span><span class="val">500 грн</span></div>
-            
-            <div class="sub-cat">Укладка:</div>
-            <div class="price-line"><span>Укладка браш / гарячий інструмент</span><span class="dots"></span><span class="val">550 / 650 / 750 грн</span></div>
-            <div class="note">(1/2 довжина — 550 грн | 3/4 — 650 грн | 5+ — 750 грн)</div>
-
-            <h2 class="cat-title">ПЕРУКАРСЬКІ ПОСЛУГИ (ЧОЛОВІЧІ)</h2>
-            <div class="price-line"><span>Стрижка машинка + ножиці</span><span class="dots"></span><span class="val">400 грн</span></div>
-            <div class="price-line"><span>Стрижка ножицями</span><span class="dots"></span><span class="val">450 грн</span></div>
-            <div class="price-line"><span>Стрижка під насадку</span><span class="dots"></span><span class="val">350 грн</span></div>
-            <div class="price-line"><span>Стрижка бороди (машинкою під насадку)</span><span class="dots"></span><span class="val">200 грн</span></div>
-            <div class="price-line"><span>Стрижка дитяча (хлопчики до 12 років)</span><span class="dots"></span><span class="val">350 грн</span></div>
-
-            <h2 class="cat-title">ФАРБУВАННЯ ТА ОСВІТЛЕННЯ ВОЛОССЯ</h2>
-            <div class="price-line"><span>Фарбування волосся фарбою клієнта</span><span class="dots"></span><span class="val">500 / 1000 грн</span></div>
-            
-            <div class="sub-cat">Фарбування (корені / повне):</div>
-            <div class="price-line"><span>Корені до 2 см</span><span class="dots"></span><span class="val">1300 / 1650 грн</span></div>
-            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">1450 / 1800 грн</span></div>
-            <div class="price-line"><span>2 довжини</span><span class="dots"></span><span class="val">1600 / 2000 грн</span></div>
-            <div class="price-line"><span>3 довжини</span><span class="dots"></span><span class="val">1850 / 2250 грн</span></div>
-            <div class="price-line"><span>4 довжини</span><span class="dots"></span><span class="val">2050 / 2550 грн</span></div>
-            <div class="price-line"><span>5+ довжин</span><span class="dots"></span><span class="val">2250 / 2800 грн</span></div>
-            <div class="sub-cat">Освітлення пудрою (без тонування):</div>
-            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">800 грн</span></div>
-            <div class="price-line"><span>2-3 довжини</span><span class="dots"></span><span class="val">1000 грн</span></div>
-            <div class="price-line"><span>4-5 довжин</span><span class="dots"></span><span class="val">1200 грн</span></div>
-            <div class="price-line"><span>Контуринг (часткове освітлення)</span><span class="dots"></span><span class="val">1500 грн</span></div>
-
-            <div class="sub-cat">Мелірування / Брондування з тонуванням:</div>
-            <div class="price-line"><span>1 довжина</span><span class="dots"></span><span class="val">2500 грн</span></div>
-            <div class="price-line"><span>2 довжини</span><span class="dots"></span><span class="val">2750 грн</span></div>
-            <div class="price-line"><span>3 довжини</span><span class="dots"></span><span class="val">3000 грн</span></div>
-            <div class="price-line"><span>4 довжини</span><span class="dots"></span><span class="val">3500 грн</span></div>
-            <div class="price-line"><span>5 довжин</span><span class="dots"></span><span class="val">4000 грн</span></div>
+    <!-- ═══════════════════ SERVICES PAGE ═══════════════════ -->
+    <div id="page-services" class="page">
+        <div class="page-hero">
+            <div class="breadcrumb" onclick="navigate('home')"><span>Головна</span> &nbsp;/&nbsp; Послуги</div>
+            <h1 class="page-title">Наші<br><em>послуги</em></h1>
+            <p class="page-subtitle">Від манікюру до лазерної епіляції — весь спектр краси в одному місці.</p>
         </div>
-<!-- Фото лазерної епіляції -->
-<div style="margin-top: 60px; text-align: center;">
-    <img 
-        src="laser-banner.png"
-        alt="Лазерна епіляція"
-        style="
-            width: 100%;
-            max-width: 560px;
-            border-radius: 35px;
-            box-shadow: 0 15px 40px rgba(163,122,122,0.25);
-            transition: 0.3s;
-        "
-    >
-    <!-- ЛАЗЕРНА ЕПІЛЯЦІЯ -->
-<div class="laser-price-section">
-    <h2 class="laser-title">ЛАЗЕРНА ЕПІЛЯЦІЯ</h2>
 
-    <div class="laser-group">
-        <h3>Обличчя та шия</h3>
+        <div class="svc-blocks">
+            <div class="svc-block reveal">
+                <div>
+                    <div class="svc-block-n">01</div>
+                    <div class="svc-block-lbl">Нігтьовий сервіс</div>
+                    <h2 class="svc-block-title">Манікюр &<br><em>Педикюр</em></h2>
+                    <p class="svc-block-desc">Класичний і апаратний манікюр, покриття гель-лаком, нарощення нігтів. Комплексний педикюр з обробкою стопи та покриттям. Також доступні чоловічі послуги.</p>
+                    <div class="svc-tags">
+                        <span class="svc-tag">Манікюр від 400 грн</span>
+                        <span class="svc-tag">Комплекс від 750 грн</span>
+                        <span class="svc-tag">Нарощення від 1000 грн</span>
+                        <span class="svc-tag">Педикюр від 750 грн</span>
+                    </div>
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
+                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                </div>
+                <div class="svc-block-visual" style="background:linear-gradient(135deg,#e8c4b0,#c4856a)">
+                    <span class="vis-icon">💅</span><span class="vis-label">Нігтьовий сервіс</span>
+                </div>
+            </div>
 
-        <div class="price-line"><span>Верхня губа</span><span class="dots"></span><span class="val">195 грн</span></div>
-        <div class="price-line"><span>Підборіддя</span><span class="dots"></span><span class="val">200 грн</span></div>
-        <div class="price-line"><span>Лінія чола</span><span class="dots"></span><span class="val">205 грн</span></div>
-        <div class="price-line"><span>Міжбрів'я</span><span class="dots"></span><span class="val">155 грн</span></div>
-        <div class="price-line"><span>Скронева зона</span><span class="dots"></span><span class="val">200 грн</span></div>
-        <div class="price-line"><span>Щоки</span><span class="dots"></span><span class="val">230 грн</span></div>
-        <div class="price-line"><span>Скроні + щоки</span><span class="dots"></span><span class="val">385 грн</span></div>
-        <div class="price-line"><span>Обличчя повністю</span><span class="dots"></span><span class="val">500 грн</span></div>
-        <div class="price-line"><span>Зона декольте</span><span class="dots"></span><span class="val">390 грн</span></div>
-        <div class="price-line"><span>Шия</span><span class="dots"></span><span class="val">350 грн</span></div>
-    </div>
+            <div class="svc-block rev reveal">
+                <div>
+                    <div class="svc-block-n">02</div>
+                    <div class="svc-block-lbl">Краса обличчя</div>
+                    <h2 class="svc-block-title">Брови &<br><em>Вії</em></h2>
+                    <p class="svc-block-desc">Корекція та фарбування брів, ламінування для стійкого красивого вигляду. Ламінування вій з фарбуванням — природна краса без зусиль кожного дня.</p>
+                    <div class="svc-tags">
+                        <span class="svc-tag">Корекція брів від 400 грн</span>
+                        <span class="svc-tag">Ламінування брів від 700 грн</span>
+                        <span class="svc-tag">Ламінування вій від 700 грн</span>
+                    </div>
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
+                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                </div>
+                <div class="svc-block-visual" style="background:linear-gradient(135deg,#2a1208,#3d2318)">
+                    <span class="vis-icon">✨</span><span class="vis-label">Брови та вії</span>
+                </div>
+            </div>
 
-    <div class="laser-group">
-        <h3>Пахви та руки</h3>
+            <div class="svc-block reveal">
+                <div>
+                    <div class="svc-block-n">03</div>
+                    <div class="svc-block-lbl">Перукарські послуги</div>
+                    <h2 class="svc-block-title">Стрижки &<br><em>Укладки</em></h2>
+                    <p class="svc-block-desc">Жіночі та чоловічі стрижки будь-якої складності, дитячі стрижки. Укладка брашем та гарячими інструментами для ідеального образу.</p>
+                    <div class="svc-tags">
+                        <span class="svc-tag">Жіноча від 500 грн</span>
+                        <span class="svc-tag">Чоловіча від 350 грн</span>
+                        <span class="svc-tag">Дитяча від 350 грн</span>
+                        <span class="svc-tag">Укладка від 550 грн</span>
+                    </div>
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
+                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                </div>
+                <div class="svc-block-visual" style="background:linear-gradient(135deg,#8a7a6e,#5a4a3e)">
+                    <span class="vis-icon">💇</span><span class="vis-label">Перукарські послуги</span>
+                </div>
+            </div>
 
-        <div class="price-line"><span>Пахви</span><span class="dots"></span><span class="val">345 грн</span></div>
-        <div class="price-line"><span>Кисті рук + пальці</span><span class="dots"></span><span class="val">175 грн</span></div>
-        <div class="price-line"><span>Руки повністю</span><span class="dots"></span><span class="val">550 грн</span></div>
-        <div class="price-line"><span>Плечі</span><span class="dots"></span><span class="val">480 грн</span></div>
-        <div class="price-line"><span>Передпліччя</span><span class="dots"></span><span class="val">570 грн</span></div>
-    </div>
+            <div class="svc-block rev reveal">
+                <div>
+                    <div class="svc-block-n">04</div>
+                    <div class="svc-block-lbl">Колористика</div>
+                    <h2 class="svc-block-title">Фарбування &<br><em>Освітлення</em></h2>
+                    <p class="svc-block-desc">Фарбування в один тон, тонування, освітлення пудрою, мелірування та брондування. Підберемо ідеальний колір саме для тебе.</p>
+                    <div class="svc-tags">
+                        <span class="svc-tag">Фарбування від 1300 грн</span>
+                        <span class="svc-tag">Освітлення від 800 грн</span>
+                        <span class="svc-tag">Мелірування від 2500 грн</span>
+                    </div>
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
+                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                </div>
+                <div class="svc-block-visual" style="background:linear-gradient(135deg,#c9956a,#8a4a2a)">
+                    <span class="vis-icon">🎨</span><span class="vis-label">Фарбування</span>
+                </div>
+            </div>
 
-    <div class="laser-group">
-        <h3>Живіт та спина</h3>
-        <div class="price-line"><span>Ареоли молочних залоз</span><span class="dots"></span><span class="val">190 грн</span></div>
-        <div class="price-line"><span>Біла лінія живота</span><span class="dots"></span><span class="val">200 грн</span></div>
-        <div class="price-line"><span>Хрестець</span><span class="dots"></span><span class="val">290 грн</span></div>
-        <div class="price-line"><span>Верхня частина спини</span><span class="dots"></span><span class="val">810 грн</span></div>
-        <div class="price-line"><span>Верхня частина спини + плечі</span><span class="dots"></span><span class="val">1010 грн</span></div>
-        <div class="price-line"><span>Поперек</span><span class="dots"></span><span class="val">560 грн</span></div>
-        <div class="price-line"><span>Живіт</span><span class="dots"></span><span class="val">1050 грн</span></div>
-    </div>
-
-    <div class="laser-group">
-        <h3>Зона ніг</h3>
-
-        <div class="price-line"><span>Ноги повністю</span><span class="dots"></span><span class="val">880 грн</span></div>
-        <div class="price-line"><span>Гомілки</span><span class="dots"></span><span class="val">670 грн</span></div>
-        <div class="price-line"><span>Гомілки + коліна</span><span class="dots"></span><span class="val">790 грн</span></div>
-        <div class="price-line"><span>Коліна</span><span class="dots"></span><span class="val">280 грн</span></div>
-        <div class="price-line"><span>Стегна повністю</span><span class="dots"></span><span class="val">700 грн</span></div>
-        <div class="price-line"><span>Стегна частково</span><span class="dots"></span><span class="val">520 грн</span></div>
-    </div>
-
-    <div class="laser-group">
-        <h3>Зона бікіні</h3>
-
-        <div class="price-line"><span>Глибоке бікіні</span><span class="dots"></span><span class="val">700 грн</span></div>
-        <div class="price-line"><span>Бікіні неглибоке</span><span class="dots"></span><span class="val">590 грн</span></div>
-        <div class="price-line"><span>Лобкова зона</span><span class="dots"></span><span class="val">500 грн</span></div>
-        <div class="price-line"><span>Міжсіднична складка</span><span class="dots"></span><span class="val">500 грн</span></div>
-        <div class="price-line"><span>Сідниці</span><span class="dots"></span><span class="val">520 грн</span></div>
-    </div>
-</div>
-</div>
-
-<div class="footer">
-    <p>© 2026 Beauty Hub Studio</p>
-</div>
-        <div class="footer">
-            <p>© 2026 Beauty Hub Studio</p>
+            <div class="svc-block reveal">
+                <div>
+                    <div class="svc-block-n">05</div>
+                    <div class="svc-block-lbl">Апаратна косметологія</div>
+                    <h2 class="svc-block-title">Лазерна<br><em>епіляція</em></h2>
+                    <p class="svc-block-desc">Видалення небажаного волосся лазером — безпечно, ефективно та надовго. Понад 20 зон на будь-яку частину тіла. Сертифіковане обладнання.</p>
+                    <div class="svc-tags">
+                        <span class="svc-tag">Обличчя та шия</span>
+                        <span class="svc-tag">Пахви від 345 грн</span>
+                        <span class="svc-tag">Ноги від 670 грн</span>
+                        <span class="svc-tag">Бікіні від 500 грн</span>
+                    </div>
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-primary">Записатись</a>
+                    <a href="#" onclick="navigate('price')" class="link-price">Повний прайс →</a>
+                </div>
+                <div class="svc-block-visual" style="background:linear-gradient(135deg,#1a0e0a,#3d2318)">
+                    <span class="vis-icon">⚡</span><span class="vis-label">Лазерна епіляція</span>
+                </div>
+            </div>
         </div>
+
+        <div class="promo-band">
+            <div class="promo-text">Готова до <em>перетворення?</em></div>
+            <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-white">Записатись в Telegram</a>
+        </div>
+
+        <footer>
+            <div class="footer-logo">BEAUTY HUB</div>
+            <div class="footer-copy">© 2026 Beauty Hub Studio</div>
+        </footer>
     </div>
 
+    <!-- ═══════════════════ PRICE PAGE ═══════════════════ -->
+    <div id="page-price" class="page">
+        <div class="page-hero">
+            <div class="breadcrumb" onclick="navigate('home')"><span>Головна</span> &nbsp;/&nbsp; Прайс</div>
+            <h1 class="page-title">Прайс<br><em>послуг</em></h1>
+            <p class="page-subtitle">Прозорі ціни без сюрпризів. Записуйся через Telegram.</p>
+        </div>
+
+        <div class="price-page">
+            <div class="price-nav-tabs">
+                <button class="ptab active" onclick="switchTab('manicure',this)">Манікюр</button>
+                <button class="ptab" onclick="switchTab('pedicure',this)">Педикюр</button>
+                <button class="ptab" onclick="switchTab('brows',this)">Брови та вії</button>
+                <button class="ptab" onclick="switchTab('hair',this)">Волосся</button>
+                <button class="ptab" onclick="switchTab('color',this)">Фарбування</button>
+                <button class="ptab" onclick="switchTab('laser',this)">Лазер</button>
+            </div>
+
+            <!-- МАНІКЮР -->
+            <div id="tab-manicure" class="price-cat active">
+                <div class="cat-title">Манікюр</div>
+                <div class="cat-divider"></div>
+                <div class="price-row"><span class="pr-name">Манікюр</span><span class="pr-val">400 грн</span></div>
+                <div class="price-row"><span class="pr-name">Комплекс манікюру</span><span class="pr-val">750 / 850 / 950 грн</span></div>
+                <div class="price-row"><span class="pr-name">Укріплення гелем та акриловою пудрою</span><span class="pr-val">+100 грн</span></div>
+                <div class="price-row"><span class="pr-name">Френч</span><span class="pr-val">+100 грн</span></div>
+                <div class="price-row"><span class="pr-name">Нарощення нігтів (1/2/3)</span><span class="pr-val">1000 / 1100 / 1200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Корекція нарощених нігтів (1/2/3)</span><span class="pr-val">900 / 1000 / 1100 грн</span></div>
+                <div class="sub-title">Чоловічі</div>
+                <div class="price-row"><span class="pr-name">Чоловічий манікюр</span><span class="pr-val">400 грн</span></div>
+            </div>
+
+            <!-- ПЕДИКЮР -->
+            <div id="tab-pedicure" class="price-cat">
+                <div class="cat-title">Педикюр</div>
+                <div class="cat-divider"></div>
+                <div class="price-row"><span class="pr-name">Комплекс 1 — обробка пальчиків та стопи</span><span class="pr-val">750 грн</span></div>
+                <div class="price-row"><span class="pr-name">Комплекс 2 — обробка пальчиків + покриття</span><span class="pr-val">850 грн</span></div>
+                <div class="price-row"><span class="pr-name">Комплекс 3 — обробка пальчиків та стопи + покриття</span><span class="pr-val">1000 грн</span></div>
+                <div class="sub-title">Чоловічі</div>
+                <div class="price-row"><span class="pr-name">Чоловічий педикюр</span><span class="pr-val">750 грн</span></div>
+            </div>
+
+            <!-- БРОВИ ТА ВІЇ -->
+            <div id="tab-brows" class="price-cat">
+                <div class="cat-title">Брови та вії</div>
+                <div class="cat-divider"></div>
+                <div class="price-row"><span class="pr-name">Корекція та фарбування брів</span><span class="pr-val">400 грн</span></div>
+                <div class="price-row"><span class="pr-name">Корекція, фарбування та ламінування брів</span><span class="pr-val">700 грн</span></div>
+                <div class="price-row"><span class="pr-name">Ламінування вій та фарбування</span><span class="pr-val">700 грн</span></div>
+            </div>
+
+            <!-- ВОЛОССЯ -->
+            <div id="tab-hair" class="price-cat">
+                <div class="cat-title">Перукарські послуги</div>
+                <div class="cat-divider"></div>
+                <div class="sub-title">Жіночі стрижки</div>
+                <div class="price-row"><span class="pr-name">Стрижка жіноча</span><span class="pr-val">500 / 600 / 700 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка кінчиків (рівний зріз до 5 см)</span><span class="pr-val">200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка кінчиків (густе волосся)</span><span class="pr-val">500 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка чубчика</span><span class="pr-val">200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка дитяча (дівчата до 8 років)</span><span class="pr-val">400 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка дівчата модельна (8–13 років)</span><span class="pr-val">500 грн</span></div>
+                <div class="sub-title">Укладка</div>
+                <div class="price-row"><span class="pr-name">Укладка браш / гарячий інструмент</span><span class="pr-val">550 / 650 / 750 грн</span></div>
+                <div class="price-note">1/2 довжина — 550 грн · 3/4 — 650 грн · 5+ — 750 грн</div>
+                <div class="sub-title">Чоловічі стрижки</div>
+                <div class="price-row"><span class="pr-name">Стрижка машинка + ножиці</span><span class="pr-val">400 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка ножицями</span><span class="pr-val">450 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка під насадку</span><span class="pr-val">350 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка бороди</span><span class="pr-val">200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стрижка дитяча (хлопчики до 12 років)</span><span class="pr-val">350 грн</span></div>
+            </div>
+
+            <!-- ФАРБУВАННЯ -->
+            <div id="tab-color" class="price-cat">
+                <div class="cat-title">Фарбування та освітлення</div>
+                <div class="cat-divider"></div>
+                <div class="price-row"><span class="pr-name">Фарбування фарбою клієнта</span><span class="pr-val">500 / 1000 грн</span></div>
+                <div class="sub-title">Фарбування (корені / повне)</div>
+                <div class="price-row"><span class="pr-name">Корені до 2 см</span><span class="pr-val">1300 / 1650 грн</span></div>
+                <div class="price-row"><span class="pr-name">1 довжина</span><span class="pr-val">1450 / 1800 грн</span></div>
+                <div class="price-row"><span class="pr-name">2 довжини</span><span class="pr-val">1600 / 2000 грн</span></div>
+                <div class="price-row"><span class="pr-name">3 довжини</span><span class="pr-val">1850 / 2250 грн</span></div>
+                <div class="price-row"><span class="pr-name">4 довжини</span><span class="pr-val">2050 / 2550 грн</span></div>
+                <div class="price-row"><span class="pr-name">5+ довжин</span><span class="pr-val">2250 / 2800 грн</span></div>
+                <div class="sub-title">Освітлення пудрою (без тонування)</div>
+                <div class="price-row"><span class="pr-name">1 довжина</span><span class="pr-val">800 грн</span></div>
+                <div class="price-row"><span class="pr-name">2–3 довжини</span><span class="pr-val">1000 грн</span></div>
+                <div class="price-row"><span class="pr-name">4–5 довжин</span><span class="pr-val">1200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Контуринг (часткове освітлення)</span><span class="pr-val">1500 грн</span></div>
+                <div class="sub-title">Мелірування / Брондування з тонуванням</div>
+                <div class="price-row"><span class="pr-name">1 довжина</span><span class="pr-val">2500 грн</span></div>
+                <div class="price-row"><span class="pr-name">2 довжини</span><span class="pr-val">2750 грн</span></div>
+                <div class="price-row"><span class="pr-name">3 довжини</span><span class="pr-val">3000 грн</span></div>
+                <div class="price-row"><span class="pr-name">4 довжини</span><span class="pr-val">3500 грн</span></div>
+                <div class="price-row"><span class="pr-name">5 довжин</span><span class="pr-val">4000 грн</span></div>
+            </div>
+
+            <!-- ЛАЗЕР -->
+            <div id="tab-laser" class="price-cat">
+                <div class="cat-title">Лазерна епіляція</div>
+                <div class="cat-divider"></div>
+
+                <img src="laser-banner.png" alt="Лазерна епіляція — акція" class="laser-banner" onerror="this.style.display='none'">
+
+                <div class="sub-title">Обличчя та шия</div>
+                <div class="price-row"><span class="pr-name">Верхня губа</span><span class="pr-val">195 грн</span></div>
+                <div class="price-row"><span class="pr-name">Підборіддя</span><span class="pr-val">200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Лінія чола</span><span class="pr-val">205 грн</span></div>
+                <div class="price-row"><span class="pr-name">Міжбрів'я</span><span class="pr-val">155 грн</span></div>
+                <div class="price-row"><span class="pr-name">Скронева зона</span><span class="pr-val">200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Щоки</span><span class="pr-val">230 грн</span></div>
+                <div class="price-row"><span class="pr-name">Скроні + щоки</span><span class="pr-val">385 грн</span></div>
+                <div class="price-row"><span class="pr-name">Обличчя повністю</span><span class="pr-val">500 грн</span></div>
+                <div class="price-row"><span class="pr-name">Зона декольте</span><span class="pr-val">390 грн</span></div>
+                <div class="price-row"><span class="pr-name">Шия</span><span class="pr-val">350 грн</span></div>
+
+                <div class="sub-title">Пахви та руки</div>
+                <div class="price-row"><span class="pr-name">Пахви</span><span class="pr-val">345 грн</span></div>
+                <div class="price-row"><span class="pr-name">Кисті рук + пальці</span><span class="pr-val">175 грн</span></div>
+                <div class="price-row"><span class="pr-name">Руки повністю</span><span class="pr-val">550 грн</span></div>
+                <div class="price-row"><span class="pr-name">Плечі</span><span class="pr-val">480 грн</span></div>
+                <div class="price-row"><span class="pr-name">Передпліччя</span><span class="pr-val">570 грн</span></div>
+
+                <div class="sub-title">Живіт та спина</div>
+                <div class="price-row"><span class="pr-name">Ареоли молочних залоз</span><span class="pr-val">190 грн</span></div>
+                <div class="price-row"><span class="pr-name">Біла лінія живота</span><span class="pr-val">200 грн</span></div>
+                <div class="price-row"><span class="pr-name">Хрестець</span><span class="pr-val">290 грн</span></div>
+                <div class="price-row"><span class="pr-name">Верхня частина спини</span><span class="pr-val">810 грн</span></div>
+                <div class="price-row"><span class="pr-name">Верхня частина спини + плечі</span><span class="pr-val">1010 грн</span></div>
+                <div class="price-row"><span class="pr-name">Поперек</span><span class="pr-val">560 грн</span></div>
+                <div class="price-row"><span class="pr-name">Живіт</span><span class="pr-val">1050 грн</span></div>
+
+                <div class="sub-title">Зона ніг</div>
+                <div class="price-row"><span class="pr-name">Ноги повністю</span><span class="pr-val">880 грн</span></div>
+                <div class="price-row"><span class="pr-name">Гомілки</span><span class="pr-val">670 грн</span></div>
+                <div class="price-row"><span class="pr-name">Гомілки + коліна</span><span class="pr-val">790 грн</span></div>
+                <div class="price-row"><span class="pr-name">Коліна</span><span class="pr-val">280 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стегна повністю</span><span class="pr-val">700 грн</span></div>
+                <div class="price-row"><span class="pr-name">Стегна частково</span><span class="pr-val">520 грн</span></div>
+
+                <div class="sub-title">Зона бікіні</div>
+                <div class="price-row"><span class="pr-name">Глибоке бікіні</span><span class="pr-val">700 грн</span></div>
+                <div class="price-row"><span class="pr-name">Бікіні неглибоке</span><span class="pr-val">590 грн</span></div>
+                <div class="price-row"><span class="pr-name">Лобкова зона</span><span class="pr-val">500 грн</span></div>
+                <div class="price-row"><span class="pr-name">Міжсіднична складка</span><span class="pr-val">500 грн</span></div>
+                <div class="price-row"><span class="pr-name">Сідниці</span><span class="pr-val">520 грн</span></div>
+            </div>
+        </div>
+
+        <div class="promo-band">
+            <div class="promo-text">Запишись &<br><em>отримай консультацію</em></div>
+            <a href="https://t.me/Beautyy_Hub" target="_blank" class="btn-white">Telegram</a>
+        </div>
+
+        <footer>
+            <div class="footer-logo">BEAUTY HUB</div>
+            <div class="footer-copy">© 2026 Beauty Hub Studio</div>
+        </footer>
+    </div>
+
+    <!-- ═══════════════════ CONTACTS PAGE ═══════════════════ -->
+    <div id="page-contacts" class="page">
+        <div class="page-hero" style="padding-bottom:50px">
+            <div class="breadcrumb" onclick="navigate('home')"><span>Головна</span> &nbsp;/&nbsp; Контакти</div>
+            <h1 class="page-title">Контакти &<br><em>адреса</em></h1>
+            <p class="page-subtitle">Знаходимось на Братиславській 10. Запишись онлайн або зателефонуй.</p>
+        </div>
+
+        <div class="contacts-page">
+            <div class="cp-left">
+                <div class="section-label reveal">Зв'язок</div>
+                <h2 class="section-title reveal d1">Завжди<br><em>на зв'язку</em></h2>
+
+                <div style="margin-top:40px">
+                    <div class="contact-lbl" style="margin-top:20px">Телефон</div>
+                    <a href="tel:+380932941733" class="big-phone">+380 93 294 17 33</a>
+
+                    <div class="contact-lbl">Instagram</div>
+                    <a href="https://www.instagram.com/beauty._._hub" target="_blank" class="ig-link">@beauty._._hub</a>
+
+                    <div class="contact-lbl">Адреса</div>
+                    <a href="https://maps.app.goo.gl/B8vPU9yHQt9RT1UEA" target="_blank" class="ig-link">Братиславська 10, Київ</a>
+                </div>
+
+                <div class="social-row reveal" style="margin-top:36px">
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="social-btn">Telegram</a>
+                    <a href="https://www.instagram.com/beauty._._hub" target="_blank" class="social-btn">Instagram</a>
+                    <a href="tel:+380932941733" class="social-btn">Зателефонувати</a>
+                </div>
+
+                <div class="map-placeholder" style="margin-top:36px">
+                    <div class="map-icon">📍</div>
+                    <a href="https://maps.app.goo.gl/B8vPU9yHQt9RT1UEA" target="_blank">Відкрити на Google Maps →</a>
+                    <div class="map-note">Братиславська 10, Київ<br>Легко дістатися метро та транспортом</div>
+                </div>
+            </div>
+
+            <div class="cp-right">
+                <div>
+                    <div class="section-label" style="color:var(--accent)"><span style="background:var(--accent)"></span>Графік роботи</div>
+                    <h2 class="section-title" style="color:white; margin-bottom:28px">Працюємо<br><em style="color:var(--blush)">щодня</em></h2>
+                    <div class="cp-hours">
+                        <div class="cp-hours-row"><span class="day">Понеділок — П'ятниця</span><span class="time">09:00 — 20:00</span></div>
+                        <div class="cp-hours-row"><span class="day">Субота</span><span class="time">09:00 — 19:00</span></div>
+                        <div class="cp-hours-row"><span class="day">Неділя</span><span class="time">10:00 — 18:00</span></div>
+                    </div>
+                </div>
+                <div class="cp-cta-block">
+                    <p>Записуйся онлайн через Telegram або зателефонуй нам — ми підберемо зручний час спеціально для тебе.</p>
+                    <a href="https://t.me/Beautyy_Hub" target="_blank" class="cp-tg-btn">
+                        <span class="cp-tg-btn-icon">✈️</span>
+                        Написати в Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-logo">BEAUTY HUB</div>
+            <div class="footer-copy">© 2026 Beauty Hub Studio · Братиславська 10, Київ</div>
+        </footer>
+    </div>
+
+    <script>
+        // ── NAVIGATION ──
+        function navigate(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // update nav active state
+            document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+                a.style.color = '';
+                if (a.dataset.page === page) a.style.color = 'var(--rose)';
+            });
+
+            // force re-observe reveals on new page
+            setTimeout(observeReveals, 100);
+        }
+
+        // ── NAVBAR SCROLL ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ── MOBILE NAV ──
+        function openMobileNav() {
+            document.getElementById('mobileNav').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ── PRICE TABS ──
+        function switchTab(id, btn) {
+            document.querySelectorAll('.price-cat').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // ── REVEAL ON SCROLL ──
+        function observeReveals() {
+            const reveals = document.querySelectorAll('.page.active .reveal:not(.visible)');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+            reveals.forEach(el => obs.observe(el));
+        }
+        observeReveals();
+    </script>
 </body>
 </html>
